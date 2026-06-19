@@ -12,7 +12,13 @@ const INTEREST_ICONS: Record<string, LucideIcon> = {
 
 function BookCoverImg({ src, title }: { src: string; title: string }) {
   return (
-    <div className="flex-shrink-0 w-10 h-[3.5rem] rounded-sm overflow-hidden shadow-md">
+    <div
+      className="flex-shrink-0 w-10 h-[3.5rem] rounded-sm overflow-hidden"
+      style={{
+        transform: "perspective(500px) rotateY(-6deg)",
+        boxShadow: "3px 5px 12px rgba(0,0,0,0.55), inset -3px 0 6px rgba(0,0,0,0.2)",
+      }}
+    >
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img src={src} alt={`Cover of ${title}`} className="w-full h-full object-cover" />
     </div>
@@ -88,7 +94,11 @@ export function Personal() {
             <div className="flex gap-5 overflow-x-auto pb-3 scrollbar-none">
               {lifestyle.finishedReading.map((book, i) => (
                 <div key={i} className="flex-shrink-0 w-[72px] text-center group">
-                  <div className="w-[72px] h-24 rounded-sm overflow-hidden shadow-md mb-2 transition-transform duration-200 group-hover:-translate-y-1">
+                  <div className="w-[72px] h-24 rounded-sm overflow-hidden mb-2 transition-transform duration-200 group-hover:-translate-y-1"
+                    style={{
+                      transform: "perspective(600px) rotateY(-5deg)",
+                      boxShadow: "4px 6px 14px rgba(0,0,0,0.55), inset -3px 0 6px rgba(0,0,0,0.18)",
+                    }}>
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img src={book.cover} alt={`Cover of ${book.title}`} className="w-full h-full object-cover" />
                   </div>

@@ -11,6 +11,7 @@ interface Project {
   tags: string[]
   description: string
   impact?: string
+  charityLogo?: string
   status: string
   githubUrl?: string
 }
@@ -39,8 +40,18 @@ export function ProjectCard({ project }: { project: Project }) {
       <p className="text-zinc-300 leading-relaxed mb-4">{project.description}</p>
 
       {project.impact && (
-        <div className="bg-cyan-400/5 border-l-2 border-cyan-400 pl-4 py-2 text-cyan-300 text-sm mb-4">
-          {project.impact}
+        <div className="bg-cyan-400/5 border-l-2 border-cyan-400 pl-4 py-2 mb-4 flex items-center gap-3">
+          <span className="text-cyan-300 text-sm">{project.impact}</span>
+          {project.charityLogo && (
+            <div className="bg-white rounded px-2 py-1 flex-shrink-0">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={project.charityLogo}
+                alt="Merchants Quay Ireland"
+                className="h-5 w-auto"
+              />
+            </div>
+          )}
         </div>
       )}
 

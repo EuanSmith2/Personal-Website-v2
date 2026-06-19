@@ -43,7 +43,8 @@ export function EdmoExperience() {
 
             {/* Right: DCU logo — white bg for legibility, generous sizing */}
             <div className="flex flex-col items-start sm:items-end gap-2">
-              <div className="bg-white rounded-lg px-5 py-3 shadow-lg">
+              <div className="bg-white rounded-lg px-5 py-3"
+                style={{ boxShadow: "0 0 0 1.5px rgba(255,255,255,0.35), 0 4px 16px rgba(0,0,0,0.4)" }}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src="/logos/dcu-logo.png"

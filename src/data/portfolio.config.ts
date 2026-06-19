@@ -98,13 +98,14 @@ export const portfolioConfig = {
   edmo: {
     organisation: "European Digital Media Observatory",
     affiliation: "Dublin City University · European Commission",
-    role: "Incoming Digital Media Assistant · Summer 2025",
+    role: "Software Developer Intern · Summer 2025",
     mission:
       "EDMO operates under direct mandate from the European Commission as part of the European Democracy Action Plan. Bringing together fact-checkers, academics, and technology experts across all EU member states, it coordinates a network of independent researchers providing policy intelligence to the European Parliament and national governments on disinformation threats and information ecosystem integrity — serving as the backbone of the EU's digital literacy and media accountability infrastructure.",
     responsibilities: [
-      "Website content management and publication workflows",
-      "Social media content scheduling and analytics",
-      "Backend automation and process tooling",
+      "Full-stack web development, API integrations, and bespoke internal tooling built to EU institutional and accessibility standards",
+      "Website content management, CMS workflows, and publication pipeline maintenance",
+      "Social media content scheduling and performance analytics",
+      "Backend process automation reducing manual overhead across the editorial team",
     ],
   },
 
@@ -115,8 +116,9 @@ export const portfolioConfig = {
       name: "Marketplace Intelligence System",
       tags: ["Computer Vision", "Python", "ROI Modeling", "Automation"],
       description:
-        "Autonomous system that identifies resale opportunities across online marketplaces using computer vision and pricing intelligence. Incorporates ROI calculation, risk scoring, and human-in-the-loop decision gates. Has generated measurable financial returns, with approximately €500 contributed to charity supporting people experiencing homelessness.",
-      impact: "~€500 donated to homelessness charity",
+        "Autonomous system that identifies resale opportunities across online marketplaces using computer vision and pricing intelligence. Incorporates ROI calculation, risk scoring, and human-in-the-loop decision gates. Has generated measurable financial returns, with approximately €500 donated to Merchants Quay Ireland.",
+      impact: "~€500 donated to Merchants Quay Ireland",
+      charityLogo: "/logos/mqi-logo.png",
       status: "Active",
     },
     {

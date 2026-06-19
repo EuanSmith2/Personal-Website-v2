@@ -1,36 +1,6 @@
 import { SectionWrapper } from "@/components/ui/SectionWrapper"
 import { portfolioConfig } from "@/data/portfolio.config"
 
-// EU flag rendered as SVG — 12 stars in circle on blue field
-const EUFlag = () => (
-  <svg viewBox="0 0 900 600" width="72" height="48" aria-label="European Union flag" role="img">
-    <rect width="900" height="600" fill="#003399" />
-    {Array.from({ length: 12 }, (_, i) => {
-      const angle = (i * 30 - 90) * (Math.PI / 180)
-      const cx = 450 + Math.cos(angle) * 150
-      const cy = 300 + Math.sin(angle) * 150
-      // 5-pointed star using polygon
-      const pts = Array.from({ length: 5 }, (__, j) => {
-        const a = ((j * 72) - 90) * (Math.PI / 180)
-        const b = ((j * 72 + 36) - 90) * (Math.PI / 180)
-        return `${cx + Math.cos(a) * 20},${cy + Math.sin(a) * 20} ${cx + Math.cos(b) * 9},${cy + Math.sin(b) * 9}`
-      }).join(" ")
-      return <polygon key={i} points={pts} fill="#FFCC00" />
-    })}
-  </svg>
-)
-
-// DCU badge — styled to match DCU's red brand identity
-const DCUBadge = () => (
-  <div
-    className="flex items-center gap-2 px-4 py-2 rounded border font-bold text-white"
-    style={{ background: "#DC143C", borderColor: "#B01030", letterSpacing: "0.05em" }}
-  >
-    <span className="text-base tracking-wider">DCU</span>
-    <span className="text-xs font-normal opacity-80 hidden sm:inline">Dublin City University</span>
-  </div>
-)
-
 export function EdmoExperience() {
   const { edmo } = portfolioConfig
 
@@ -43,22 +13,66 @@ export function EdmoExperience() {
     >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionWrapper>
-          {/* EU blue header bar with stars */}
+
+          {/* EU blue header card */}
           <div
-            className="rounded-xl p-6 mb-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6"
+            className="rounded-xl p-6 mb-10"
             style={{ background: "linear-gradient(135deg, #002080 0%, #003399 60%, #001a66 100%)", border: "1px solid #0040cc40" }}
           >
-            <div className="flex items-center gap-5">
-              <EUFlag />
-              <div>
-                <p className="text-white/50 text-xs font-mono uppercase tracking-widest mb-1">European Commission Initiative</p>
-                <h3 className="text-white font-bold text-xl leading-tight">European Digital Media Observatory</h3>
-                <p className="text-white/60 text-sm mt-0.5">An official EU-mandated body combating disinformation across member states</p>
+            {/* Top row: EU flag + EDMO logo */}
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 mb-6">
+              <div className="flex items-center gap-5">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/logos/eu-flag.webp"
+                  alt="European Union flag"
+                  className="rounded-sm shadow-lg flex-shrink-0"
+                  style={{ width: 80, height: 54, objectFit: "cover" }}
+                />
+                <div>
+                  <p className="text-white/50 text-xs font-mono uppercase tracking-widest mb-2">
+                    European Commission Initiative
+                  </p>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src="/logos/edmo-logo.png"
+                    alt="European Digital Media Observatory"
+                    className="h-10 w-auto"
+                    style={{ filter: "brightness(1.05)" }}
+                  />
+                </div>
               </div>
+
+              {/* Right: "An official EU body..." label */}
+              <p className="text-white/50 text-xs leading-relaxed max-w-[220px] text-right hidden sm:block">
+                An official EU-mandated body combating disinformation across member states
+              </p>
             </div>
-            <div className="flex flex-col gap-2 items-start sm:items-end">
-              <DCUBadge />
-              <p className="text-white/40 text-xs font-mono">Host Institution</p>
+
+            {/* Bottom row: partner institution logos */}
+            <div className="flex items-center gap-4 pt-5 border-t border-white/10">
+              <span className="text-white/40 text-xs font-mono uppercase tracking-wider flex-shrink-0">
+                Via
+              </span>
+              {/* DCU logo on white pill */}
+              <div className="bg-white rounded-md px-3 py-1.5 flex items-center shadow">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/logos/dcu-logo.png"
+                  alt="Dublin City University"
+                  className="h-6 w-auto"
+                />
+              </div>
+              <span className="text-white/20 text-xs">+</span>
+              {/* TUD logo on white pill */}
+              <div className="bg-white rounded-md px-3 py-1.5 flex items-center shadow">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/logos/tud-logo.png"
+                  alt="Technological University Dublin"
+                  className="h-6 w-auto"
+                />
+              </div>
             </div>
           </div>
 
@@ -78,7 +92,7 @@ export function EdmoExperience() {
           </div>
 
           {/* Governmental importance statement */}
-          <div className="mb-8 rounded-xl p-5 border-l-4 border-blue-400" style={{ background: "rgba(0,51,153,0.15)", borderLeft: "4px solid #003399" }}>
+          <div className="mb-8 rounded-xl p-5" style={{ background: "rgba(0,51,153,0.15)", borderLeft: "4px solid #003399" }}>
             <p className="text-sm font-mono text-blue-300 uppercase tracking-widest mb-2">Institutional Mandate</p>
             <p className="text-zinc-200 leading-relaxed">
               EDMO operates under direct mandate from the European Commission as part of the European Democracy Action Plan.
@@ -98,6 +112,7 @@ export function EdmoExperience() {
               </li>
             ))}
           </ul>
+
         </SectionWrapper>
       </div>
     </section>

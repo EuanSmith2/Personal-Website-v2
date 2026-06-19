@@ -100,7 +100,7 @@ export const portfolioConfig = {
     affiliation: "Dublin City University · European Commission",
     role: "Incoming Digital Media Assistant · Summer 2025",
     mission:
-      "The European Digital Media Observatory is a European Commission initiative that brings together fact-checkers, academics, and technology experts to combat disinformation across EU member states. Operating across multiple languages and media landscapes, EDMO serves as the backbone of the EU's digital literacy and media accountability infrastructure.",
+      "EDMO operates under direct mandate from the European Commission as part of the European Democracy Action Plan. Bringing together fact-checkers, academics, and technology experts across all EU member states, it coordinates a network of independent researchers providing policy intelligence to the European Parliament and national governments on disinformation threats and information ecosystem integrity — serving as the backbone of the EU's digital literacy and media accountability infrastructure.",
     responsibilities: [
       "Website content management and publication workflows",
       "Social media content scheduling and analytics",
@@ -151,13 +151,13 @@ export const portfolioConfig = {
       { icon: "♟️", label: "Chess Club",        detail: "Competitive play" },
       { icon: "🗳️", label: "Student Council",   detail: "Class representative" },
       { icon: "📚", label: "Teacher Assistant",  detail: "Peer learning support" },
-      { icon: "🏆", label: "Academic Awards",   detail: "Excellence recognition" },
+      { icon: "🏆", label: "Academic Awards",   detail: "Spirit of the Class, Stealth Award & Attendance Award" },
     ],
     reading: [
       { title: "The Web Application Hacker's Handbook", author: "Stuttard & Pinto",    cover: "/books/web-hackers.jpg" },
       { title: "The Age of Surveillance Capitalism",    author: "Shoshana Zuboff",     cover: "/books/surveillance.jpg" },
       { title: "Thinking in Systems",                   author: "Donella H. Meadows",  cover: "/books/thinking-systems.jpg" },
-      { title: "Deep Work",                             author: "Cal Newport",         cover: "/books/deep-work.jpg" },
+      { title: "This Is How They Tell Me the World Ends", author: "Nicole Perlroth",    cover: "/books/world-ends.jpg" },
     ],
     finishedReading: [
       { title: "Atomic Habits",                          author: "James Clear",       cover: "/books/atomic-habits.jpg" },

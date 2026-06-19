@@ -16,63 +16,42 @@ export function EdmoExperience() {
 
           {/* EU blue header card */}
           <div
-            className="rounded-xl p-6 mb-10"
+            className="rounded-xl p-6 mb-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6"
             style={{ background: "linear-gradient(135deg, #002080 0%, #003399 60%, #001a66 100%)", border: "1px solid #0040cc40" }}
           >
-            {/* Top row: EU flag + EDMO logo */}
-            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 mb-6">
-              <div className="flex items-center gap-5">
+            {/* Left: EU flag + EDMO logo */}
+            <div className="flex items-center gap-5">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/logos/eu-flag.webp"
+                alt="European Union flag"
+                className="rounded-sm shadow-lg flex-shrink-0"
+                style={{ width: 80, height: 54, objectFit: "cover" }}
+              />
+              <div>
+                <p className="text-white/50 text-xs font-mono uppercase tracking-widest mb-2">
+                  European Commission Initiative
+                </p>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src="/logos/eu-flag.webp"
-                  alt="European Union flag"
-                  className="rounded-sm shadow-lg flex-shrink-0"
-                  style={{ width: 80, height: 54, objectFit: "cover" }}
+                  src="/logos/edmo-logo.png"
+                  alt="European Digital Media Observatory"
+                  className="h-10 w-auto"
                 />
-                <div>
-                  <p className="text-white/50 text-xs font-mono uppercase tracking-widest mb-2">
-                    European Commission Initiative
-                  </p>
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src="/logos/edmo-logo.png"
-                    alt="European Digital Media Observatory"
-                    className="h-10 w-auto"
-                    style={{ filter: "brightness(1.05)" }}
-                  />
-                </div>
               </div>
-
-              {/* Right: "An official EU body..." label */}
-              <p className="text-white/50 text-xs leading-relaxed max-w-[220px] text-right hidden sm:block">
-                An official EU-mandated body combating disinformation across member states
-              </p>
             </div>
 
-            {/* Bottom row: partner institution logos */}
-            <div className="flex items-center gap-4 pt-5 border-t border-white/10">
-              <span className="text-white/40 text-xs font-mono uppercase tracking-wider flex-shrink-0">
-                Via
-              </span>
-              {/* DCU logo on white pill */}
-              <div className="bg-white rounded-md px-3 py-1.5 flex items-center shadow">
+            {/* Right: DCU logo — white bg for legibility, generous sizing */}
+            <div className="flex flex-col items-start sm:items-end gap-2">
+              <div className="bg-white rounded-lg px-5 py-3 shadow-lg">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src="/logos/dcu-logo.png"
                   alt="Dublin City University"
-                  className="h-6 w-auto"
+                  className="h-9 w-auto"
                 />
               </div>
-              <span className="text-white/20 text-xs">+</span>
-              {/* TUD logo on white pill */}
-              <div className="bg-white rounded-md px-3 py-1.5 flex items-center shadow">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src="/logos/tud-logo.png"
-                  alt="Technological University Dublin"
-                  className="h-6 w-auto"
-                />
-              </div>
+              <p className="text-white/40 text-xs font-mono">Host Institution</p>
             </div>
           </div>
 
@@ -89,17 +68,6 @@ export function EdmoExperience() {
             <span className="inline-block bg-emerald-400/10 border border-emerald-400/30 text-emerald-400 text-sm font-mono px-4 py-1 rounded-full">
               {edmo.role}
             </span>
-          </div>
-
-          {/* Governmental importance statement */}
-          <div className="mb-8 rounded-xl p-5" style={{ background: "rgba(0,51,153,0.15)", borderLeft: "4px solid #003399" }}>
-            <p className="text-sm font-mono text-blue-300 uppercase tracking-widest mb-2">Institutional Mandate</p>
-            <p className="text-zinc-200 leading-relaxed">
-              EDMO operates under direct mandate from the European Commission as part of the European Democracy Action Plan.
-              It coordinates a network of independent fact-checking organisations and academic researchers across all EU member states,
-              providing policy intelligence to the European Parliament and national governments on disinformation threats and
-              information ecosystem integrity.
-            </p>
           </div>
 
           <p className="text-zinc-300 leading-relaxed mb-8 max-w-3xl">{edmo.mission}</p>

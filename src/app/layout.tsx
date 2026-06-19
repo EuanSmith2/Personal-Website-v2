@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 import { Inter, JetBrains_Mono } from "next/font/google"
+import { Analytics } from "@vercel/analytics/next"
 import "./globals.css"
 import { portfolioConfig } from "@/data/portfolio.config"
 
@@ -32,6 +33,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable}`}>
       <body className="font-sans antialiased" style={{ background: "var(--bg-base)", color: "var(--text-primary)" }}>
         {children}
+        <Analytics />
       </body>
     </html>
   )

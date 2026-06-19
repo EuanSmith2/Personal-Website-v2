@@ -46,7 +46,7 @@ export function Contact() {
 
             {/* Outlook / Email */}
             <div className="relative overflow-hidden rounded-lg">
-              <PixelCanvas colors={["#0078D4", "#28A8E8", "#50E6FF"]} gap={4} speed={200} />
+              <PixelCanvas colors={["#0078D4", "#28A8E8", "#50E6FF"]} gap={5} speed={30} />
               <ObfuscatedEmail
                 encoded={personal.emailEncoded}
                 className="relative z-10 px-5 py-2.5 border border-zinc-700 text-zinc-300 font-semibold text-sm hover:border-[#0078D4]/60 hover:text-[#50E6FF] transition-colors duration-200 rounded-lg bg-transparent"
@@ -55,7 +55,7 @@ export function Contact() {
 
             {/* LinkedIn */}
             <div className="relative overflow-hidden rounded-lg">
-              <PixelCanvas colors={["#0A66C2", "#2D8CDB", "#5BA8E6"]} gap={4} speed={200} />
+              <PixelCanvas colors={["#0A66C2", "#2D8CDB", "#5BA8E6"]} gap={5} speed={30} />
               <a
                 href={personal.linkedin}
                 target="_blank"
@@ -69,7 +69,7 @@ export function Contact() {
 
             {/* GitHub */}
             <div className="relative overflow-hidden rounded-lg">
-              <PixelCanvas colors={["#6e5494", "#9a6dd7", "#c9a6ff"]} gap={4} speed={200} />
+              <PixelCanvas colors={["#6e5494", "#9a6dd7", "#c9a6ff"]} gap={5} speed={30} />
               <a
                 href={contact.github}
                 target="_blank"
@@ -83,7 +83,7 @@ export function Contact() {
 
             {/* TikTok */}
             <div className="relative overflow-hidden rounded-lg">
-              <PixelCanvas colors={["#FF0050", "#00F2EA", "#ff4d82"]} gap={4} speed={200} />
+              <PixelCanvas colors={["#FF0050", "#00F2EA", "#ff4d82"]} gap={5} speed={30} />
               <a
                 href={personal.tiktok}
                 target="_blank"

@@ -1,105 +1,205 @@
 "use client"
-import { useRef, useEffect } from "react"
+import { useCallback, useEffect, useRef } from "react"
 
-interface PixelCanvasProps {
-  colors?: string[]
+/* -------------------------------------------------------------------------
+ * Pixel state machine — extracted from pixel-logo-grid
+ * Each pixel appears (ripples in from centre), shimmers at max size, and
+ * disappears (shrinks to 0) on mouseleave.
+ * ---------------------------------------------------------------------- */
+
+type Pixel = {
+  x: number
+  y: number
+  color: string
+  ctx: CanvasRenderingContext2D
+  speed: number
+  size: number
+  sizeStep: number
+  minSize: number
+  maxSizeInt: number
+  maxSize: number
+  delay: number
+  counter: number
+  counterStep: number
+  isIdle: boolean
+  isReverse: boolean
+  isShimmer: boolean
+  draw: () => void
+  appear: () => void
+  disappear: () => void
+  shimmer: () => void
+}
+
+function createPixel(
+  ctx: CanvasRenderingContext2D,
+  canvas: HTMLCanvasElement,
+  x: number,
+  y: number,
+  color: string,
+  baseSpeed: number,
+  delay: number
+): Pixel {
+  const rand = (min: number, max: number) => Math.random() * (max - min) + min
+
+  const p: Pixel = {
+    x, y, color, ctx,
+    speed: rand(0.1, 0.9) * baseSpeed,
+    size: 0,
+    sizeStep: Math.random() * 0.4,
+    minSize: 0.5,
+    maxSizeInt: 2,
+    maxSize: rand(0.5, 2),
+    delay,
+    counter: 0,
+    counterStep: Math.random() * 4 + (canvas.width + canvas.height) * 0.01,
+    isIdle: false,
+    isReverse: false,
+    isShimmer: false,
+    draw() {
+      const offset = p.maxSizeInt * 0.5 - p.size * 0.5
+      ctx.fillStyle = p.color
+      ctx.fillRect(p.x + offset, p.y + offset, p.size, p.size)
+    },
+    appear() {
+      p.isIdle = false
+      if (p.counter <= p.delay) {
+        p.counter += p.counterStep
+        return
+      }
+      if (p.size >= p.maxSize) p.isShimmer = true
+      if (p.isShimmer) p.shimmer()
+      else p.size += p.sizeStep
+      p.draw()
+    },
+    disappear() {
+      p.isShimmer = false
+      p.counter = 0
+      if (p.size <= 0) {
+        p.isIdle = true
+        return
+      }
+      p.size -= 0.1
+      p.draw()
+    },
+    shimmer() {
+      if (p.size >= p.maxSize) p.isReverse = true
+      else if (p.size <= p.minSize) p.isReverse = false
+      if (p.isReverse) p.size -= p.speed
+      else p.size += p.speed
+    },
+  }
+
+  return p
+}
+
+/* -------------------------------------------------------------------------
+ * PixelCanvas component
+ * Renders an absolute-fill canvas inside its own wrapper div.
+ * Listens for mouseenter/mouseleave on the wrapper's parentElement (the card).
+ * ---------------------------------------------------------------------- */
+
+export interface PixelCanvasProps {
+  colors: string[]
   gap?: number
   speed?: number
 }
 
-export function PixelCanvas({ colors = ["#22d3ee"], gap = 4, speed = 200 }: PixelCanvasProps) {
+export function PixelCanvas({ colors, gap = 5, speed = 30 }: PixelCanvasProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null)
+  const wrapRef = useRef<HTMLDivElement>(null)
+  const pixelsRef = useRef<Pixel[]>([])
+  const animationRef = useRef<number>(0)
+  const lastFrameRef = useRef(performance.now())
+  const reducedMotionRef = useRef(false)
 
-  useEffect(() => {
+  const init = useCallback(() => {
     const canvas = canvasRef.current
-    if (!canvas) return
-    const parent = canvas.parentElement
-    if (!parent) return
+    const wrap = wrapRef.current
+    if (!canvas || !wrap) return
 
-    let pixels: Array<{ x: number; y: number; color: string; delay: number }> = []
-    let t = 0
-    let dir = 0
-    let raf: number | null = null
-    let prev: number | null = null
-    const FADE = 0.12
+    const ctx = canvas.getContext("2d")
+    if (!ctx) return
 
-    const setup = () => {
-      const w = parent.offsetWidth
-      const h = parent.offsetHeight
-      if (!w || !h) return
-      canvas.width = w
-      canvas.height = h
-      const cx = w / 2
-      const cy = h / 2
-      pixels = []
-      for (let x = 0; x < w; x += gap) {
-        for (let y = 0; y < h; y += gap) {
-          pixels.push({
-            x, y,
-            delay: Math.hypot(x - cx, y - cy) / speed,
-            color: colors[Math.floor(Math.random() * colors.length)],
-          })
-        }
+    const { width, height } = wrap.getBoundingClientRect()
+    const w = Math.floor(width)
+    const h = Math.floor(height)
+    if (!w || !h) return
+    canvas.width = w
+    canvas.height = h
+    canvas.style.width = `${w}px`
+    canvas.style.height = `${h}px`
+
+    const effectiveSpeed = reducedMotionRef.current ? 0 : Math.min(speed, 100) * 0.001
+    const pixels: Pixel[] = []
+
+    for (let x = 0; x < w; x += gap) {
+      for (let y = 0; y < h; y += gap) {
+        const color = colors[Math.floor(Math.random() * colors.length)]
+        const dx = x - w / 2
+        const dy = y - h / 2
+        const delay = reducedMotionRef.current ? 0 : Math.sqrt(dx * dx + dy * dy)
+        pixels.push(createPixel(ctx, canvas, x, y, color, effectiveSpeed, delay))
       }
     }
 
-    setup()
-
-    const draw = (ts: number) => {
-      if (prev !== null) {
-        t = Math.max(0, t + ((ts - prev) / 1000) * dir)
-      }
-      prev = ts
-
-      const ctx = canvas.getContext("2d")
-      if (!ctx) return
-      ctx.clearRect(0, 0, canvas.width, canvas.height)
-      let needsMore = false
-
-      for (const px of pixels) {
-        const progress = (t - px.delay) / FADE
-        const alpha = Math.max(0, Math.min(1, progress))
-        if (alpha > 0 && alpha < 1) needsMore = true
-        if (alpha > 0) {
-          ctx.globalAlpha = alpha * 0.6
-          ctx.fillStyle = px.color
-          ctx.fillRect(px.x, px.y, gap - 1, gap - 1)
-        }
-      }
-      ctx.globalAlpha = 1
-
-      if (needsMore || (dir === -1 && t > 0)) {
-        raf = requestAnimationFrame(draw)
-      } else {
-        raf = null
-        prev = null
-      }
-    }
-
-    const start = () => {
-      if (raf !== null) cancelAnimationFrame(raf)
-      prev = null
-      raf = requestAnimationFrame(draw)
-    }
-
-    const onEnter = () => { dir = 1; start() }
-    const onLeave = () => { dir = -1; start() }
-
-    parent.addEventListener("mouseenter", onEnter)
-    parent.addEventListener("mouseleave", onLeave)
-
-    return () => {
-      parent.removeEventListener("mouseenter", onEnter)
-      parent.removeEventListener("mouseleave", onLeave)
-      if (raf !== null) cancelAnimationFrame(raf)
-    }
+    pixelsRef.current = pixels
   }, [colors, gap, speed])
 
+  const animate = useCallback((mode: "appear" | "disappear") => {
+    cancelAnimationFrame(animationRef.current)
+    const frameInterval = 1000 / 60
+
+    const loop = () => {
+      animationRef.current = requestAnimationFrame(loop)
+
+      const now = performance.now()
+      const elapsed = now - lastFrameRef.current
+      if (elapsed < frameInterval) return
+      lastFrameRef.current = now - (elapsed % frameInterval)
+
+      const canvas = canvasRef.current
+      const ctx = canvas?.getContext("2d")
+      if (!canvas || !ctx) return
+
+      ctx.clearRect(0, 0, canvas.width, canvas.height)
+
+      const pixels = pixelsRef.current
+      for (const pixel of pixels) pixel[mode]()
+
+      if (pixels.every((p) => p.isIdle)) {
+        cancelAnimationFrame(animationRef.current)
+      }
+    }
+
+    animationRef.current = requestAnimationFrame(loop)
+  }, [])
+
+  useEffect(() => {
+    reducedMotionRef.current =
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+
+    init()
+
+    const resizeObserver = new ResizeObserver(() => init())
+    if (wrapRef.current) resizeObserver.observe(wrapRef.current)
+
+    const card = wrapRef.current?.parentElement
+    const handleEnter = () => animate("appear")
+    const handleLeave = () => animate("disappear")
+    card?.addEventListener("mouseenter", handleEnter)
+    card?.addEventListener("mouseleave", handleLeave)
+
+    return () => {
+      resizeObserver.disconnect()
+      cancelAnimationFrame(animationRef.current)
+      card?.removeEventListener("mouseenter", handleEnter)
+      card?.removeEventListener("mouseleave", handleLeave)
+    }
+  }, [init, animate])
+
   return (
-    <canvas
-      ref={canvasRef}
-      aria-hidden="true"
-      className="pointer-events-none absolute inset-0 w-full h-full rounded-lg"
-    />
+    <div ref={wrapRef} className="absolute inset-0 overflow-hidden rounded-lg">
+      <canvas ref={canvasRef} className="block" />
+    </div>
   )
 }

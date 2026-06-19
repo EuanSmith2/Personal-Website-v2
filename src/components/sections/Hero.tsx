@@ -113,20 +113,16 @@ export function Hero() {
               </div>
             </motion.div>
 
-            {/* Tagline */}
+            {/* Tagline + inline View CV */}
             <motion.p variants={itemVariants} className="text-lg lg:text-xl text-zinc-300 max-w-2xl leading-relaxed">
-              {personal.tagline}
-            </motion.p>
-
-            {/* CTA — View CV only */}
-            <motion.div variants={itemVariants}>
+              {personal.tagline}{" "}
               <a
                 href={personal.cv}
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-cyan-400 text-zinc-950 font-semibold text-sm hover:bg-cyan-300 transition-colors duration-200"
+                className="italic text-zinc-400 underline underline-offset-4 decoration-zinc-600 hover:text-cyan-400 hover:decoration-cyan-400 transition-colors duration-200"
               >
                 View CV
               </a>
-            </motion.div>
+            </motion.p>
           </motion.div>
         </div>
       </section>

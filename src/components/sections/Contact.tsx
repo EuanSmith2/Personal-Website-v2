@@ -1,6 +1,7 @@
 import { SectionWrapper } from "@/components/ui/SectionWrapper"
 import { ObfuscatedEmail } from "@/components/ui/ObfuscatedEmail"
 import { AwardBadge } from "@/components/ui/AwardBadge"
+import { PixelCanvas } from "@/components/ui/PixelCanvas"
 import { portfolioConfig } from "@/data/portfolio.config"
 
 const GithubIcon = () => (
@@ -42,40 +43,58 @@ export function Contact() {
 
           {/* Social links */}
           <div className="flex flex-wrap gap-3 justify-center mb-16">
-            <ObfuscatedEmail
-              encoded={personal.emailEncoded}
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-cyan-400 text-zinc-950 font-semibold text-sm hover:bg-cyan-300 transition-colors duration-200"
-            />
 
-            <a
-              href={personal.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg border border-zinc-700 text-zinc-300 font-semibold text-sm hover:border-cyan-400/50 hover:text-cyan-400 transition-colors duration-200"
-            >
-              <LinkedinIcon />
-              LinkedIn
-            </a>
+            {/* Outlook / Email */}
+            <div className="relative overflow-hidden rounded-lg">
+              <PixelCanvas colors={["#0078D4", "#28A8E8", "#50E6FF"]} gap={4} speed={200} />
+              <ObfuscatedEmail
+                encoded={personal.emailEncoded}
+                className="relative z-10 px-5 py-2.5 border border-zinc-700 text-zinc-300 font-semibold text-sm hover:border-[#0078D4]/60 hover:text-[#50E6FF] transition-colors duration-200 rounded-lg bg-transparent"
+              />
+            </div>
 
-            <a
-              href={contact.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg border border-zinc-700 text-zinc-300 font-semibold text-sm hover:border-cyan-400/50 hover:text-cyan-400 transition-colors duration-200"
-            >
-              <GithubIcon />
-              GitHub
-            </a>
+            {/* LinkedIn */}
+            <div className="relative overflow-hidden rounded-lg">
+              <PixelCanvas colors={["#0A66C2", "#2D8CDB", "#5BA8E6"]} gap={4} speed={200} />
+              <a
+                href={personal.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="relative z-10 inline-flex items-center gap-2 px-5 py-2.5 border border-zinc-700 text-zinc-300 font-semibold text-sm hover:border-[#0A66C2]/60 hover:text-[#2D8CDB] transition-colors duration-200 rounded-lg"
+              >
+                <LinkedinIcon />
+                LinkedIn
+              </a>
+            </div>
 
-            <a
-              href={personal.tiktok}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg border border-zinc-700 text-zinc-300 font-semibold text-sm hover:border-cyan-400/50 hover:text-zinc-100 transition-colors duration-200"
-            >
-              <TikTokIcon />
-              TikTok
-            </a>
+            {/* GitHub */}
+            <div className="relative overflow-hidden rounded-lg">
+              <PixelCanvas colors={["#6e5494", "#9a6dd7", "#c9a6ff"]} gap={4} speed={200} />
+              <a
+                href={contact.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="relative z-10 inline-flex items-center gap-2 px-5 py-2.5 border border-zinc-700 text-zinc-300 font-semibold text-sm hover:border-[#6e5494]/60 hover:text-[#9a6dd7] transition-colors duration-200 rounded-lg"
+              >
+                <GithubIcon />
+                GitHub
+              </a>
+            </div>
+
+            {/* TikTok */}
+            <div className="relative overflow-hidden rounded-lg">
+              <PixelCanvas colors={["#FF0050", "#00F2EA", "#ff4d82"]} gap={4} speed={200} />
+              <a
+                href={personal.tiktok}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="relative z-10 inline-flex items-center gap-2 px-5 py-2.5 border border-zinc-700 text-zinc-300 font-semibold text-sm hover:border-[#FF0050]/60 hover:text-[#ff4d82] transition-colors duration-200 rounded-lg"
+              >
+                <TikTokIcon />
+                TikTok
+              </a>
+            </div>
+
           </div>
 
           {/* Available for work badge — anchored below socials */}

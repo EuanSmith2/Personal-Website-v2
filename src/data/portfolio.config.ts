@@ -28,7 +28,7 @@ export const portfolioConfig = {
 
   about: {
     narrative:
-      "I'm a cybersecurity student at Technological University Dublin with a background spanning AI automation, hardware systems, and digital forensics. I build things that work: automation tools that generate real returns, AI agents that explore emergent behaviour, and home lab infrastructure that mirrors production environments. I'm drawn to complex systems: understanding how they fail, how they can be exploited, and how to make them resilient. My approach combines low-level curiosity with product-minded thinking.",
+      "I'm a cybersecurity student at Technological University Dublin with a background spanning AI automation, hardware systems, and digital forensics. I build things that work: automation tools that generate real returns, AI agents that explore emergent behaviour, and home lab infrastructure that mirrors production environments. I'm drawn to complex systems: understanding how they fail, how they can be exploited, and how to make them resilient. My thinking is neurodivergent by nature: I follow threads others overlook, sit with problems until patterns emerge, and rarely accept that's just how it works as an answer.",
     tags: [
       "Cybersecurity", "Linux", "Python", "AI/ML", "Networking",
       "OSINT", "Hardware", "Virtualization", "Systems Admin", "Digital Forensics",

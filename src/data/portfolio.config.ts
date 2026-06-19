@@ -38,7 +38,7 @@ export const portfolioConfig = {
   currentActivity: [
     {
       id: "edmo",
-      icon: "🇪🇺",
+      icon: "globe",
       title: "EDMO Internship",
       summary: "Upcoming role with the European Digital Media Observatory",
       detail:
@@ -46,7 +46,7 @@ export const portfolioConfig = {
     },
     {
       id: "sap",
-      icon: "📜",
+      icon: "award",
       title: "SAP Certification",
       summary: "Security and AI integration learning path",
       detail:
@@ -54,7 +54,7 @@ export const portfolioConfig = {
     },
     {
       id: "tud",
-      icon: "🎓",
+      icon: "graduation-cap",
       title: "TUD Programme Prep",
       summary: "Entering BSc Cybersecurity & Digital Forensics",
       detail:
@@ -62,7 +62,7 @@ export const portfolioConfig = {
     },
     {
       id: "homelab",
-      icon: "🖥️",
+      icon: "server",
       title: "Home Lab",
       summary: "Linux servers, virtualization, networking experiments",
       detail:
@@ -70,7 +70,7 @@ export const portfolioConfig = {
     },
     {
       id: "ai",
-      icon: "🤖",
+      icon: "cpu",
       title: "AI Projects",
       summary: "Computer vision, marketplace intelligence, automation",
       detail:
@@ -78,7 +78,7 @@ export const portfolioConfig = {
     },
     {
       id: "hardware",
-      icon: "🔧",
+      icon: "wrench",
       title: "Hardware & Legacy Systems",
       summary: "Repair, modification, retro infrastructure",
       detail:
@@ -154,10 +154,18 @@ export const portfolioConfig = {
       { icon: "🏆", label: "Academic Awards",   detail: "Excellence recognition" },
     ],
     reading: [
-      { title: "The Web Application Hacker's Handbook", author: "Stuttard & Pinto" },
-      { title: "The Age of Surveillance Capitalism",    author: "Shoshana Zuboff" },
-      { title: "Thinking in Systems",                   author: "Donella H. Meadows" },
-      { title: "Deep Work",                             author: "Cal Newport" },
+      { title: "The Web Application Hacker's Handbook", author: "Stuttard & Pinto",    cover: "/books/web-hackers.jpg" },
+      { title: "The Age of Surveillance Capitalism",    author: "Shoshana Zuboff",     cover: "/books/surveillance.jpg" },
+      { title: "Thinking in Systems",                   author: "Donella H. Meadows",  cover: "/books/thinking-systems.jpg" },
+      { title: "Deep Work",                             author: "Cal Newport",         cover: "/books/deep-work.jpg" },
+    ],
+    finishedReading: [
+      { title: "Atomic Habits",                          author: "James Clear",       cover: "/books/atomic-habits.jpg" },
+      { title: "1984",                                   author: "George Orwell",     cover: "/books/1984.jpg" },
+      { title: "Rich Dad Poor Dad",                      author: "Robert Kiyosaki",   cover: "/books/rich-dad.jpg" },
+      { title: "The Art of Speaking Made Simple",        author: "",                  cover: "/books/art-speaking.jpg" },
+      { title: "How to Win Friends and Influence People",author: "Dale Carnegie",     cover: "/books/how-to-win.jpg" },
+      { title: "Thinking, Fast and Slow",                author: "Daniel Kahneman",   cover: "/books/thinking-fast.jpg" },
     ],
   },
 

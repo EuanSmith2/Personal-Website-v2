@@ -1,4 +1,4 @@
-import { Trophy, Users, BookOpen, GraduationCap } from "lucide-react"
+import { Trophy, Users, BookOpen, GraduationCap, CheckCircle2 } from "lucide-react"
 import { SectionWrapper } from "@/components/ui/SectionWrapper"
 import { portfolioConfig } from "@/data/portfolio.config"
 import type { LucideIcon } from "lucide-react"
@@ -10,19 +10,11 @@ const INTEREST_ICONS: Record<string, LucideIcon> = {
   "Academic Awards":   GraduationCap,
 }
 
-// Mini book-spine placeholder: coloured strip with abbreviated title
-const BOOK_SPINE_COLORS = ["#1d4ed8", "#7c3aed", "#0f766e", "#b45309"]
-
-function BookCover({ title, index }: { title: string; index: number }) {
-  const color = BOOK_SPINE_COLORS[index % BOOK_SPINE_COLORS.length]
-  const abbr = title.split(" ").slice(0, 2).map(w => w[0]).join("").toUpperCase()
+function BookCoverImg({ src, title }: { src: string; title: string }) {
   return (
-    <div
-      className="flex-shrink-0 w-9 h-12 rounded-sm flex items-center justify-center shadow-md"
-      style={{ background: `linear-gradient(160deg, ${color}ee, ${color}99)`, border: `1px solid ${color}60` }}
-      aria-hidden="true"
-    >
-      <span className="text-white font-bold text-xs font-mono">{abbr}</span>
+    <div className="flex-shrink-0 w-10 h-[3.5rem] rounded-sm overflow-hidden shadow-md">
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img src={src} alt={`Cover of ${title}`} className="w-full h-full object-cover" />
     </div>
   )
 }
@@ -76,7 +68,7 @@ export function Personal() {
               <ul className="space-y-4">
                 {lifestyle.reading.map((book, i) => (
                   <li key={i} className="flex items-center gap-4">
-                    <BookCover title={book.title} index={i} />
+                    <BookCoverImg src={book.cover} title={book.title} />
                     <div>
                       <p className="font-medium text-zinc-200 text-sm leading-snug">{book.title}</p>
                       <p className="text-xs text-zinc-500 mt-0.5">{book.author}</p>
@@ -84,6 +76,26 @@ export function Personal() {
                   </li>
                 ))}
               </ul>
+            </div>
+          </div>
+
+          {/* Finished reading */}
+          <div className="mt-14">
+            <div className="flex items-center gap-2 mb-6">
+              <h3 className="text-sm font-mono text-zinc-500 uppercase tracking-wider">Finished reading</h3>
+              <CheckCircle2 size={14} className="text-emerald-500" />
+            </div>
+            <div className="flex gap-5 overflow-x-auto pb-3 scrollbar-none">
+              {lifestyle.finishedReading.map((book, i) => (
+                <div key={i} className="flex-shrink-0 w-[72px] text-center group">
+                  <div className="w-[72px] h-24 rounded-sm overflow-hidden shadow-md mb-2 transition-transform duration-200 group-hover:-translate-y-1">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={book.cover} alt={`Cover of ${book.title}`} className="w-full h-full object-cover" />
+                  </div>
+                  <p className="text-[10px] text-zinc-500 leading-tight line-clamp-2">{book.title}</p>
+                  {book.author && <p className="text-[10px] text-zinc-600 mt-0.5 leading-tight">{book.author}</p>}
+                </div>
+              ))}
             </div>
           </div>
         </SectionWrapper>

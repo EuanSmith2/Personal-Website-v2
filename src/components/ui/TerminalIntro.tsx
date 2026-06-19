@@ -6,17 +6,29 @@ interface TerminalIntroProps {
   onComplete: () => void
 }
 
-const LINE1 = "initialising portfolio..."
-const LINE2 = "loading euan_smith.exe"
-const BLOCK_COUNT = 8
+const BOOT_LINES = [
+  { text: "EUAN SMITH OS  v2.4.1  [build 2025.06]", delay: 0, color: "text-cyan-400", fast: false },
+  { text: "Copyright (c) Euan Smith. All rights reserved.", delay: 60, color: "text-zinc-500", fast: true },
+  { text: "", delay: 0, color: "", fast: true },
+  { text: "[BIOS] Performing POST...", delay: 40, color: "text-zinc-400", fast: false },
+  { text: "[BIOS] CPU   .............. Cortex i9 @ 3.2GHz        OK", delay: 20, color: "text-zinc-400", fast: true },
+  { text: "[BIOS] MEM   .............. 64GB DDR5 Coffee Reserve   OK", delay: 20, color: "text-zinc-400", fast: true },
+  { text: "[BIOS] NET   .............. Ethernet 1Gbps ONLINE      OK", delay: 20, color: "text-zinc-400", fast: true },
+  { text: "[BIOS] DISK  .............. NVMe 2TB Projects          OK", delay: 20, color: "text-zinc-400", fast: true },
+  { text: "", delay: 0, color: "", fast: true },
+  { text: "[BOOT] Loading kernel modules...", delay: 30, color: "text-zinc-400", fast: false },
+  { text: "[BOOT] cybersecurity.mod    ........ loaded", delay: 15, color: "text-emerald-400", fast: true },
+  { text: "[BOOT] python3.mod          ........ loaded", delay: 15, color: "text-emerald-400", fast: true },
+  { text: "[BOOT] portfolio.exe        ........ loading", delay: 15, color: "text-amber-400", fast: false },
+  { text: "", delay: 0, color: "", fast: true },
+  { text: "[AUTH] Verifying credentials...", delay: 30, color: "text-zinc-400", fast: false },
+  { text: "[AUTH] > access granted  ████████ 100%", delay: 0, color: "text-cyan-400", fast: false, isAccess: true },
+]
 
 export function TerminalIntro({ onComplete }: TerminalIntroProps) {
   const prefersReducedMotion = useReducedMotion()
   const [visible, setVisible] = useState(true)
-  const [line1, setLine1] = useState("")
-  const [line2, setLine2] = useState("")
-  const [blocks, setBlocks] = useState(0)
-  const [showPercent, setShowPercent] = useState(false)
+  const [renderedLines, setRenderedLines] = useState<string[]>([])
   const dismissed = useRef(false)
 
   const dismiss = () => {
@@ -37,34 +49,46 @@ export function TerminalIntro({ onComplete }: TerminalIntroProps) {
 
     let cancelled = false
     const timeouts: ReturnType<typeof setTimeout>[] = []
+    let cursor = 0
 
-    const schedule = (fn: () => void, ms: number) => {
-      const t = setTimeout(() => { if (!cancelled) fn() }, ms)
-      timeouts.push(t)
-    }
+    BOOT_LINES.forEach((line, lineIdx) => {
+      if (line.text === "") {
+        // Empty line — just append immediately
+        timeouts.push(setTimeout(() => {
+          if (!cancelled) setRenderedLines(prev => [...prev, ""])
+        }, cursor))
+        cursor += 50
+        return
+      }
 
-    // Type line 1
-    let t = 0
-    for (let i = 0; i <= LINE1.length; i++) {
-      const idx = i
-      schedule(() => setLine1(LINE1.slice(0, idx)), t)
-      t += 40
-    }
+      if (line.fast) {
+        // Appear all at once
+        timeouts.push(setTimeout(() => {
+          if (!cancelled) setRenderedLines(prev => [...prev, line.text])
+        }, cursor))
+        cursor += 100
+        return
+      }
 
-    // Type line 2
-    for (let i = 0; i <= LINE2.length; i++) {
-      const idx = i
-      schedule(() => setLine2(LINE2.slice(0, idx)), t)
-      t += 40
-    }
+      // Type character by character
+      const chars = line.text.split("")
+      chars.forEach((_, charIdx) => {
+        timeouts.push(setTimeout(() => {
+          if (!cancelled) {
+            const partial = line.text.slice(0, charIdx + 1)
+            setRenderedLines(prev => {
+              const next = [...prev]
+              next[lineIdx] = partial
+              return next
+            })
+          }
+        }, cursor + charIdx * line.delay))
+      })
+      cursor += chars.length * line.delay + 120
+    })
 
-    // Fill block chars over 400ms
-    for (let b = 1; b <= BLOCK_COUNT; b++) {
-      const count = b
-      schedule(() => setBlocks(count), t + (400 / BLOCK_COUNT) * b)
-    }
-    schedule(() => setShowPercent(true), t + 400 + 50)
-    schedule(() => dismiss(), t + 400 + 200)
+    // Dismiss after everything
+    timeouts.push(setTimeout(() => { if (!cancelled) dismiss() }, cursor + 300))
 
     return () => {
       cancelled = true
@@ -79,32 +103,36 @@ export function TerminalIntro({ onComplete }: TerminalIntroProps) {
     <AnimatePresence>
       {visible && (
         <motion.div
-          className="fixed inset-0 z-50 flex items-center justify-center"
+          className="fixed inset-0 z-50 flex items-center justify-center p-4"
           style={{ background: "var(--bg-base)" }}
           initial={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.2 }}
+          transition={{ duration: 0.3 }}
         >
-          <div className="bg-zinc-950 border border-zinc-800 rounded-lg p-6 font-mono text-sm max-w-sm w-full mx-4">
-            <div className="space-y-1">
-              <p>
-                <span className="text-cyan-400">&gt; </span>
-                <span className="text-zinc-300">{line1}</span>
-              </p>
-              {line2 && (
-                <p>
-                  <span className="text-cyan-400">&gt; </span>
-                  <span className="text-zinc-300">{line2}</span>
-                </p>
-              )}
-              {blocks > 0 && (
-                <p>
-                  <span className="text-cyan-400">&gt; access granted </span>
-                  <span className="text-cyan-400">{"█".repeat(blocks)}</span>
-                  {showPercent && <span className="text-zinc-300"> 100%</span>}
-                </p>
-              )}
+          <div className="bg-zinc-950 border border-zinc-800 rounded-lg p-6 font-mono text-xs sm:text-sm w-full max-w-lg shadow-2xl">
+            {/* Terminal title bar */}
+            <div className="flex items-center gap-2 mb-4 pb-3 border-b border-zinc-800">
+              <div className="w-3 h-3 rounded-full bg-red-500/70" />
+              <div className="w-3 h-3 rounded-full bg-yellow-500/70" />
+              <div className="w-3 h-3 rounded-full bg-green-500/70" />
+              <span className="ml-2 text-zinc-600 text-xs">boot — 80×24</span>
             </div>
+            <div className="space-y-0.5 min-h-[240px]">
+              {BOOT_LINES.map((line, i) => {
+                const rendered = renderedLines[i]
+                if (rendered === undefined) return null
+                if (rendered === "") return <div key={i} className="h-3" />
+                return (
+                  <p key={i} className={line.color || "text-zinc-300"}>
+                    {rendered}
+                    {i === renderedLines.length - 1 && rendered !== line.text && (
+                      <span className="animate-pulse text-cyan-400">█</span>
+                    )}
+                  </p>
+                )
+              })}
+            </div>
+            <p className="text-zinc-600 text-xs mt-4">Press any key to skip</p>
           </div>
         </motion.div>
       )}

@@ -6,10 +6,17 @@ import { portfolioConfig } from "@/data/portfolio.config"
 
 export function CurrentActivity() {
   const { currentActivity } = portfolioConfig
-  const [openId, setOpenId] = useState<string | null>(null)
+  // Filter out EDMO — it lives in the dedicated Experience section
+  const items = currentActivity.filter((item) => item.id !== "edmo")
+  const [openIds, setOpenIds] = useState<Set<string>>(new Set())
 
   const handleToggle = (id: string) => {
-    setOpenId((prev) => (prev === id ? null : id))
+    setOpenIds((prev) => {
+      const next = new Set(prev)
+      if (next.has(id)) next.delete(id)
+      else next.add(id)
+      return next
+    })
   }
 
   return (
@@ -24,7 +31,7 @@ export function CurrentActivity() {
           <p className="text-xs font-mono text-cyan-400 tracking-widest uppercase mb-3">{"// current activity"}</p>
           <h2 className="text-3xl font-semibold text-zinc-100 mb-12">What I&apos;m working on</h2>
           <div className="grid sm:grid-cols-2 gap-4">
-            {currentActivity.map((item) => (
+            {items.map((item) => (
               <ExpandableCard
                 key={item.id}
                 id={item.id}
@@ -32,7 +39,7 @@ export function CurrentActivity() {
                 title={item.title}
                 summary={item.summary}
                 detail={item.detail}
-                isOpen={openId === item.id}
+                isOpen={openIds.has(item.id)}
                 onToggle={handleToggle}
               />
             ))}

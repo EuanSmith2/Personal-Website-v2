@@ -24,6 +24,13 @@ export function Projects() {
             </SectionWrapper>
           ))}
         </div>
+
+        {/* Teaser */}
+        <SectionWrapper delay={0.2}>
+          <p className="text-center font-mono text-sm mt-8" style={{ color: "rgba(161,161,170,0.35)" }}>
+            — More underway —
+          </p>
+        </SectionWrapper>
       </div>
     </section>
   )

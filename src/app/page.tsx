@@ -1,6 +1,5 @@
 import { CursorGlow } from "@/components/ui/CursorGlow"
 import { ScrollToTop } from "@/components/ui/ScrollToTop"
-import { FloatingAchievement } from "@/components/ui/FloatingAchievement"
 import { Navbar } from "@/components/layout/Navbar"
 import { Footer } from "@/components/layout/Footer"
 import { Hero } from "@/components/sections/Hero"
@@ -30,7 +29,6 @@ export default function Home() {
         <Contact />
       </main>
       <Footer />
-      <FloatingAchievement />
       <ScrollToTop />
     </>
   )

@@ -1,5 +1,6 @@
 import { SectionWrapper } from "@/components/ui/SectionWrapper"
 import { ObfuscatedEmail } from "@/components/ui/ObfuscatedEmail"
+import { AwardBadge } from "@/components/ui/AwardBadge"
 import { portfolioConfig } from "@/data/portfolio.config"
 
 const GithubIcon = () => (
@@ -21,7 +22,7 @@ const TikTokIcon = () => (
 )
 
 export function Contact() {
-  const { contact, personal } = portfolioConfig
+  const { contact, personal, floatingBadge } = portfolioConfig
 
   return (
     <section
@@ -39,7 +40,8 @@ export function Contact() {
             {contact.subtext}
           </p>
 
-          <div className="flex flex-wrap gap-3 justify-center">
+          {/* Social links */}
+          <div className="flex flex-wrap gap-3 justify-center mb-16">
             <ObfuscatedEmail
               encoded={personal.emailEncoded}
               className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-cyan-400 text-zinc-950 font-semibold text-sm hover:bg-cyan-300 transition-colors duration-200"
@@ -74,6 +76,21 @@ export function Contact() {
               <TikTokIcon />
               TikTok
             </a>
+          </div>
+
+          {/* Available for work badge — anchored below socials */}
+          <div className="flex justify-center">
+            <div className="relative group">
+              <AwardBadge
+                type="portfolio"
+                customTitle={floatingBadge.title}
+                customSubtitle={floatingBadge.subtitle}
+                link={floatingBadge.link}
+              />
+              <span className="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 bg-zinc-900 border border-zinc-700 text-zinc-300 text-xs font-mono px-2 py-1 rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none">
+                {floatingBadge.tooltip}
+              </span>
+            </div>
           </div>
         </SectionWrapper>
       </div>

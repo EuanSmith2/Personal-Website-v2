@@ -1,3 +1,37 @@
+// Brand logo SVGs for each issuer
+const MicrosoftLogo = () => (
+  <svg width="22" height="22" viewBox="0 0 21 21" aria-label="Microsoft" role="img">
+    <rect x="1"  y="1"  width="9" height="9" fill="#F25022" />
+    <rect x="11" y="1"  width="9" height="9" fill="#7FBA00" />
+    <rect x="1"  y="11" width="9" height="9" fill="#00A4EF" />
+    <rect x="11" y="11" width="9" height="9" fill="#FFB900" />
+  </svg>
+)
+
+const SAPLogo = () => (
+  <svg width="36" height="18" viewBox="0 0 60 30" aria-label="SAP" role="img">
+    <text x="0" y="24" fontFamily="Arial, sans-serif" fontWeight="bold" fontSize="28" fill="#FFFFFF" letterSpacing="1">SAP</text>
+  </svg>
+)
+
+const ISC2Logo = () => (
+  <svg width="40" height="18" viewBox="0 0 80 30" aria-label="ISC2" role="img">
+    <text x="0" y="23" fontFamily="Arial, sans-serif" fontWeight="bold" fontSize="24" fill="#FFFFFF" letterSpacing="0.5">ISC²</text>
+  </svg>
+)
+
+const GenericLogo = ({ initial }: { initial: string }) => (
+  <span className="text-white font-bold text-base">{initial}</span>
+)
+
+function IssuerLogo({ issuer }: { issuer: string }) {
+  const lower = issuer.toLowerCase()
+  if (lower === "microsoft") return <MicrosoftLogo />
+  if (lower === "sap")       return <SAPLogo />
+  if (lower === "isc2")      return <ISC2Logo />
+  return <GenericLogo initial={issuer.charAt(0)} />
+}
+
 interface CertBadgeProps {
   issuer: string
   name: string
@@ -9,17 +43,17 @@ interface CertBadgeProps {
 function CertBadgeInner({ issuer, name, status, issuerColor }: Omit<CertBadgeProps, "credlyUrl">) {
   return (
     <div
-      className="rounded-xl border border-[color:var(--border)] p-4 lg:p-6 flex items-start gap-4 transition-all duration-200 hover:border-[color:var(--border-glow)] hover:shadow-[0_0_20px_rgba(34,211,238,0.08)] h-full"
+      className="rounded-xl border border-[color:var(--border)] p-4 lg:p-5 flex items-start gap-4 transition-all duration-200 hover:border-[color:var(--border-glow)] hover:shadow-[0_0_20px_rgba(34,211,238,0.08)] h-full"
       style={{ background: "var(--bg-card)" }}
     >
       <div
-        className="w-12 h-12 rounded-full flex-shrink-0 flex items-center justify-center text-white font-bold text-sm"
+        className="w-12 h-12 rounded-full flex-shrink-0 flex items-center justify-center"
         style={{
-          background: `linear-gradient(135deg, ${issuerColor}cc, ${issuerColor}66)`,
+          background: `linear-gradient(135deg, ${issuerColor}cc, ${issuerColor}55)`,
           border: `1px solid ${issuerColor}40`,
         }}
       >
-        {issuer.charAt(0)}
+        <IssuerLogo issuer={issuer} />
       </div>
       <div className="flex-1 min-w-0">
         <p className="text-xs font-mono text-zinc-400 uppercase tracking-wider mb-1">{issuer}</p>

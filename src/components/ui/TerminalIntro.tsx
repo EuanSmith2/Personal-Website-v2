@@ -6,42 +6,112 @@ interface TerminalIntroProps {
   onComplete: () => void
 }
 
-const BOOT_LINES = [
-  { text: "EUAN SMITH OS  v2.4.1  [build 2025.06]", delay: 0, color: "text-cyan-400", fast: false },
-  { text: "Copyright (c) Euan Smith. All rights reserved.", delay: 60, color: "text-zinc-500", fast: true },
-  { text: "", delay: 0, color: "", fast: true },
-  { text: "[BIOS] Performing POST...", delay: 40, color: "text-zinc-400", fast: false },
-  { text: "[BIOS] CPU   .............. Cortex i9 @ 3.2GHz        OK", delay: 20, color: "text-zinc-400", fast: true },
-  { text: "[BIOS] MEM   .............. 64GB DDR5 Coffee Reserve   OK", delay: 20, color: "text-zinc-400", fast: true },
-  { text: "[BIOS] NET   .............. Ethernet 1Gbps ONLINE      OK", delay: 20, color: "text-zinc-400", fast: true },
-  { text: "[BIOS] DISK  .............. NVMe 2TB Projects          OK", delay: 20, color: "text-zinc-400", fast: true },
-  { text: "", delay: 0, color: "", fast: true },
-  { text: "[BOOT] Loading kernel modules...", delay: 30, color: "text-zinc-400", fast: false },
-  { text: "[BOOT] cybersecurity.mod    ........ loaded", delay: 15, color: "text-emerald-400", fast: true },
-  { text: "[BOOT] python3.mod          ........ loaded", delay: 15, color: "text-emerald-400", fast: true },
-  { text: "[BOOT] portfolio.exe        ........ loading", delay: 15, color: "text-amber-400", fast: false },
-  { text: "", delay: 0, color: "", fast: true },
-  { text: "[AUTH] Verifying credentials...", delay: 30, color: "text-zinc-400", fast: false },
-  { text: "[AUTH] > access granted  ████████ 100%", delay: 0, color: "text-cyan-400", fast: false, isAccess: true },
-]
+type BootLine = {
+  text: string
+  delay: number
+  color: string
+  fast: boolean
+}
+
+function getOSInfo() {
+  const ua = navigator.userAgent
+  if (/iPhone/i.test(ua)) return {
+    os: "iOS (iPhone)",
+    proc: "Apple A17 Pro",
+    gpu: "Apple GPU (6-core)",
+    mem: "8GB LPDDR5",
+    net: "5G / WiFi 6",
+  }
+  if (/iPad/i.test(ua)) return {
+    os: "iPadOS",
+    proc: "Apple M2",
+    gpu: "Apple GPU (9-core)",
+    mem: "16GB Unified Memory",
+    net: "WiFi 6 / Cellular",
+  }
+  if (/Android/i.test(ua)) return {
+    os: "Android",
+    proc: "Snapdragon 8 Gen 3",
+    gpu: "Adreno 750",
+    mem: "12GB LPDDR5X",
+    net: "5G / WiFi 6E",
+  }
+  if (/Macintosh|Mac OS X/i.test(ua)) return {
+    os: "macOS",
+    proc: "Apple M4 Pro",
+    gpu: "Apple GPU (20-core)",
+    mem: "24GB Unified Memory",
+    net: "WiFi 6E @ 1.2Gbps",
+  }
+  if (/Windows/i.test(ua)) return {
+    os: "Windows 11",
+    proc: "Intel Core i7-13700K",
+    gpu: "NVIDIA GeForce RTX 4070",
+    mem: "32GB DDR5-5600",
+    net: "Ethernet 2.5Gbps",
+  }
+  if (/Linux/i.test(ua)) return {
+    os: "Linux x86_64",
+    proc: "AMD Ryzen 9 7950X",
+    gpu: "AMD Radeon RX 7900 XTX",
+    mem: "64GB DDR5-6000",
+    net: "Ethernet 10Gbps",
+  }
+  return {
+    os: "Unknown OS",
+    proc: "Generic CPU @ 2.4GHz",
+    gpu: "Integrated Graphics",
+    mem: "8GB RAM",
+    net: "Ethernet 100Mbps",
+  }
+}
+
+function generateBootLines(h: ReturnType<typeof getOSInfo>): BootLine[] {
+  return [
+    { text: "ctOS  v2.6.4    [REMOTE NODE ACCESS]", delay: 22, color: "text-[#00ff41]", fast: false },
+    { text: "Initialising encrypted tunnel...", delay: 0, color: "text-zinc-500", fast: true },
+    { text: "", delay: 0, color: "", fast: true },
+    { text: "[SCAN] Probing inbound connection...", delay: 18, color: "text-zinc-400", fast: false },
+    { text: `[SCAN] OS     .............. ${h.os}`, delay: 0, color: "text-zinc-400", fast: true },
+    { text: `[SCAN] PROC   .............. ${h.proc}`, delay: 0, color: "text-zinc-400", fast: true },
+    { text: `[SCAN] GPU    .............. ${h.gpu}`, delay: 0, color: "text-zinc-400", fast: true },
+    { text: `[SCAN] MEM    .............. ${h.mem}`, delay: 0, color: "text-zinc-400", fast: true },
+    { text: `[SCAN] NET    .............. ${h.net}`, delay: 0, color: "text-zinc-400", fast: true },
+    { text: "", delay: 0, color: "", fast: true },
+    { text: "[CTOS] Establishing secure channel...", delay: 18, color: "text-zinc-400", fast: false },
+    { text: "[CTOS] Encryption  ......... AES-256-GCM    OK", delay: 0, color: "text-[#00ff41]", fast: true },
+    { text: "[CTOS] Identity    ......... masked         OK", delay: 0, color: "text-[#00ff41]", fast: true },
+    { text: "", delay: 0, color: "", fast: true },
+    { text: "[BREACH] Bypassing firewall...", delay: 18, color: "text-amber-400", fast: false },
+    { text: "[BREACH] portfolio.enc  ..... decrypted", delay: 0, color: "text-[#00ff41]", fast: true },
+    { text: "[BREACH] assets.bundle  ..... loaded", delay: 0, color: "text-[#00ff41]", fast: true },
+    { text: "", delay: 0, color: "", fast: true },
+    { text: "[AUTH] > ACCESS GRANTED  ████████████████ 100%", delay: 20, color: "text-[#00ff41]", fast: false },
+  ]
+}
 
 export function TerminalIntro({ onComplete }: TerminalIntroProps) {
   const prefersReducedMotion = useReducedMotion()
   const [visible, setVisible] = useState(true)
+  const [bootLines, setBootLines] = useState<BootLine[]>([])
   const [renderedLines, setRenderedLines] = useState<string[]>([])
   const dismissed = useRef(false)
-
-  const dismiss = () => {
-    if (dismissed.current) return
-    dismissed.current = true
-    sessionStorage.setItem("intro_seen", "true")
-    setVisible(false)
-    setTimeout(onComplete, 200)
-  }
 
   useEffect(() => {
     if (prefersReducedMotion) { onComplete(); return }
     if (sessionStorage.getItem("intro_seen")) { onComplete(); return }
+
+    const osInfo = getOSInfo()
+    const lines = generateBootLines(osInfo)
+    setBootLines(lines)
+
+    const dismiss = () => {
+      if (dismissed.current) return
+      dismissed.current = true
+      sessionStorage.setItem("intro_seen", "true")
+      setVisible(false)
+      setTimeout(onComplete, 200)
+    }
 
     const skipHandler = () => dismiss()
     window.addEventListener("keydown", skipHandler)
@@ -51,9 +121,8 @@ export function TerminalIntro({ onComplete }: TerminalIntroProps) {
     const timeouts: ReturnType<typeof setTimeout>[] = []
     let cursor = 0
 
-    BOOT_LINES.forEach((line, lineIdx) => {
+    lines.forEach((line, lineIdx) => {
       if (line.text === "") {
-        // Empty line — just append immediately
         timeouts.push(setTimeout(() => {
           if (!cancelled) setRenderedLines(prev => [...prev, ""])
         }, cursor))
@@ -62,7 +131,6 @@ export function TerminalIntro({ onComplete }: TerminalIntroProps) {
       }
 
       if (line.fast) {
-        // Appear all at once
         timeouts.push(setTimeout(() => {
           if (!cancelled) setRenderedLines(prev => [...prev, line.text])
         }, cursor))
@@ -70,7 +138,6 @@ export function TerminalIntro({ onComplete }: TerminalIntroProps) {
         return
       }
 
-      // Type character by character
       const chars = line.text.split("")
       chars.forEach((_, charIdx) => {
         timeouts.push(setTimeout(() => {
@@ -87,8 +154,7 @@ export function TerminalIntro({ onComplete }: TerminalIntroProps) {
       cursor += chars.length * line.delay + 120
     })
 
-    // Dismiss after everything
-    timeouts.push(setTimeout(() => { if (!cancelled) dismiss() }, cursor + 300))
+    timeouts.push(setTimeout(() => { if (!cancelled) dismiss() }, cursor + 400))
 
     return () => {
       cancelled = true
@@ -104,35 +170,69 @@ export function TerminalIntro({ onComplete }: TerminalIntroProps) {
       {visible && (
         <motion.div
           className="fixed inset-0 z-50 flex items-center justify-center p-4"
-          style={{ background: "var(--bg-base)" }}
+          style={{ background: "#000" }}
           initial={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.3 }}
+          transition={{ duration: 0.25 }}
         >
-          <div className="bg-zinc-950 border border-zinc-800 rounded-lg p-6 font-mono text-xs sm:text-sm w-full max-w-lg shadow-2xl">
-            {/* Terminal title bar */}
-            <div className="flex items-center gap-2 mb-4 pb-3 border-b border-zinc-800">
-              <div className="w-3 h-3 rounded-full bg-red-500/70" />
-              <div className="w-3 h-3 rounded-full bg-yellow-500/70" />
-              <div className="w-3 h-3 rounded-full bg-green-500/70" />
-              <span className="ml-2 text-zinc-600 text-xs">boot — 80×24</span>
+          <div
+            className="relative w-full max-w-2xl font-mono text-xs sm:text-sm"
+            style={{
+              background: "#080808",
+              border: "1px solid rgba(0,255,65,0.22)",
+              boxShadow: "0 0 40px rgba(0,255,65,0.08), 0 0 80px rgba(0,255,65,0.04)",
+            }}
+          >
+            {/* Scanlines */}
+            <div
+              className="absolute inset-0 pointer-events-none z-10"
+              aria-hidden
+              style={{
+                backgroundImage:
+                  "repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.06) 2px, rgba(0,0,0,0.06) 4px)",
+              }}
+            />
+
+            {/* Title bar */}
+            <div
+              className="flex items-center justify-between px-4 py-2.5 border-b"
+              style={{ borderColor: "rgba(0,255,65,0.18)", background: "#0c0c0c" }}
+            >
+              <div className="flex items-center gap-3">
+                <span className="text-[#00ff41] font-bold tracking-[0.25em] text-xs">ctOS</span>
+                <span className="text-zinc-700 text-xs">─</span>
+                <span className="text-zinc-500 text-xs tracking-wider">REMOTE NODE</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#00ff41] animate-pulse" />
+                <span className="text-[#00ff41] text-xs tracking-widest">SECURE</span>
+              </div>
             </div>
-            <div className="space-y-0.5 min-h-[240px]">
-              {BOOT_LINES.map((line, i) => {
+
+            {/* Boot output */}
+            <div className="p-5 space-y-0.5 min-h-[300px]">
+              {bootLines.map((line, i) => {
                 const rendered = renderedLines[i]
                 if (rendered === undefined) return null
                 if (rendered === "") return <div key={i} className="h-3" />
                 return (
-                  <p key={i} className={line.color || "text-zinc-300"}>
+                  <p key={i} className={line.color || "text-zinc-400"}>
                     {rendered}
                     {i === renderedLines.length - 1 && rendered !== line.text && (
-                      <span className="animate-pulse text-cyan-400">█</span>
+                      <span className="animate-pulse text-[#00ff41]">█</span>
                     )}
                   </p>
                 )
               })}
             </div>
-            <p className="text-zinc-600 text-xs mt-4">Press any key to skip</p>
+
+            {/* Footer */}
+            <div
+              className="px-5 py-2 border-t text-zinc-600 text-xs"
+              style={{ borderColor: "rgba(0,255,65,0.12)" }}
+            >
+              ↵ any key — abort sequence
+            </div>
           </div>
         </motion.div>
       )}

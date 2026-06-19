@@ -25,6 +25,21 @@ export const metadata: Metadata = {
     title: personal.displayName,
     description: personal.tagline,
     type: "website",
+    url: "https://euansmith.net",
+    images: [
+      {
+        url: "https://euansmith.net/og-image.jpg",
+        width: 1036,
+        height: 1085,
+        alt: personal.displayName,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: personal.displayName,
+    description: personal.tagline,
+    images: ["https://euansmith.net/og-image.jpg"],
   },
 }
 

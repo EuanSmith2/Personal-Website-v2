@@ -1,28 +1,35 @@
-import { Trophy, Users, BookOpen, GraduationCap, CheckCircle2 } from "lucide-react"
+import { Trophy, Users, GraduationCap, CheckCircle2, Shield, Mountain } from "lucide-react"
 import { SectionWrapper } from "@/components/ui/SectionWrapper"
 import { portfolioConfig } from "@/data/portfolio.config"
 import type { LucideIcon } from "lucide-react"
 
 const INTEREST_ICONS: Record<string, LucideIcon> = {
-  "Chess Club":        Trophy,
-  "Student Council":   Users,
-  "Teacher Assistant": BookOpen,
-  "Academic Awards":   GraduationCap,
+  "Chess Club":      Trophy,
+  "Student Council": Users,
+  "Academic Awards": GraduationCap,
+  "D&D Player":      Shield,
+  "Bouldering":      Mountain,
+}
+
+const BOOK_3D: React.CSSProperties = {
+  transform: "perspective(500px) rotateY(-6deg)",
+  boxShadow: "3px 5px 12px rgba(0,0,0,0.55), inset -3px 0 6px rgba(0,0,0,0.2)",
 }
 
 function BookCoverImg({ src, title }: { src: string; title: string }) {
   return (
-    <div
-      className="flex-shrink-0 w-10 h-[3.5rem] rounded-sm overflow-hidden"
-      style={{
-        transform: "perspective(500px) rotateY(-6deg)",
-        boxShadow: "3px 5px 12px rgba(0,0,0,0.55), inset -3px 0 6px rgba(0,0,0,0.2)",
-      }}
-    >
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src={src} alt={`Cover of ${title}`} className="w-full h-full object-cover" />
+    <div className="flex-shrink-0 transition-transform duration-200 hover:-translate-y-1.5">
+      <div className="w-10 h-[3.5rem] rounded-sm overflow-hidden" style={BOOK_3D}>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src={src} alt={`Cover of ${title}`} className="w-full h-full object-cover" />
+      </div>
     </div>
   )
+}
+
+const SHELF_3D: React.CSSProperties = {
+  transform: "perspective(600px) rotateY(-5deg)",
+  boxShadow: "4px 6px 14px rgba(0,0,0,0.55), inset -3px 0 6px rgba(0,0,0,0.18)",
 }
 
 export function Personal() {
@@ -94,13 +101,12 @@ export function Personal() {
             <div className="flex gap-5 overflow-x-auto pb-3 scrollbar-none">
               {lifestyle.finishedReading.map((book, i) => (
                 <div key={i} className="flex-shrink-0 w-[72px] text-center group">
-                  <div className="w-[72px] h-24 rounded-sm overflow-hidden mb-2 transition-transform duration-200 group-hover:-translate-y-1"
-                    style={{
-                      transform: "perspective(600px) rotateY(-5deg)",
-                      boxShadow: "4px 6px 14px rgba(0,0,0,0.55), inset -3px 0 6px rgba(0,0,0,0.18)",
-                    }}>
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={book.cover} alt={`Cover of ${book.title}`} className="w-full h-full object-cover" />
+                  {/* outer: hover lift; inner: static 3D transform */}
+                  <div className="transition-transform duration-200 group-hover:-translate-y-2 mb-2">
+                    <div className="w-[72px] h-24 rounded-sm overflow-hidden" style={SHELF_3D}>
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img src={book.cover} alt={`Cover of ${book.title}`} className="w-full h-full object-cover" />
+                    </div>
                   </div>
                   <p className="text-[10px] text-zinc-500 leading-tight line-clamp-2">{book.title}</p>
                   {book.author && <p className="text-[10px] text-zinc-600 mt-0.5 leading-tight">{book.author}</p>}

@@ -28,7 +28,7 @@ export const portfolioConfig = {
 
   about: {
     narrative:
-      "I'm a cybersecurity student at Technological University Dublin with a background spanning AI automation, hardware systems, and digital forensics. I build things that work — automation tools that generate real returns, AI agents that explore emergent behaviour, and home lab infrastructure that mirrors production environments. I'm drawn to complex systems: understanding how they fail, how they can be exploited, and how to make them resilient. My approach combines low-level curiosity with product-minded thinking.",
+      "I'm a cybersecurity student at Technological University Dublin with a background spanning AI automation, hardware systems, and digital forensics. I build things that work: automation tools that generate real returns, AI agents that explore emergent behaviour, and home lab infrastructure that mirrors production environments. I'm drawn to complex systems: understanding how they fail, how they can be exploited, and how to make them resilient. My approach combines low-level curiosity with product-minded thinking.",
     tags: [
       "Cybersecurity", "Linux", "Python", "AI/ML", "Networking",
       "OSINT", "Hardware", "Virtualization", "Systems Admin", "Digital Forensics",
@@ -58,7 +58,7 @@ export const portfolioConfig = {
       title: "TUD Programme Prep",
       summary: "Entering BSc Cybersecurity & Digital Forensics",
       detail:
-        "Preparing to enter the BSc in Cybersecurity and Digital Forensics at Technological University Dublin. This programme covers network security, digital forensics, ethical hacking, cryptography, and security operations — areas I've been self-studying for several years.",
+        "Preparing to enter the BSc in Cybersecurity and Digital Forensics at Technological University Dublin. This programme covers network security, digital forensics, ethical hacking, cryptography, and security operations, areas I've been self-studying for several years.",
     },
     {
       id: "homelab",
@@ -74,7 +74,7 @@ export const portfolioConfig = {
       title: "AI Projects",
       summary: "Computer vision, marketplace intelligence, automation",
       detail:
-        "Building AI-driven tools — including a computer vision marketplace intelligence system that has generated measurable real-world financial returns, and a multi-agent AI sandbox inside a sandboxed VM for studying emergent agent behaviour.",
+        "Building AI-driven tools, including a computer vision marketplace intelligence system that has generated measurable real-world financial returns, and a multi-agent AI sandbox inside a sandboxed VM for studying emergent agent behaviour.",
     },
     {
       id: "hardware",
@@ -87,8 +87,8 @@ export const portfolioConfig = {
   ],
 
   timeline: [
-    { year: "2016", label: "First Code",      description: "CoderDojo — Scratch game development, first exposure to programming logic",                                 era: "early"   as const },
-    { year: "2018", label: "STEM Camp",        description: "Trinity College Dublin STEM camp — Python fundamentals, physics simulations, algorithmic thinking",         era: "early"   as const },
+    { year: "2016", label: "First Code",      description: "CoderDojo: Scratch game development, first exposure to programming logic",                                 era: "early"   as const },
+    { year: "2018", label: "STEM Camp",        description: "Trinity College Dublin STEM camp: Python fundamentals, physics simulations, algorithmic thinking",         era: "early"   as const },
     { year: "2020", label: "Hardware Era",     description: "Built custom PC during COVID, game modding, console repair, hardware modification",                         era: "mid"     as const },
     { year: "2021", label: "AI Experiments",   description: "First AI automation experiments, exploring generative tools and scripting",                                 era: "mid"     as const },
     { year: "2023", label: "Systems Depth",    description: "Linux home lab, virtualization, advanced AI projects, cybersecurity self-study",                            era: "mid"     as const },
@@ -98,9 +98,9 @@ export const portfolioConfig = {
   edmo: {
     organisation: "European Digital Media Observatory",
     affiliation: "Dublin City University · European Commission",
-    role: "Software Developer Intern · Summer 2025",
+    role: "Software Developer Intern · Summer of 2026",
     mission:
-      "EDMO operates under direct mandate from the European Commission as part of the European Democracy Action Plan. Bringing together fact-checkers, academics, and technology experts across all EU member states, it coordinates a network of independent researchers providing policy intelligence to the European Parliament and national governments on disinformation threats and information ecosystem integrity — serving as the backbone of the EU's digital literacy and media accountability infrastructure.",
+      "EDMO operates under direct mandate from the European Commission as part of the European Democracy Action Plan. Bringing together fact-checkers, academics, and technology experts across all EU member states, it coordinates a network of independent researchers providing policy intelligence to the European Parliament and national governments on disinformation threats and information ecosystem integrity, serving as the backbone of the EU's digital literacy and media accountability infrastructure.",
     responsibilities: [
       "Full-stack web development, API integrations, and bespoke internal tooling built to EU institutional and accessibility standards",
       "Website content management, CMS workflows, and publication pipeline maintenance",
@@ -116,7 +116,7 @@ export const portfolioConfig = {
       name: "Marketplace Intelligence System",
       tags: ["Computer Vision", "Python", "ROI Modeling", "Automation"],
       description:
-        "Autonomous system that identifies resale opportunities across online marketplaces using computer vision and pricing intelligence. Incorporates ROI calculation, risk scoring, and human-in-the-loop decision gates. Has generated measurable financial returns, with approximately €500 donated to Merchants Quay Ireland.",
+        "Autonomous system that identifies resale opportunities across online marketplaces using computer vision and pricing intelligence. Incorporates ROI calculation, risk scoring, and human-in-the-loop decision gates. Has generated measurable financial returns.",
       impact: "~€500 donated to Merchants Quay Ireland",
       charityLogo: "/logos/mqi-logo.png",
       status: "Active",
@@ -150,10 +150,11 @@ export const portfolioConfig = {
 
   lifestyle: {
     interests: [
-      { icon: "♟️", label: "Chess Club",        detail: "Competitive play" },
-      { icon: "🗳️", label: "Student Council",   detail: "Class representative" },
-      { icon: "📚", label: "Teacher Assistant",  detail: "Peer learning support" },
-      { icon: "🏆", label: "Academic Awards",   detail: "Spirit of the Class, Stealth Award & Attendance Award" },
+      { icon: "", label: "Chess Club",      detail: "Competitive play" },
+      { icon: "", label: "Student Council", detail: "Class representative" },
+      { icon: "", label: "Academic Awards", detail: "Spirit of the Class, Stealth Award & Attendance Award" },
+      { icon: "", label: "D&D Player",      detail: "Gimbo the Wizard (homebrew campaign)" },
+      { icon: "", label: "Bouldering",      detail: "Indoor and outdoor rock climbing" },
     ],
     reading: [
       { title: "The Web Application Hacker's Handbook", author: "Stuttard & Pinto",    cover: "/books/web-hackers.jpg" },
@@ -174,7 +175,7 @@ export const portfolioConfig = {
   contact: {
     closing: "Let's build something worth building.",
     subtext:
-      "I'm interested in opportunities that sit at the intersection of security, automation, and complex systems — whether that's a technical internship, a collaborative project, or just a conversation worth having.",
+      "I'm interested in opportunities that sit at the intersection of security, automation, and complex systems, whether that's a technical internship, a collaborative project, or just a conversation worth having.",
     github: "https://github.com/EuanSmith2",
   },
 

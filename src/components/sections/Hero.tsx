@@ -51,7 +51,7 @@ export function Hero() {
       <section
         id="hero"
         aria-label="Introduction"
-        className="relative min-h-screen flex items-center overflow-hidden"
+        className="relative min-h-[80vh] flex items-center overflow-hidden"
         style={{ background: "var(--bg-base)" }}
       >
         <DotGridBackground />

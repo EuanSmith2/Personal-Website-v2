@@ -1,0 +1,6 @@
+Contact: mailto:business.euan@hotmail.com
+Preferred-Languages: en
+Scope: https://euansmith.dev
+Policy: https://euansmith.dev/.well-known/security.txt
+Acknowledgments: https://euansmith.dev
+Expires: 2027-01-01T00:00:00.000Z

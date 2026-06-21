@@ -8,15 +8,10 @@ const MicrosoftLogo = () => (
   </svg>
 )
 
-const SAPLogo = () => (
-  <svg width="36" height="18" viewBox="0 0 60 30" aria-label="SAP" role="img">
-    <text x="0" y="24" fontFamily="Arial, sans-serif" fontWeight="bold" fontSize="28" fill="#FFFFFF" letterSpacing="1">SAP</text>
-  </svg>
-)
-
 const ISC2Logo = () => (
-  <svg width="40" height="18" viewBox="0 0 80 30" aria-label="ISC2" role="img">
-    <text x="0" y="23" fontFamily="Arial, sans-serif" fontWeight="bold" fontSize="24" fill="#FFFFFF" letterSpacing="0.5">ISC²</text>
+  <svg width="56" height="22" viewBox="0 0 90 30" aria-label="(ISC)²" role="img">
+    <text x="1" y="24" fontFamily="Helvetica, Arial, sans-serif" fontWeight="700" fontSize="22" fill="#FFFFFF" letterSpacing="-0.5">(ISC)</text>
+    <text x="71" y="16" fontFamily="Helvetica, Arial, sans-serif" fontWeight="700" fontSize="13" fill="#FFFFFF">2</text>
   </svg>
 )
 
@@ -27,7 +22,6 @@ const GenericLogo = ({ initial }: { initial: string }) => (
 function IssuerLogo({ issuer }: { issuer: string }) {
   const lower = issuer.toLowerCase()
   if (lower === "microsoft") return <MicrosoftLogo />
-  if (lower === "sap")       return <SAPLogo />
   if (lower === "isc2")      return <ISC2Logo />
   return <GenericLogo initial={issuer.charAt(0)} />
 }
@@ -41,20 +35,28 @@ interface CertBadgeProps {
 }
 
 function CertBadgeInner({ issuer, name, status, issuerColor }: Omit<CertBadgeProps, "credlyUrl">) {
+  const isSAP = issuer.toLowerCase() === "sap"
   return (
     <div
       className="rounded-xl border border-[color:var(--border)] p-4 lg:p-5 flex items-start gap-4 transition-all duration-200 hover:border-[color:var(--border-glow)] hover:shadow-[0_0_20px_rgba(34,211,238,0.08)] h-full"
       style={{ background: "var(--bg-card)" }}
     >
-      <div
-        className="w-12 h-12 rounded-full flex-shrink-0 flex items-center justify-center"
-        style={{
-          background: `linear-gradient(135deg, ${issuerColor}cc, ${issuerColor}55)`,
-          border: `1px solid ${issuerColor}40`,
-        }}
-      >
-        <IssuerLogo issuer={issuer} />
-      </div>
+      {isSAP ? (
+        <div className="w-16 h-12 rounded-md flex-shrink-0 overflow-hidden">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/logos/sap-logo.svg" alt="SAP" className="w-full h-full object-cover" />
+        </div>
+      ) : (
+        <div
+          className="w-12 h-12 rounded-full flex-shrink-0 flex items-center justify-center"
+          style={{
+            background: `linear-gradient(135deg, ${issuerColor}cc, ${issuerColor}55)`,
+            border: `1px solid ${issuerColor}40`,
+          }}
+        >
+          <IssuerLogo issuer={issuer} />
+        </div>
+      )}
       <div className="flex-1 min-w-0">
         <p className="text-xs font-mono text-zinc-400 uppercase tracking-wider mb-1">{issuer}</p>
         <p className="text-sm font-medium text-zinc-100 mb-2 leading-snug">{name}</p>

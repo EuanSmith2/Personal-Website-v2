@@ -1,17 +1,7 @@
 "use client"
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
+import Image from "next/image"
 import { cn } from "@/lib/utils"
-
-// Simplified Outlook "O" logo — blue square with white envelope O
-const OutlookIcon = ({ size = 16 }: { size?: number }) => (
-  <svg width={size} height={size} viewBox="0 0 24 24" aria-label="Outlook" role="img" fill="none">
-    <rect width="24" height="24" rx="3" fill="#0078D4" />
-    <path d="M13 6h6.5A1.5 1.5 0 0 1 21 7.5v9a1.5 1.5 0 0 1-1.5 1.5H13V6Z" fill="#50E6FF" opacity="0.4"/>
-    <path d="M13 6v12l8-2V8l-8-2Z" fill="#28A8E8" />
-    <ellipse cx="8.5" cy="12" rx="4.5" ry="5" fill="white" />
-    <ellipse cx="8.5" cy="12" rx="2.8" ry="3.2" fill="#0078D4" />
-  </svg>
-)
 
 interface ObfuscatedEmailProps {
   encoded: string
@@ -21,6 +11,7 @@ interface ObfuscatedEmailProps {
 
 export function ObfuscatedEmail({ encoded, className, iconSize = 16 }: ObfuscatedEmailProps) {
   const [email, setEmail] = useState<string | null>(null)
+  const touchedRef = useRef(false)
 
   useEffect(() => {
     setEmail(atob(encoded))
@@ -28,13 +19,22 @@ export function ObfuscatedEmail({ encoded, className, iconSize = 16 }: Obfuscate
 
   if (!email) return null
 
+  const href = `mailto:${email}`
+
   return (
     <a
-      href={`mailto:${email}`}
+      href={href}
       className={cn("inline-flex items-center gap-2", className)}
       aria-label="Send an email"
+      onTouchStart={() => { touchedRef.current = true }}
+      onClick={(e) => {
+        if (!touchedRef.current) return
+        touchedRef.current = false
+        e.preventDefault()
+        setTimeout(() => { window.location.href = href }, 360)
+      }}
     >
-      <OutlookIcon size={iconSize} />
+      <Image src="/logos/outlook-logo.png" width={iconSize} height={iconSize} alt="Microsoft Outlook" className="object-contain" />
       {email}
     </a>
   )

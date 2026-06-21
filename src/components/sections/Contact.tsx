@@ -1,8 +1,23 @@
+"use client"
+import { useRef } from "react"
 import { SectionWrapper } from "@/components/ui/SectionWrapper"
 import { ObfuscatedEmail } from "@/components/ui/ObfuscatedEmail"
 import { AwardBadge } from "@/components/ui/AwardBadge"
 import { PixelCanvas } from "@/components/ui/PixelCanvas"
 import { portfolioConfig } from "@/data/portfolio.config"
+
+function useTouchDelay(href: string, delay = 360) {
+  const touched = useRef(false)
+  return {
+    onTouchStart: () => { touched.current = true },
+    onClick: (e: React.MouseEvent<HTMLAnchorElement>) => {
+      if (!touched.current) return
+      touched.current = false
+      e.preventDefault()
+      setTimeout(() => window.open(href, "_blank", "noopener,noreferrer"), delay)
+    },
+  }
+}
 
 const GithubIcon = () => (
   <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -24,6 +39,9 @@ const TikTokIcon = () => (
 
 export function Contact() {
   const { contact, personal, floatingBadge } = portfolioConfig
+  const linkedinHandlers = useTouchDelay(personal.linkedin)
+  const githubHandlers   = useTouchDelay(contact.github)
+  const tiktokHandlers   = useTouchDelay(personal.tiktok)
 
   return (
     <section
@@ -61,6 +79,7 @@ export function Contact() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="relative z-10 inline-flex items-center gap-2 px-5 py-2.5 border border-zinc-700 text-zinc-300 font-semibold text-sm hover:border-[#0A66C2]/60 hover:text-[#2D8CDB] transition-colors duration-200 rounded-lg"
+                {...linkedinHandlers}
               >
                 <LinkedinIcon />
                 LinkedIn
@@ -75,6 +94,7 @@ export function Contact() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="relative z-10 inline-flex items-center gap-2 px-5 py-2.5 border border-zinc-700 text-zinc-300 font-semibold text-sm hover:border-[#6e5494]/60 hover:text-[#9a6dd7] transition-colors duration-200 rounded-lg"
+                {...githubHandlers}
               >
                 <GithubIcon />
                 GitHub
@@ -89,6 +109,7 @@ export function Contact() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="relative z-10 inline-flex items-center gap-2 px-5 py-2.5 border border-zinc-700 text-zinc-300 font-semibold text-sm hover:border-[#FF0050]/60 hover:text-[#ff4d82] transition-colors duration-200 rounded-lg"
+                {...tiktokHandlers}
               >
                 <TikTokIcon />
                 TikTok

@@ -87,7 +87,7 @@ export function Hero() {
 
               {/* Name */}
               <div>
-                <div
+                <h1
                   className="font-bold tracking-tight leading-none"
                   style={{ fontSize: "clamp(2.8rem, 8vw, 6rem)" }}
                   aria-label={personal.name}
@@ -99,7 +99,7 @@ export function Hero() {
                     scrambleOnHover
                     speed={80}
                   />
-                </div>
+                </h1>
               </div>
             </motion.div>
 
@@ -107,8 +107,7 @@ export function Hero() {
             <motion.div variants={itemVariants} className="-mt-4">
               <RotatingTitle titles={rotatingTitles} />
               <div className="flex items-center gap-2 mt-1">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/logos/tud-icon.jpg" alt="TUD" className="w-5 h-5 rounded object-cover opacity-70 flex-shrink-0" />
+                <Image src="/logos/tud-icon.jpg" alt="TUD" width={20} height={20} className="w-5 h-5 rounded object-cover opacity-70 flex-shrink-0" />
                 <p className="text-sm text-zinc-500 font-mono">{personal.title}</p>
               </div>
             </motion.div>

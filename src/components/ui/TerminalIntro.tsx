@@ -13,69 +13,51 @@ type BootLine = {
   fast: boolean
 }
 
-function getOSInfo() {
-  const ua = navigator.userAgent
-  if (/iPhone/i.test(ua)) return {
-    os: "iOS (iPhone)",
-    proc: "Apple A17 Pro",
-    gpu: "Apple GPU (6-core)",
-    mem: "8GB LPDDR5",
-    net: "5G / WiFi 6",
-  }
-  if (/iPad/i.test(ua)) return {
-    os: "iPadOS",
-    proc: "Apple M2",
-    gpu: "Apple GPU (9-core)",
-    mem: "16GB Unified Memory",
-    net: "WiFi 6 / Cellular",
-  }
-  if (/Android/i.test(ua)) return {
-    os: "Android",
-    proc: "Snapdragon 8 Gen 3",
-    gpu: "Adreno 750",
-    mem: "12GB LPDDR5X",
-    net: "5G / WiFi 6E",
-  }
-  if (/Macintosh|Mac OS X/i.test(ua)) return {
-    os: "macOS",
-    proc: "Apple M4 Pro",
-    gpu: "Apple GPU (20-core)",
-    mem: "24GB Unified Memory",
-    net: "WiFi 6E @ 1.2Gbps",
-  }
-  if (/Windows/i.test(ua)) return {
-    os: "Windows 11",
-    proc: "Intel Core i7-13700K",
-    gpu: "NVIDIA GeForce RTX 4070",
-    mem: "32GB DDR5-5600",
-    net: "Ethernet 2.5Gbps",
-  }
-  if (/Linux/i.test(ua)) return {
-    os: "Linux x86_64",
-    proc: "AMD Ryzen 9 7950X",
-    gpu: "AMD Radeon RX 7900 XTX",
-    mem: "64GB DDR5-6000",
-    net: "Ethernet 10Gbps",
-  }
-  return {
-    os: "Unknown OS",
-    proc: "Generic CPU @ 2.4GHz",
-    gpu: "Integrated Graphics",
-    mem: "8GB RAM",
-    net: "Ethernet 100Mbps",
-  }
+type ExtNavigator = Navigator & {
+  deviceMemory?: number
+  connection?: { effectiveType?: string; type?: string }
 }
 
-function generateBootLines(h: ReturnType<typeof getOSInfo>): BootLine[] {
+function getSysInfo() {
+  const ua = navigator.userAgent
+  const nav = navigator as ExtNavigator
+
+  let os = "Unknown OS"
+  if (/iPhone/i.test(ua))              os = "iOS"
+  else if (/iPad/i.test(ua))           os = "iPadOS"
+  else if (/Android/i.test(ua))        os = "Android"
+  else if (/Macintosh|Mac OS X/i.test(ua)) os = "macOS"
+  else if (/Windows/i.test(ua))        os = "Windows"
+  else if (/Linux/i.test(ua))          os = "Linux"
+
+  const cores = navigator.hardwareConcurrency
+    ? `${navigator.hardwareConcurrency}-core`
+    : "unknown"
+
+  const mem = nav.deviceMemory
+    ? `${nav.deviceMemory}GB (reported)`
+    : "undisclosed"
+
+  const res = `${screen.width}×${screen.height}  @${window.devicePixelRatio || 1}x`
+
+  const lang = navigator.language || "unknown"
+
+  const net = nav.connection?.effectiveType ?? nav.connection?.type ?? "unknown"
+
+  return { os, cores, mem, res, lang, net }
+}
+
+function generateBootLines(h: ReturnType<typeof getSysInfo>): BootLine[] {
   return [
     { text: "ctOS  v2.6.4    [REMOTE NODE ACCESS]", delay: 22, color: "text-[#00ff41]", fast: false },
     { text: "Initialising encrypted tunnel...", delay: 0, color: "text-zinc-500", fast: true },
     { text: "", delay: 0, color: "", fast: true },
     { text: "[SCAN] Probing inbound connection...", delay: 18, color: "text-zinc-400", fast: false },
     { text: `[SCAN] OS     .............. ${h.os}`, delay: 0, color: "text-zinc-400", fast: true },
-    { text: `[SCAN] PROC   .............. ${h.proc}`, delay: 0, color: "text-zinc-400", fast: true },
-    { text: `[SCAN] GPU    .............. ${h.gpu}`, delay: 0, color: "text-zinc-400", fast: true },
+    { text: `[SCAN] CPU    .............. ${h.cores}`, delay: 0, color: "text-zinc-400", fast: true },
     { text: `[SCAN] MEM    .............. ${h.mem}`, delay: 0, color: "text-zinc-400", fast: true },
+    { text: `[SCAN] DISP   .............. ${h.res}`, delay: 0, color: "text-zinc-400", fast: true },
+    { text: `[SCAN] LANG   .............. ${h.lang}`, delay: 0, color: "text-zinc-400", fast: true },
     { text: `[SCAN] NET    .............. ${h.net}`, delay: 0, color: "text-zinc-400", fast: true },
     { text: "", delay: 0, color: "", fast: true },
     { text: "[CTOS] Establishing secure channel...", delay: 18, color: "text-zinc-400", fast: false },
@@ -101,7 +83,7 @@ export function TerminalIntro({ onComplete }: TerminalIntroProps) {
     if (prefersReducedMotion) { onComplete(); return }
     if (sessionStorage.getItem("intro_seen")) { onComplete(); return }
 
-    const osInfo = getOSInfo()
+    const osInfo = getSysInfo()
     const lines = generateBootLines(osInfo)
     setBootLines(lines)
 

@@ -13,7 +13,7 @@ const NAV_LINKS = [
   { label: "Contact",        href: "#contact" },
 ]
 
-const SECTION_IDS = ["hero", "about", "activity", "timeline", "edmo", "projects", "certifications", "personal", "contact"]
+const SECTION_IDS = ["hero", "about", "timeline", "edmo", "projects", "certifications", "contact"]
 
 export function Navbar() {
   const { personal } = portfolioConfig

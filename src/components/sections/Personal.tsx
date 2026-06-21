@@ -1,3 +1,4 @@
+import Image from "next/image"
 import { Trophy, Users, GraduationCap, CheckCircle2, Shield, Mountain } from "lucide-react"
 import { SectionWrapper } from "@/components/ui/SectionWrapper"
 import { portfolioConfig } from "@/data/portfolio.config"
@@ -19,9 +20,8 @@ const BOOK_3D: React.CSSProperties = {
 function BookCoverImg({ src, title }: { src: string; title: string }) {
   return (
     <div className="flex-shrink-0 transition-transform duration-200 hover:-translate-y-1.5">
-      <div className="w-10 h-[3.5rem] rounded-sm overflow-hidden" style={BOOK_3D}>
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={src} alt={`Cover of ${title}`} className="w-full h-full object-cover" />
+      <div className="relative w-10 h-[3.5rem] rounded-sm overflow-hidden" style={BOOK_3D}>
+        <Image src={src} alt={`Cover of ${title}`} fill className="object-cover" sizes="40px" />
       </div>
     </div>
   )
@@ -103,13 +103,12 @@ export function Personal() {
                 <div key={i} className="flex-shrink-0 w-[72px] text-center group">
                   {/* outer: hover lift; inner: static 3D transform */}
                   <div className="transition-transform duration-200 group-hover:-translate-y-2 mb-2">
-                    <div className="w-[72px] h-24 rounded-sm overflow-hidden" style={SHELF_3D}>
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img src={book.cover} alt={`Cover of ${book.title}`} className="w-full h-full object-cover" />
+                    <div className="relative w-[72px] h-24 rounded-sm overflow-hidden" style={SHELF_3D}>
+                      <Image src={book.cover} alt={`Cover of ${book.title}`} fill className="object-cover" sizes="72px" />
                     </div>
                   </div>
-                  <p className="text-[10px] text-zinc-500 leading-tight line-clamp-2">{book.title}</p>
-                  {book.author && <p className="text-[10px] text-zinc-600 mt-0.5 leading-tight">{book.author}</p>}
+                  <p className="text-[11px] text-zinc-500 leading-tight line-clamp-2">{book.title}</p>
+                  {book.author && <p className="text-[11px] text-zinc-600 mt-0.5 leading-tight">{book.author}</p>}
                 </div>
               ))}
             </div>

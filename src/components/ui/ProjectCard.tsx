@@ -19,7 +19,7 @@ interface Project {
 export function ProjectCard({ project }: { project: Project }) {
   return (
     <div
-      className="relative rounded-xl border border-[color:var(--border)] p-6 lg:p-8 transition-all duration-[250ms] hover:-translate-y-1 hover:border-[color:var(--border-glow)] hover:shadow-[0_0_20px_rgba(34,211,238,0.08)] overflow-hidden"
+      className="relative rounded-xl border border-[color:var(--border)] p-6 lg:p-8 transition-all duration-[250ms] hover:-translate-y-1 hover:border-[color:var(--border-glow)] hover:shadow-[0_0_20px_rgba(34,211,238,0.08)] overflow-hidden cursor-pointer"
       style={{ background: "var(--bg-card)" }}
     >
       {/* Watermark number */}

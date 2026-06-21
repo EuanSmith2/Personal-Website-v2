@@ -186,14 +186,22 @@ export function PixelCanvas({ colors, gap = 5, speed = 30 }: PixelCanvasProps) {
     const card = wrapRef.current?.parentElement
     const handleEnter = () => animate("appear")
     const handleLeave = () => animate("disappear")
+    const handleTouchStart = () => animate("appear")
+    const handleTouchEnd = () => animate("disappear")
     card?.addEventListener("mouseenter", handleEnter)
     card?.addEventListener("mouseleave", handleLeave)
+    card?.addEventListener("touchstart", handleTouchStart, { passive: true })
+    card?.addEventListener("touchend", handleTouchEnd, { passive: true })
+    card?.addEventListener("touchcancel", handleTouchEnd, { passive: true })
 
     return () => {
       resizeObserver.disconnect()
       cancelAnimationFrame(animationRef.current)
       card?.removeEventListener("mouseenter", handleEnter)
       card?.removeEventListener("mouseleave", handleLeave)
+      card?.removeEventListener("touchstart", handleTouchStart)
+      card?.removeEventListener("touchend", handleTouchEnd)
+      card?.removeEventListener("touchcancel", handleTouchEnd)
     }
   }, [init, animate])
 

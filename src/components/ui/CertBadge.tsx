@@ -9,9 +9,8 @@ const MicrosoftLogo = () => (
 )
 
 const ISC2Logo = () => (
-  <svg width="56" height="22" viewBox="0 0 90 30" aria-label="(ISC)²" role="img">
-    <text x="1" y="24" fontFamily="Helvetica, Arial, sans-serif" fontWeight="700" fontSize="22" fill="#FFFFFF" letterSpacing="-0.5">(ISC)</text>
-    <text x="71" y="16" fontFamily="Helvetica, Arial, sans-serif" fontWeight="700" fontSize="13" fill="#FFFFFF">2</text>
+  <svg viewBox="0 0 46 22" width="40" height="18" aria-label="(ISC)²" role="img">
+    <text x="1" y="17" fontFamily="Helvetica, Arial, sans-serif" fontWeight="800" fontSize="16" fill="#FFFFFF">(ISC)&#178;</text>
   </svg>
 )
 
@@ -42,9 +41,12 @@ function CertBadgeInner({ issuer, name, status, issuerColor }: Omit<CertBadgePro
       style={{ background: "var(--bg-card)" }}
     >
       {isSAP ? (
-        <div className="w-16 h-12 rounded-md flex-shrink-0 overflow-hidden">
+        <div
+          className="w-12 h-12 rounded-full flex-shrink-0 overflow-hidden flex items-center justify-center"
+          style={{ background: "linear-gradient(180deg, #00b1eb 0%, #0069b4 100%)", border: "1px solid #0070f340" }}
+        >
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/logos/sap-logo.svg" alt="SAP" className="w-full h-full object-cover" />
+          <img src="/logos/sap-logo.svg" alt="SAP" style={{ width: "88%", height: "88%", objectFit: "contain" }} />
         </div>
       ) : (
         <div

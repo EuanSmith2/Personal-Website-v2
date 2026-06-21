@@ -181,7 +181,7 @@ export const portfolioConfig = {
 
   floatingBadge: {
     title: "Available for Work",
-    subtitle: "Internships & Projects",
+    subtitle: "",
     link: "https://www.linkedin.com/in/euan-smith-4295123a6/details/courses/",
     tooltip: "Click to connect on LinkedIn",
   },

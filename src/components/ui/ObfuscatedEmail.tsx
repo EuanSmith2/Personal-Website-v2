@@ -34,7 +34,7 @@ export function ObfuscatedEmail({ encoded, className, iconSize = 16 }: Obfuscate
         setTimeout(() => { window.location.href = href }, 360)
       }}
     >
-      <Image src="/logos/outlook-logo.png" width={iconSize} height={iconSize} alt="Microsoft Outlook" className="object-contain" />
+      <Image src="/logos/outlook-logo.png" width={iconSize} height={iconSize} alt="Microsoft Outlook" className="object-contain" style={{ filter: "grayscale(1) brightness(2.2)" }} />
       {email}
     </a>
   )

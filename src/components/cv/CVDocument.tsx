@@ -27,10 +27,10 @@ const s = StyleSheet.create({
     lineHeight: 1.45,
   },
 
-  /* Header */
+  /* ── Header ── */
   header: {
-    marginBottom: 10,
-    paddingBottom: 7,
+    marginBottom: 12,
+    paddingBottom: 8,
     borderBottomWidth: 1.5,
     borderBottomColor: c.black,
   },
@@ -38,12 +38,11 @@ const s = StyleSheet.create({
     fontSize: 22,
     fontFamily: "Helvetica-Bold",
     letterSpacing: 0.3,
-    marginBottom: 3,
+    marginBottom: 4,
   },
   contactRow: {
     flexDirection: "row",
     flexWrap: "wrap",
-    gap: 0,
   },
   contactItem: {
     fontSize: 8.5,
@@ -57,9 +56,9 @@ const s = StyleSheet.create({
     textDecoration: "none",
   },
 
-  /* Section */
+  /* ── Section ── */
   section: {
-    marginBottom: 11,
+    marginBottom: 12,
   },
   sectionTitle: {
     fontSize: 8.5,
@@ -70,20 +69,27 @@ const s = StyleSheet.create({
     borderBottomWidth: 0.6,
     borderBottomColor: c.rule,
     paddingBottom: 2,
-    marginBottom: 5,
+    marginBottom: 6,
   },
 
-  /* Entry */
+  /* ── Entry ── */
   entry: {
-    marginBottom: 7,
+    marginBottom: 9,
   },
   entryRow: {
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "flex-start",
-    flexWrap: "wrap",
+    marginBottom: 2,
   },
   entryTitle: {
+    fontFamily: "Helvetica-Bold",
+    fontSize: 10,
+    flex: 1,
+    /* explicit bottom margin so the title never bleeds into bullets */
+    marginBottom: 3,
+  },
+  entryTitleInRow: {
     fontFamily: "Helvetica-Bold",
     fontSize: 10,
     flex: 1,
@@ -97,18 +103,17 @@ const s = StyleSheet.create({
   entryNote: {
     fontSize: 9,
     color: c.mid,
-    marginTop: 1,
-    marginBottom: 2,
+    marginBottom: 3,
   },
 
-  /* Bullet list */
+  /* ── Bullet list ── */
   list: {
-    marginTop: 2,
+    marginTop: 0,
     marginLeft: 10,
   },
   listItem: {
     fontSize: 9.5,
-    marginBottom: 1.5,
+    marginBottom: 2,
     flexDirection: "row",
   },
   bullet: {
@@ -121,34 +126,34 @@ const s = StyleSheet.create({
     fontSize: 9.5,
   },
 
-  /* Prose */
+  /* ── Prose ── */
   para: {
     fontSize: 9.5,
     color: "#222222",
-    lineHeight: 1.5,
+    lineHeight: 1.55,
   },
 
-  /* Certs two-col */
+  /* ── Certs two-col ── */
   certsGrid: {
     flexDirection: "row",
     flexWrap: "wrap",
-    gap: 0,
   },
   certItem: {
     width: "50%",
     fontSize: 9.5,
-    marginBottom: 2,
+    marginBottom: 3,
     paddingRight: 8,
     flexDirection: "row",
     flexWrap: "wrap",
+    alignItems: "center",
   },
   certStatus: {
     fontSize: 8,
     color: c.light,
-    marginLeft: 4,
+    marginLeft: 5,
   },
 
-  /* Inline row (skills / interests) */
+  /* ── Skills inline ── */
   inlinePara: {
     fontSize: 9.5,
     color: "#222222",
@@ -174,7 +179,7 @@ export function CVDocument() {
       title="Euan Smith — CV"
       author="Euan Smith"
       subject="Curriculum Vitae"
-      keywords="cybersecurity, web development, internship, TUD"
+      keywords="cybersecurity, digital forensics, Python, automation, web development, SIEM, TUD, internship"
     >
       <Page size="A4" style={s.page}>
 
@@ -193,7 +198,7 @@ export function CVDocument() {
         <View style={s.section}>
           <Text style={s.sectionTitle}>Profile</Text>
           <Text style={s.para}>
-            Cybersecurity student at Technological University Dublin, currently interning at the European Digital Media Observatory. I build practical tools — a computer vision system that identifies marketplace resale opportunities and has generated real financial returns, a home lab running SIEM stacks and honeypot setups, and custom websites for paying clients. I am interested in how systems fail, how attackers think, and how to design things that stay secure. Background spans Python automation, web development, and hardware.
+            {"Cybersecurity and Digital Forensics student at Technological University Dublin, with practical experience building automation systems, security infrastructure, and web applications. Currently interning at the European Digital Media Observatory — part of the EU anti-disinformation network — where I build internal tooling, API integrations, and backend automation to EU institutional standards. Outside of work, I built a Python-based computer vision system that autonomously identifies resale opportunities across online marketplaces; it has generated real financial returns, with proceeds donated to Merchants Quay Ireland. I run a home lab with SIEM infrastructure, honeypots, and network segmentation — the kind of hands-on environment where you learn how systems actually break. I approach security from first principles: attacker mindset, failure modes, and building things that hold up under pressure."}
           </Text>
         </View>
 
@@ -210,10 +215,7 @@ export function CVDocument() {
           <View style={s.entry}>
             <Text style={s.entryTitle}>{"Harold's Cross Educate Together Secondary School"}</Text>
             <View style={s.list}>
-              <Bullet text="Student Council Representative" />
-              <Bullet text="Spirit of the Class Award" />
-              <Bullet text="Stealth Award" />
-              <Bullet text="Attendance Award" />
+              <Bullet text={"Student Council Representative · Spirit of the Class Award · Stealth Award · Attendance Award"} />
             </View>
           </View>
         </View>
@@ -224,7 +226,7 @@ export function CVDocument() {
 
           <View style={s.entry}>
             <View style={s.entryRow}>
-              <Text style={s.entryTitle}>Software Developer Intern — European Digital Media Observatory</Text>
+              <Text style={s.entryTitleInRow}>Software Developer Intern — European Digital Media Observatory</Text>
               <Text style={s.entrySub}>Dublin City University · Summer 2026</Text>
             </View>
             <Text style={s.entryNote}>EDMO operates under European Commission mandate, coordinating anti-disinformation research across all EU member states.</Text>
@@ -232,18 +234,18 @@ export function CVDocument() {
               <Bullet text="Built internal automation tooling and API integrations to EU institutional standards" />
               <Bullet text="Managed CMS workflows and the editorial publication pipeline" />
               <Bullet text="Developed social media scheduling tools and performance analytics scripts" />
-              <Bullet text="Cut manual editorial overhead through backend process automation" />
+              <Bullet text="Reduced manual editorial overhead through backend process automation" />
             </View>
           </View>
 
           <View style={s.entry}>
             <View style={s.entryRow}>
-              <Text style={s.entryTitle}>Freelance Web Developer</Text>
+              <Text style={s.entryTitleInRow}>Freelance Web Developer</Text>
               <Text style={s.entrySub}>Independent</Text>
             </View>
             <View style={s.list}>
               <Bullet text="Designed and hand-coded custom websites for paying clients using Next.js and Tailwind CSS" />
-              <Bullet text="Handled project scoping, design, development, and delivery end-to-end" />
+              <Bullet text="Managed project scoping, design, development, and delivery end-to-end" />
             </View>
           </View>
         </View>
@@ -255,10 +257,9 @@ export function CVDocument() {
           <View style={s.entry}>
             <Text style={s.entryTitle}>Marketplace Intelligence System</Text>
             <View style={s.list}>
-              <Bullet text="Computer vision tool that scans online marketplaces for profitable resale opportunities" />
-              <Bullet text="Automated ROI calculation, risk scoring, and human-in-the-loop decision gates" />
-              <Bullet text="Generated measurable real financial returns — ~€500 donated to Merchants Quay Ireland" />
-              <Bullet text="Stack: Python, computer vision libraries, custom pricing models" />
+              <Bullet text="Python and computer vision tool that autonomously identifies profitable resale opportunities online" />
+              <Bullet text="Includes ROI calculation, risk scoring, and human-in-the-loop decision gates" />
+              <Bullet text="Has generated real financial returns — ~€500 donated to Merchants Quay Ireland" />
             </View>
           </View>
 
@@ -266,15 +267,15 @@ export function CVDocument() {
             <Text style={s.entryTitle}>Multi-Agent AI Sandbox</Text>
             <View style={s.list}>
               <Bullet text="Isolated VM running autonomous LLM agents interacting with browser environments" />
-              <Bullet text="Studies emergent agent communication and coordination without human supervision" />
+              <Bullet text="Research environment studying emergent agent communication and coordination without human supervision" />
             </View>
           </View>
 
           <View style={s.entry}>
             <Text style={s.entryTitle}>Home Lab Infrastructure</Text>
             <View style={s.list}>
-              <Bullet text="Linux servers, VMs, and network simulation — mirrors production security environments" />
-              <Bullet text="Running SIEM stack, honeypot infrastructure, and network segmentation experiments" />
+              <Bullet text="Linux servers, VMs, and network simulation replicating production security environments" />
+              <Bullet text="Active SIEM stack, honeypot infrastructure, and network segmentation experiments" />
             </View>
           </View>
         </View>
@@ -296,22 +297,14 @@ export function CVDocument() {
               <Text style={s.certStatus}>Earned</Text>
             </View>
             <View style={s.certItem}>
-              <Text>ISC2 Candidate Member</Text>
-              <Text style={s.certStatus}>Active</Text>
+              <Text>Google Cybersecurity Certificate</Text>
+              <Text style={s.certStatus}>In Progress</Text>
             </View>
             <View style={s.certItem}>
-              <Text>Microsoft AI Skills Fest 2026</Text>
-              <Text style={s.certStatus}>Earned</Text>
+              <Text>CompTIA Security+</Text>
+              <Text style={s.certStatus}>In Progress</Text>
             </View>
           </View>
-        </View>
-
-        {/* ── In Progress ── */}
-        <View style={s.section}>
-          <Text style={s.sectionTitle}>In Progress</Text>
-          <Text style={s.inlinePara}>
-            Google Cybersecurity Certificate  ·  CompTIA Security+  ·  GRC Mastery Programme  ·  Hack The Box (Active)
-          </Text>
         </View>
 
         {/* ── Technical Skills ── */}
@@ -321,19 +314,11 @@ export function CVDocument() {
             <Text style={s.bold}>Languages: </Text>
             <Text>Python, JavaScript/TypeScript, HTML/CSS{"\n"}</Text>
             <Text style={s.bold}>Security: </Text>
-            <Text>OSINT, network security, digital forensics, SIEM, honeypots, home lab ops{"\n"}</Text>
+            <Text>OSINT, network security, digital forensics, SIEM, honeypots, Linux administration{"\n"}</Text>
             <Text style={s.bold}>Tools: </Text>
-            <Text>Linux, Git, virtualization, browser automation, computer vision{"\n"}</Text>
+            <Text>Git, virtualisation, browser automation, computer vision{"\n"}</Text>
             <Text style={s.bold}>Web: </Text>
             <Text>Next.js, React, Tailwind CSS, REST APIs</Text>
-          </Text>
-        </View>
-
-        {/* ── Interests ── */}
-        <View style={s.section}>
-          <Text style={s.sectionTitle}>Interests</Text>
-          <Text style={s.inlinePara}>
-            Chess  ·  Dungeons &amp; Dragons  ·  Bouldering  ·  Reading (security, systems thinking, economics)
           </Text>
         </View>
 

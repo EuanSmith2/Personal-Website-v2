@@ -85,9 +85,7 @@ const s = StyleSheet.create({
   entryTitle: {
     fontFamily: "Helvetica-Bold",
     fontSize: 10,
-    flex: 1,
-    /* explicit bottom margin so the title never bleeds into bullets */
-    marginBottom: 3,
+    marginBottom: 4,
   },
   entryTitleInRow: {
     fontFamily: "Helvetica-Bold",

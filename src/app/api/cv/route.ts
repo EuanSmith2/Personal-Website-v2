@@ -8,7 +8,7 @@ export const runtime = "nodejs"
 export async function GET() {
   const buffer = await renderToBuffer(createElement(CVDocument))
 
-  return new Response(buffer, {
+  return new Response(new Uint8Array(buffer), {
     headers: {
       "Content-Type": "application/pdf",
       "Content-Disposition": 'attachment; filename="euan-smith-cv.pdf"',

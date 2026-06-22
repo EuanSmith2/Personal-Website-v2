@@ -117,6 +117,8 @@ export function Hero() {
               {personal.tagline}{" "}
               <a
                 href={personal.cv}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="italic text-zinc-400 underline underline-offset-4 decoration-zinc-600 hover:text-cyan-400 hover:decoration-cyan-400 transition-colors duration-200"
               >
                 View CV

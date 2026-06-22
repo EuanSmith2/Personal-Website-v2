@@ -10,7 +10,7 @@ export const portfolioConfig = {
     credly: "https://www.credly.com/users/euan-smith.c95be961",
     github: "https://github.com/EuanSmith2",
     emailEncoded: "YnVzaW5lc3MuZXVhbkBob3RtYWlsLmNvbQ==", // btoa("business.euan@hotmail.com")
-    cv: "/euan-smith-cv.pdf",
+    cv: "/api/cv",
   },
 
   rotatingTitles: [

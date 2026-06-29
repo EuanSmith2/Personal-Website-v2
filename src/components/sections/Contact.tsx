@@ -31,6 +31,12 @@ const LinkedinIcon = () => (
   </svg>
 )
 
+const TryHackMeIcon = () => (
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+    <path d="M3 5a1 1 0 0 1 1-1h2a1 1 0 0 1 0 2H5.5l3.5 3.5L12.5 6H11a1 1 0 1 1 0-2h4a1 1 0 0 1 1 1v4a1 1 0 1 1-2 0V7.5l-3.5 3.5 3.5 3.5V13a1 1 0 1 1 2 0v4a1 1 0 0 1-1 1h-4a1 1 0 1 1 0-2h1.5L9 12.5 5.5 16H7a1 1 0 1 1 0 2H4a1 1 0 0 1-1-1v-4a1 1 0 1 1 2 0v1.5l3.5-3.5L5 7.5V9a1 1 0 0 1-2 0V5Z"/>
+  </svg>
+)
+
 const TikTokIcon = () => (
   <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
     <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.88a8.28 8.28 0 0 0 4.84 1.55V7a4.85 4.85 0 0 1-1.07-.31z"/>
@@ -39,9 +45,10 @@ const TikTokIcon = () => (
 
 export function Contact() {
   const { contact, personal, floatingBadge } = portfolioConfig
-  const linkedinHandlers = useTouchDelay(personal.linkedin)
-  const githubHandlers   = useTouchDelay(contact.github)
-  const tiktokHandlers   = useTouchDelay(personal.tiktok)
+  const linkedinHandlers   = useTouchDelay(personal.linkedin)
+  const githubHandlers     = useTouchDelay(contact.github)
+  const tiktokHandlers     = useTouchDelay(personal.tiktok)
+  const tryhackmeHandlers  = useTouchDelay(personal.tryhackme)
 
   return (
     <section
@@ -98,6 +105,21 @@ export function Contact() {
               >
                 <GithubIcon />
                 GitHub
+              </a>
+            </div>
+
+            {/* TryHackMe */}
+            <div className="relative overflow-hidden rounded-lg">
+              <PixelCanvas colors={["#88cc14", "#4f8a10", "#b5e853"]} gap={5} speed={30} />
+              <a
+                href={personal.tryhackme}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="relative z-10 inline-flex items-center gap-2 px-5 py-2.5 border border-zinc-700 text-zinc-300 font-semibold text-sm hover:border-[#88cc14]/60 hover:text-[#b5e853] transition-colors duration-200 rounded-lg"
+                {...tryhackmeHandlers}
+              >
+                <TryHackMeIcon />
+                TryHackMe
               </a>
             </div>
 

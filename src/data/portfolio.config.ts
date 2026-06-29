@@ -7,6 +7,7 @@ export const portfolioConfig = {
     avatar: "/profile.jpg",
     linkedin: "https://www.linkedin.com/in/euan-smith-4295123a6/details/courses/",
     tiktok: "https://www.tiktok.com/@euan_smith?is_from_webapp=1&sender_device=pc",
+    tryhackme: "https://tryhackme.com/p/EuanSmith",
     credly: "https://www.credly.com/users/euan-smith.c95be961",
     github: "https://github.com/EuanSmith2",
     emailEncoded: "YnVzaW5lc3MuZXVhbkBob3RtYWlsLmNvbQ==", // btoa("business.euan@hotmail.com")

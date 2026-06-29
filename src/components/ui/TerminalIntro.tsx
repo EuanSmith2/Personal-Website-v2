@@ -135,7 +135,7 @@ function generateBootLines(h: SysInfo): BootLine[] {
 
 export function TerminalIntro({ onComplete }: TerminalIntroProps) {
   const prefersReducedMotion = useReducedMotion()
-  const [visible, setVisible]             = useState(true)
+  const [visible, setVisible]             = useState(false)
   const [bootLines, setBootLines]         = useState<BootLine[]>([])
   const [renderedLines, setRenderedLines] = useState<string[]>([])
   const dismissed = useRef(false)
@@ -143,6 +143,7 @@ export function TerminalIntro({ onComplete }: TerminalIntroProps) {
   useEffect(() => {
     if (prefersReducedMotion) { onComplete(); return }
     if (sessionStorage.getItem("intro_seen")) { onComplete(); return }
+    setVisible(true)
 
     let cancelled = false
     const timeouts: ReturnType<typeof setTimeout>[] = []

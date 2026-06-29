@@ -32,9 +32,8 @@ const LinkedinIcon = () => (
 )
 
 const TryHackMeIcon = () => (
-  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-    <path d="M3 5a1 1 0 0 1 1-1h2a1 1 0 0 1 0 2H5.5l3.5 3.5L12.5 6H11a1 1 0 1 1 0-2h4a1 1 0 0 1 1 1v4a1 1 0 1 1-2 0V7.5l-3.5 3.5 3.5 3.5V13a1 1 0 1 1 2 0v4a1 1 0 0 1-1 1h-4a1 1 0 1 1 0-2h1.5L9 12.5 5.5 16H7a1 1 0 1 1 0 2H4a1 1 0 0 1-1-1v-4a1 1 0 1 1 2 0v1.5l3.5-3.5L5 7.5V9a1 1 0 0 1-2 0V5Z"/>
-  </svg>
+  // eslint-disable-next-line @next/next/no-img-element
+  <img src="/logos/tryhackme.png" alt="" width={16} height={16} aria-hidden="true" style={{ objectFit: "contain" }} />
 )
 
 const TikTokIcon = () => (

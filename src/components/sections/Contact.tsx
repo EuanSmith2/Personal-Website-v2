@@ -33,7 +33,7 @@ const LinkedinIcon = () => (
 
 const TryHackMeIcon = () => (
   // eslint-disable-next-line @next/next/no-img-element
-  <img src="/logos/tryhackme.png" alt="" width={16} height={16} aria-hidden="true" style={{ objectFit: "contain" }} />
+  <img src="/logos/tryhackme.png" alt="" width={16} height={16} aria-hidden="true" className="grayscale group-hover:grayscale-0 transition-all duration-200" style={{ objectFit: "contain" }} />
 )
 
 const TikTokIcon = () => (
@@ -114,7 +114,7 @@ export function Contact() {
                 href={personal.tryhackme}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="relative z-10 inline-flex items-center gap-2 px-5 py-2.5 border border-zinc-700 text-zinc-300 font-semibold text-sm hover:border-[#88cc14]/60 hover:text-[#b5e853] transition-colors duration-200 rounded-lg"
+                className="group relative z-10 inline-flex items-center gap-2 px-5 py-2.5 border border-zinc-700 text-zinc-300 font-semibold text-sm hover:border-[#88cc14]/60 hover:text-[#b5e853] transition-colors duration-200 rounded-lg"
                 {...tryhackmeHandlers}
               >
                 <TryHackMeIcon />

@@ -93,7 +93,7 @@ export const portfolioConfig = {
     { year: "2020", label: "Hardware Era",     description: "Built custom PC during COVID, game modding, console repair, hardware modification",                         era: "mid"     as const },
     { year: "2021", label: "AI Experiments",   description: "First AI automation experiments, exploring generative tools and scripting",                                 era: "mid"     as const },
     { year: "2023", label: "Systems Depth",    description: "Linux home lab, virtualization, advanced AI projects, cybersecurity self-study",                            era: "mid"     as const },
-    { year: "2026", label: "EDMO & Research",   description: "Counter-disinformation research with EDMO Ireland; automation build live on EU infrastructure; research project shared at DCU MA level", era: "present" as const },
+    { year: "2026", label: "EDMO & Research",   description: "Counter-disinformation research with EDMO Ireland; built fact-check automation pipeline; research project shared at DCU MA level", era: "present" as const },
   ],
 
   edmo: {

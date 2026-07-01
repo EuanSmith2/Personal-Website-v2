@@ -104,9 +104,9 @@ export const portfolioConfig = {
       "EDMO operates under direct mandate from the European Commission as part of the European Democracy Action Plan. Bringing together fact-checkers, academics, and technology experts across all EU member states, it coordinates a network of independent researchers providing policy intelligence to the European Parliament and national governments on disinformation threats and information ecosystem integrity.",
     responsibilities: [
       "Conducted original counter-disinformation research: ran a controlled two-account social media experiment to empirically document algorithmic radicalisation, and interviewed EDMO Ireland's lead researcher on radical recruitment tactics, Digital Services Act enforcement gaps, and Big Tech's Dublin-based accountability failures. Presented findings to ~60 students.",
-      "Research project shared by EDMO Ireland with Dr Eileen Culloty and Dr Jane Suitor at DCU — being considered for adaptation into an MA journalism module in 2027. In Aidan O'Brien's words: \"if a leaving cert student can do this, MA students should absolutely have these skill sets.\"",
-      "Built a fortnightly automation pipeline as a freelance contributor: scrapes TheJournal.ie fact-checks, generates AI-assisted summaries, and publishes to edmohub.ie via the WordPress REST API — now live on EU infrastructure.",
-      "Applied to the TEPSA Media Literacy Incubator (ChangingTIDE/DCU, EU co-funded) — a programme connecting selected participants with MEPs and policy makers in Brussels.",
+      "Research project shared by EDMO Ireland with Dr Eileen Culloty and Dr Jane Suitor at DCU — being considered for adaptation into an MA journalism module in 2027, cited as an example of the practical research skills aspiring journalists and researchers should have.",
+      "Built a fortnightly automation pipeline as a freelance contributor: scrapes TheJournal.ie fact-checks, generates AI-assisted summaries, and publishes to edmohub.ie via the WordPress REST API.",
+      "Applied to the TEPSA Media Literacy Incubator (ChangingTIDE/DCU, EU co-funded) — a programme developing practical media literacy and counter-disinformation skills, with a Brussels intensive for a selected cohort of participants.",
     ],
   },
 

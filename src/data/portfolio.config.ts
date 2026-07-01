@@ -38,12 +38,12 @@ export const portfolioConfig = {
 
   currentActivity: [
     {
-      id: "edmo",
+      id: "freelance",
       icon: "globe",
-      title: "EDMO Internship",
-      summary: "Upcoming role with the European Digital Media Observatory",
+      title: "Building & Networking",
+      summary: "Client web work, Dublin tech scene, heading to TUD in September",
       detail:
-        "Starting a summer internship at the European Digital Media Observatory via Dublin City University, working on website content management, social media automation, and backend process tooling for one of the EU's primary anti-disinformation networks.",
+        "Doing client web work, attending Dublin tech meetups — AWS All Builders, Python Ireland, security events — and working on personal projects. Starting BSc Cybersecurity & Digital Forensics at TU Dublin in September.",
     },
     {
       id: "sap",
@@ -93,20 +93,20 @@ export const portfolioConfig = {
     { year: "2020", label: "Hardware Era",     description: "Built custom PC during COVID, game modding, console repair, hardware modification",                         era: "mid"     as const },
     { year: "2021", label: "AI Experiments",   description: "First AI automation experiments, exploring generative tools and scripting",                                 era: "mid"     as const },
     { year: "2023", label: "Systems Depth",    description: "Linux home lab, virtualization, advanced AI projects, cybersecurity self-study",                            era: "mid"     as const },
-    { year: "2025", label: "EDMO",             description: "Upcoming internship at European Digital Media Observatory via Dublin City University",                      era: "present" as const },
+    { year: "2026", label: "EDMO & Research",   description: "Counter-disinformation research with EDMO Ireland; automation build live on EU infrastructure; research project shared at DCU MA level", era: "present" as const },
   ],
 
   edmo: {
     organisation: "European Digital Media Observatory",
     affiliation: "Dublin City University · European Commission",
-    role: "Software Developer Intern · Summer of 2026",
+    role: "Researcher & Freelance Contributor · 2025–2026",
     mission:
-      "EDMO operates under direct mandate from the European Commission as part of the European Democracy Action Plan. Bringing together fact-checkers, academics, and technology experts across all EU member states, it coordinates a network of independent researchers providing policy intelligence to the European Parliament and national governments on disinformation threats and information ecosystem integrity, serving as the backbone of the EU's digital literacy and media accountability infrastructure.",
+      "EDMO operates under direct mandate from the European Commission as part of the European Democracy Action Plan. Bringing together fact-checkers, academics, and technology experts across all EU member states, it coordinates a network of independent researchers providing policy intelligence to the European Parliament and national governments on disinformation threats and information ecosystem integrity.",
     responsibilities: [
-      "Full-stack web development, API integrations, and bespoke internal tooling built to EU institutional and accessibility standards",
-      "Website content management, CMS workflows, and publication pipeline maintenance",
-      "Social media content scheduling and performance analytics",
-      "Backend process automation reducing manual overhead across the editorial team",
+      "Conducted original counter-disinformation research: ran a controlled two-account social media experiment to empirically document algorithmic radicalisation, and interviewed EDMO Ireland's lead researcher on radical recruitment tactics, Digital Services Act enforcement gaps, and Big Tech's Dublin-based accountability failures. Presented findings to ~60 students.",
+      "Research project shared by EDMO Ireland with Dr Eileen Culloty and Dr Jane Suitor at DCU — being considered for adaptation into an MA journalism module in 2027. In Aidan O'Brien's words: \"if a leaving cert student can do this, MA students should absolutely have these skill sets.\"",
+      "Built a fortnightly automation pipeline as a freelance contributor: scrapes TheJournal.ie fact-checks, generates AI-assisted summaries, and publishes to edmohub.ie via the WordPress REST API — now live on EU infrastructure.",
+      "Applied to the TEPSA Media Literacy Incubator (ChangingTIDE/DCU, EU co-funded) — a programme connecting selected participants with MEPs and policy makers in Brussels.",
     ],
   },
 

@@ -6,8 +6,7 @@ import { portfolioConfig } from "@/data/portfolio.config"
 
 export function CurrentActivity() {
   const { currentActivity } = portfolioConfig
-  // Filter out EDMO — it lives in the dedicated Experience section
-  const items = currentActivity.filter((item) => item.id !== "edmo")
+  const items = currentActivity
   const [openIds, setOpenIds] = useState<Set<string>>(new Set())
 
   const handleToggle = (id: string) => {

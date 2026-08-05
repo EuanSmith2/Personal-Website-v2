@@ -36,17 +36,10 @@ const TryHackMeIcon = () => (
   <img src="/logos/tryhackme.png" alt="" width={16} height={16} aria-hidden="true" className="grayscale group-hover:grayscale-0 transition-all duration-200" style={{ objectFit: "contain" }} />
 )
 
-const TikTokIcon = () => (
-  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-    <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.88a8.28 8.28 0 0 0 4.84 1.55V7a4.85 4.85 0 0 1-1.07-.31z"/>
-  </svg>
-)
-
 export function Contact() {
   const { contact, personal, floatingBadge } = portfolioConfig
   const linkedinHandlers   = useTouchDelay(personal.linkedin)
   const githubHandlers     = useTouchDelay(contact.github)
-  const tiktokHandlers     = useTouchDelay(personal.tiktok)
   const tryhackmeHandlers  = useTouchDelay(personal.tryhackme)
 
   return (
@@ -119,21 +112,6 @@ export function Contact() {
               >
                 <TryHackMeIcon />
                 TryHackMe
-              </a>
-            </div>
-
-            {/* TikTok */}
-            <div className="relative overflow-hidden rounded-lg">
-              <PixelCanvas colors={["#FF0050", "#00F2EA", "#ff4d82"]} gap={5} speed={30} />
-              <a
-                href={personal.tiktok}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="relative z-10 inline-flex items-center gap-2 px-5 py-2.5 border border-zinc-700 text-zinc-300 font-semibold text-sm hover:border-[#FF0050]/60 hover:text-[#ff4d82] transition-colors duration-200 rounded-lg"
-                {...tiktokHandlers}
-              >
-                <TikTokIcon />
-                TikTok
               </a>
             </div>
 

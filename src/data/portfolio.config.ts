@@ -2,11 +2,10 @@ export const portfolioConfig = {
   personal: {
     name: "EUAN SMITH",
     displayName: "Euan Smith",
-    title: "BSc Cybersecurity & Digital Forensics · Technological University Dublin",
+    title: "Aspiring BSc Cybersecurity & Digital Forensics · Technological University Dublin",
     tagline: "Building systems, analyzing complexity, securing infrastructure.",
     avatar: "/profile.jpg",
     linkedin: "https://www.linkedin.com/in/euan-smith-4295123a6/details/courses/",
-    tiktok: "https://www.tiktok.com/@euan_smith?is_from_webapp=1&sender_device=pc",
     tryhackme: "https://tryhackme.com/p/EuanSmith",
     credly: "https://www.credly.com/users/euan-smith.c95be961",
     github: "https://github.com/EuanSmith2",
@@ -29,7 +28,7 @@ export const portfolioConfig = {
 
   about: {
     narrative:
-      "I'm a cybersecurity student at Technological University Dublin with a background spanning AI automation, hardware systems, and digital forensics. I build things that work: automation tools that generate real returns, AI agents that explore emergent behaviour, and home lab infrastructure that mirrors production environments. I'm drawn to complex systems: understanding how they fail, how they can be exploited, and how to make them resilient. My thinking is neurodivergent by nature: I follow threads others overlook, sit with problems until patterns emerge, and rarely accept that's just how it works as an answer.",
+      "I'm an aspiring cybersecurity student at Technological University Dublin with a background spanning AI automation, hardware systems, and digital forensics. I build things that work: automation tools that generate real returns, AI agents that explore emergent behaviour, and home lab infrastructure that mirrors production environments. I'm drawn to complex systems: understanding how they fail, how they can be exploited, and how to make them resilient. My thinking is neurodivergent by nature: I follow threads others overlook, sit with problems until patterns emerge, and rarely accept that's just how it works as an answer.",
     tags: [
       "Cybersecurity", "Linux", "Python", "AI/ML", "Networking",
       "OSINT", "Hardware", "Virtualization", "Systems Admin", "Digital Forensics",
@@ -118,7 +117,7 @@ export const portfolioConfig = {
       tags: ["Computer Vision", "Python", "ROI Modeling", "Automation"],
       description:
         "Autonomous system that identifies resale opportunities across online marketplaces using computer vision and pricing intelligence. Incorporates ROI calculation, risk scoring, and human-in-the-loop decision gates. Has generated measurable financial returns.",
-      impact: "~€500 donated to Merchants Quay Ireland",
+      impact: "Donated to Merchants Quay Ireland",
       charityLogo: "/logos/mqi-logo.png",
       status: "Active",
     },
@@ -130,6 +129,16 @@ export const portfolioConfig = {
       description:
         "A controlled research environment running inside a fully sandboxed virtual machine. Autonomous agents interact with browser environments and simulated platforms to study emergent communication, coordination, and system-level behaviour dynamics. Designed as an experimental laboratory for AI interaction research.",
       status: "In Development",
+    },
+    {
+      id: "radical-map",
+      number: "03",
+      name: "RadicalMap",
+      tags: ["OSINT", "Python", "Network Analysis", "Counter-Disinformation"],
+      description:
+        "A research instrument for detecting, classifying, and mapping extremist content networks on short-form video platforms using only publicly accessible metadata. Flags coded language, numerical dog whistles, and hidden capitalisation sequences that evade automated moderation, then visualises the results as an interactive network graph. Grounded in DSA Article 40 researcher-access provisions and the GDPR Article 89 research exemption.",
+      status: "Active",
+      githubUrl: "https://github.com/EuanSmith2/radical-network-map",
     },
   ],
 

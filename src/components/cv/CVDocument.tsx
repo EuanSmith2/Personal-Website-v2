@@ -196,7 +196,7 @@ export function CVDocument() {
         <View style={s.section}>
           <Text style={s.sectionTitle}>Profile</Text>
           <Text style={s.para}>
-            {"Cybersecurity and Digital Forensics student at Technological University Dublin, with practical experience building automation systems, security infrastructure, and web applications. Currently interning at the European Digital Media Observatory — part of the EU anti-disinformation network — where I build internal tooling, API integrations, and backend automation to EU institutional standards. Outside of work, I built a Python-based computer vision system that autonomously identifies resale opportunities across online marketplaces; it has generated real financial returns, with proceeds donated to Merchants Quay Ireland. I run a home lab with SIEM infrastructure, honeypots, and network segmentation — the kind of hands-on environment where you learn how systems actually break. I approach security from first principles: attacker mindset, failure modes, and building things that hold up under pressure."}
+            {"Aspiring Cybersecurity and Digital Forensics student at Technological University Dublin, with practical experience building automation systems, security infrastructure, and web applications. Currently interning at the European Digital Media Observatory — part of the EU anti-disinformation network — where I build internal tooling, API integrations, and backend automation to EU institutional standards. Outside of work, I built a Python-based computer vision system that autonomously identifies resale opportunities across online marketplaces; it has generated real financial returns, with proceeds donated to Merchants Quay Ireland. I run a home lab with SIEM infrastructure, honeypots, and network segmentation — the kind of hands-on environment where you learn how systems actually break. I approach security from first principles: attacker mindset, failure modes, and building things that hold up under pressure."}
           </Text>
         </View>
 
@@ -206,7 +206,7 @@ export function CVDocument() {
 
           <View style={s.entry}>
             <Text style={s.entryTitle}>BSc Cybersecurity &amp; Digital Forensics</Text>
-            <Text style={s.entryNote}>Technological University Dublin</Text>
+            <Text style={s.entryNote}>Technological University Dublin · Starting September 2026</Text>
             <Text style={s.entryNote}>Modules: network security, digital forensics, ethical hacking, cryptography, security operations</Text>
           </View>
 
@@ -257,7 +257,7 @@ export function CVDocument() {
             <View style={s.list}>
               <Bullet text="Python and computer vision tool that autonomously identifies profitable resale opportunities online" />
               <Bullet text="Includes ROI calculation, risk scoring, and human-in-the-loop decision gates" />
-              <Bullet text="Has generated real financial returns — ~€500 donated to Merchants Quay Ireland" />
+              <Bullet text="Has generated real financial returns — proceeds donated to Merchants Quay Ireland" />
             </View>
           </View>
 

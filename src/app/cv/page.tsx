@@ -191,7 +191,7 @@ export default function CVPage() {
         <div className="cv-section">
           <div className="cv-section-title">Profile</div>
           <p className="cv-para">
-            Cybersecurity student at Technological University Dublin, currently interning at the European Digital Media
+            Aspiring cybersecurity student at Technological University Dublin, currently interning at the European Digital Media
             Observatory. I build practical tools — a computer vision system that identifies marketplace resale
             opportunities and has generated real financial returns, a home lab running SIEM stacks and honeypot setups,
             and custom websites for paying clients. I&rsquo;m interested in how systems fail, how attackers think, and how to
@@ -205,7 +205,7 @@ export default function CVPage() {
 
           <div className="cv-entry">
             <div className="cv-entry-title">BSc Cybersecurity &amp; Digital Forensics</div>
-            <div className="cv-entry-sub">Technological University Dublin</div>
+            <div className="cv-entry-sub">Technological University Dublin · Starting September 2026</div>
             <div className="cv-entry-note">Modules: network security, digital forensics, ethical hacking, cryptography, security operations</div>
           </div>
 

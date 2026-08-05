@@ -17,7 +17,7 @@ export function About() {
           <div className="grid lg:grid-cols-[3fr_2fr] gap-12 lg:gap-16 items-start">
             <div className="border-l-2 border-cyan-400/40 pl-6">
               <p className="text-zinc-300 leading-relaxed text-base lg:text-lg">
-                {"I'm a "}
+                {"I'm an aspiring "}
                 <strong className="text-zinc-100">cybersecurity student</strong>
                 {" at Technological University Dublin with a background spanning "}
                 <strong className="text-zinc-100">AI automation, hardware systems, and digital forensics</strong>

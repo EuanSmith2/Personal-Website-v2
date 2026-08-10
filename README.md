@@ -1,36 +1,28 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# euansmith.net
 
-## Getting Started
+My portfolio site. Cybersecurity student, occasional web dev, apparently also a "digital analyst" depending on which rotating title you catch it on.
 
-First, run the development server:
+![Screenshot](docs/readme-screenshot.jpg)
+
+Live at [euansmith.net](https://euansmith.net) — opens with a fake hacking sequence before it lets you in, because a boring hero section felt like a wasted opportunity.
+
+## Stack
+
+Next.js 15, Tailwind, Framer Motion, GSAP, and `use-scramble` for the terminal-glitch text effects. No CMS — everything lives in `src/data/portfolio.config.ts`, so updating a cert or a project is a one-file edit, not an archaeology dig.
+
+## Running it
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open `localhost:3000`. Content changes go in `portfolio.config.ts`; everything else is standard Next.js App Router.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## What's actually on it
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+About, a timeline, EDMO research work, projects (RadicalMap, a marketplace intelligence tool, an AI sandbox), certs, and a CV page that generates a PDF on the fly instead of serving a stale file. Email's obfuscated so bots don't harvest it off the page.
 
-## Learn More
+## License
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+CC0 — do what you want with it.

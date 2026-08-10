@@ -19,13 +19,19 @@ npm install
 npm run dev
 ```
 
-Then open `http://localhost:3000`. No env vars, no API keys, no external services to sign up for — it's Next.js (App Router, v15) with Tailwind for styling, Framer Motion and GSAP doing the animation work, and a small library called `use-scramble` for the glitch effect on the name and the rotating titles.
+Then open `http://localhost:3000`.
 
-Nothing's wired to a CMS or a database. Every bit of content — timeline, projects, certs, the about text — lives in one file: `src/data/portfolio.config.ts`. Swapping a project or adding a cert means editing that file and saving. No Sanity, no Contentful, no migrations.
+- No env vars, no API keys, no external services required
+- Next.js 15 (App Router), Tailwind, Framer Motion + GSAP for animation, `use-scramble` for the glitch text
+- No CMS, no database — all content lives in `src/data/portfolio.config.ts`
 
 ## What's on it
 
-About, a timeline, the EDMO research work, three projects (RadicalMap, a marketplace intelligence system, an AI sandbox), certs, and a CV page that renders a PDF live instead of serving a static one that goes stale the next time something changes. Email on the contact section is obfuscated so it doesn't get scraped.
+- About, timeline, EDMO research work
+- Three projects: RadicalMap, a marketplace intelligence system, an AI sandbox
+- Certs
+- CV page — generates the PDF live, not a static file
+- Contact email obfuscated against scraping
 
 ## License
 

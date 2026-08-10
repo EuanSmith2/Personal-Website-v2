@@ -12,7 +12,14 @@ Opens with a fake terminal breach sequence before the actual page loads. Press a
 
 ## Running it locally
 
-Clone it, `npm install`, `npm run dev`, `localhost:3000`. It's Next.js (App Router, v15) with Tailwind for styling, Framer Motion and GSAP doing the animation work, and a small library called `use-scramble` for the glitch effect on the name and the rotating titles.
+```bash
+git clone https://github.com/EuanSmith2/Personal-Website-v2.git
+cd Personal-Website-v2
+npm install
+npm run dev
+```
+
+Then open `http://localhost:3000`. No env vars, no API keys, no external services to sign up for — it's Next.js (App Router, v15) with Tailwind for styling, Framer Motion and GSAP doing the animation work, and a small library called `use-scramble` for the glitch effect on the name and the rotating titles.
 
 Nothing's wired to a CMS or a database. Every bit of content — timeline, projects, certs, the about text — lives in one file: `src/data/portfolio.config.ts`. Swapping a project or adding a cert means editing that file and saving. No Sanity, no Contentful, no migrations.
 

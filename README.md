@@ -6,9 +6,9 @@
 
 </div>
 
-My portfolio site. Cybersecurity student, occasional web dev, apparently also a "digital analyst" depending on which rotating title you catch it on.
+My portfolio site. Cybersecurity student, occasional web dev, wannabe Mr. Robot.
 
-Opens with a fake terminal breach sequence before the actual page loads. Press any key to skip it if you're not in the mood.
+The boot sequence isn't canned — it reads your actual OS, CPU cores, screen res, timezone, and pings the server to clock your real connection speed. Different terminal for every visitor.
 
 ## What's on it
 

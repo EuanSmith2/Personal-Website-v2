@@ -48,7 +48,14 @@ const TextScramble = forwardRef<TextScrambleHandle, TextScrambleProps>(
       step: 1,
       range: [65, 125],
       scramble: 2,
-      playOnMount: autoStart && !useIntersectionObserver,
+      // use-scramble's `playOnMount` is inverted from what the name suggests: true
+      // SUPPRESSES the automatic play-on-first-text, false lets it fire immediately
+      // on mount. This component's own `autoStart` prop means the opposite (true =
+      // yes, play automatically). Get this backwards and text starts scrambling on
+      // mount regardless of `autoStart={false}`, then whatever manually calls
+      // `replay()` later collides with that still-running mount animation and the
+      // two fights never resolve to the final string.
+      playOnMount: !autoStart || useIntersectionObserver,
       onAnimationEnd: () => {
         hasCompletedOnce.current = true
         onComplete?.()

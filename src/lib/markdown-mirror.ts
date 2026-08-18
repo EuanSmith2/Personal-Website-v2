@@ -100,17 +100,100 @@ export function generatePortfolioMarkdown(): string {
   return lines.join("\n")
 }
 
+const FAQ: { q: string; a: string }[] = [
+  {
+    q: "Who is Euan Smith?",
+    a: "Euan Smith is a cybersecurity student, freelance web developer, and researcher based in Dublin, Ireland. He is entering the BSc in Cybersecurity & Digital Forensics at Technological University Dublin (TU Dublin) in September 2026, and works across three areas: hand-coded client websites for small businesses under the Forged Websites brand, AI-driven automation tooling, and counter-disinformation research with EDMO Ireland (the European Digital Media Observatory, operating under a European Commission mandate).",
+  },
+  {
+    q: "What does Euan Smith do professionally?",
+    a: "He runs Forged Websites, a Dublin-based service building custom, hand-coded websites for small and medium businesses — no templates, no AI-generated code, positioned deliberately against both. Alongside client work he builds AI/ML automation systems (including a computer-vision marketplace-intelligence tool and a WordPress publishing pipeline for EDMO Ireland) and studies cybersecurity, ethical hacking, and digital forensics.",
+  },
+  {
+    q: "What is Euan Smith's educational background?",
+    a: "He starts a BSc in Cybersecurity & Digital Forensics at Technological University Dublin (TU Dublin) in September 2026 — a programme covering network security, digital forensics, ethical hacking, cryptography, and security operations, subjects he has been self-studying for several years beforehand. He supplements formal study with independent certifications (SAP, ISC2, Microsoft, CompTIA, Google) and hands-on platforms like TryHackMe and Hack The Box.",
+  },
+  {
+    q: "What certifications does Euan Smith have?",
+    a: "Completed: three SAP certifications (Learning Journey in Security and Compliance, Business Integrity Screening Fundamentals, System Security Foundations), ISC2 Candidate Membership, and Microsoft's AI Skills Fest 2026. In progress: the Google Cybersecurity Certificate, Let's Defend's SOC Analyst path, a GRC Mastery programme, and CompTIA Security+, alongside active practice on Hack The Box. Full list on his Credly profile.",
+  },
+  {
+    q: "What projects has Euan Smith built?",
+    a: "The Marketplace Intelligence System — an autonomous computer-vision and pricing-intelligence tool that finds resale opportunities across online marketplaces, with ROI scoring and human-in-the-loop checks; it has generated measurable financial returns, some donated to Merchants Quay Ireland. RadicalMap — an open-source OSINT tool that detects and visualises extremist content networks on short-form video platforms from public metadata, built under DSA Article 40 researcher-access and GDPR Article 89 research-exemption provisions. A Multi-Agent AI Sandbox — a sandboxed VM environment for studying emergent behaviour in autonomous AI agents.",
+  },
+  {
+    q: "Does Euan Smith do freelance web development?",
+    a: "Yes — he builds custom, hand-coded websites for Dublin-area small and medium businesses under the Forged Websites brand. His stack is Next.js, Tailwind CSS, Framer Motion and GSAP on the front end, with Python and Linux for backend and automation work.",
+  },
+  {
+    q: "What is Euan Smith's connection to EDMO (European Digital Media Observatory)?",
+    a: "Since 2025 he has worked as a researcher and freelance contributor for EDMO Ireland, which operates under a direct European Commission mandate as part of the European Democracy Action Plan. He ran a controlled two-account social-media experiment documenting algorithmic radicalisation and interviewed EDMO Ireland's lead researcher on recruitment tactics and Digital Services Act enforcement gaps, presenting findings to roughly 60 students; the work was shared by EDMO Ireland with Dublin City University academics and is being considered for a 2027 MA journalism module. He also built a fortnightly automation pipeline that scrapes fact-checks and publishes AI-assisted summaries via the WordPress REST API.",
+  },
+  {
+    q: "Where is Euan Smith based, and is he open to work?",
+    a: "He is based in Dublin, Ireland. He is interested in opportunities at the intersection of security, automation, and complex systems — technical internships, collaborative projects, or freelance web work — and is reachable via LinkedIn or GitHub.",
+  },
+  {
+    q: "What are Euan Smith's core technical skills?",
+    a: "Cybersecurity, digital forensics, ethical hacking, and OSINT; Python and Linux systems administration; AI/ML automation and agentic system design; networking and virtualization/home-lab infrastructure; and web development (Next.js, Tailwind, Python-based automation). He runs a home lab with a SIEM stack, network segmentation practice, and honeypot experiments, and is active on TryHackMe and Hack The Box.",
+  },
+  {
+    q: "Where can I find Euan Smith online?",
+    a: `GitHub: ${"{github}"} · LinkedIn: ${"{linkedin}"} · TryHackMe: ${"{tryhackme}"} · Credly: ${"{credly}"} · Personal site: ${SITE_URL} · CV: ${"{cv}"}`,
+  },
+]
+
+export function generateFaqMarkdown(): string {
+  const { personal } = portfolioConfig
+  const lines: string[] = []
+
+  lines.push(`# ${personal.displayName} — Frequently Asked Questions`)
+  lines.push("")
+  lines.push(
+    `Also searched as: Euan Smith Dublin, Euan Smith cybersecurity, Euan Smith TU Dublin, Euan Smith Forged Websites, Euan Smith EDMO, Euan Smith GitHub.`,
+  )
+  lines.push("")
+
+  for (const { q, a } of FAQ) {
+    const answer = a
+      .replace("{github}", personal.github)
+      .replace("{linkedin}", personal.linkedin)
+      .replace("{tryhackme}", personal.tryhackme)
+      .replace("{credly}", personal.credly)
+      .replace("{cv}", `${SITE_URL}${personal.cv}`)
+    lines.push(`## ${q}`)
+    lines.push("")
+    lines.push(answer)
+    lines.push("")
+  }
+
+  return lines.join("\n")
+}
+
 export function generateLlmsTxt(): string {
   const { personal, projects, edmo } = portfolioConfig
+
+  const faqBlock = FAQ.map(({ q, a }) => {
+    const answer = a
+      .replace("{github}", personal.github)
+      .replace("{linkedin}", personal.linkedin)
+      .replace("{tryhackme}", personal.tryhackme)
+      .replace("{credly}", personal.credly)
+      .replace("{cv}", `${SITE_URL}${personal.cv}`)
+    return `**${q}**\n${answer}`
+  }).join("\n\n")
 
   return `# ${personal.displayName}
 
 > ${personal.title}. ${personal.tagline}
 
-${personal.displayName} is a cybersecurity student based in Dublin, Ireland, starting a BSc in Cybersecurity & Digital Forensics at Technological University Dublin in September 2026. He works on client web development, AI/automation projects, and counter-disinformation research with ${edmo.organisation} (${edmo.affiliation}).
+${personal.displayName} is a cybersecurity student based in Dublin, Ireland, starting a BSc in Cybersecurity & Digital Forensics at Technological University Dublin in September 2026. He works on client web development under the Forged Websites brand, AI/automation projects, and counter-disinformation research with ${edmo.organisation} (${edmo.affiliation}).
+
+Also searched as: Euan Smith Dublin, Euan Smith cybersecurity, Euan Smith TU Dublin, Euan Smith Forged Websites, Euan Smith EDMO, Euan Smith GitHub.
 
 ## Profile
 - [Full profile](${SITE_URL}/index.md): complete background, projects, certifications, and timeline in plain markdown
+- [FAQ](${SITE_URL}/faq.md): detailed answers to common questions about Euan Smith
 - [CV](${SITE_URL}${personal.cv}): downloadable CV/resume
 - [GitHub](${personal.github})
 - [LinkedIn](${personal.linkedin})
@@ -122,5 +205,9 @@ ${projects.map((p) => `- ${p.name}${"githubUrl" in p && p.githubUrl ? ` (${p.git
 
 ## Research
 - ${edmo.organisation} — ${edmo.role}, affiliated with ${edmo.affiliation}
+
+## Frequently Asked Questions
+
+${faqBlock}
 `
 }

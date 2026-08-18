@@ -43,9 +43,48 @@ export const metadata: Metadata = {
   },
 }
 
+const personJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: personal.displayName,
+  alternateName: personal.name,
+  url: "https://euansmith.net",
+  jobTitle: "Cybersecurity Student & Web Developer",
+  description: personal.tagline,
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Dublin",
+    addressCountry: "IE",
+  },
+  alumniOf: {
+    "@type": "CollegeOrUniversity",
+    name: "Technological University Dublin",
+  },
+  worksFor: {
+    "@type": "Organization",
+    name: "Forged Websites",
+  },
+  knowsAbout: [
+    "Cybersecurity",
+    "Digital Forensics",
+    "Ethical Hacking",
+    "OSINT",
+    "Python",
+    "AI/ML Automation",
+    "Web Development",
+  ],
+  sameAs: [personal.github, personal.linkedin, personal.tryhackme, personal.credly],
+}
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${ibmPlexSans.variable} ${jetbrainsMono.variable}`}>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+        />
+      </head>
       <body className="font-sans antialiased" style={{ background: "var(--bg-base)", color: "var(--text-primary)" }}>
         {children}
         <Analytics />

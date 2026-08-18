@@ -100,6 +100,77 @@ export function generatePortfolioMarkdown(): string {
   return lines.join("\n")
 }
 
+export function generateEdmoMarkdown(): string {
+  const { personal, edmo } = portfolioConfig
+  const lines: string[] = []
+
+  lines.push(`# ${personal.displayName} — EDMO Research`)
+  lines.push("")
+  lines.push(
+    `${personal.displayName}'s counter-disinformation research work with ${edmo.organisation} (EDMO), ${edmo.affiliation}.`,
+  )
+  lines.push("")
+  lines.push(`## Role`)
+  lines.push("")
+  lines.push(`${edmo.role} at ${edmo.organisation}.`)
+  lines.push("")
+  lines.push(`## What EDMO Is`)
+  lines.push("")
+  lines.push(edmo.mission)
+  lines.push("")
+  lines.push(`## ${personal.displayName}'s Contributions`)
+  lines.push("")
+  for (const r of edmo.responsibilities) {
+    lines.push(`- ${r}`)
+  }
+  lines.push("")
+  lines.push(`## Links`)
+  lines.push("")
+  lines.push(`- [Full profile](${SITE_URL}/index.md)`)
+  lines.push(`- [GitHub](${personal.github})`)
+  lines.push(`- [LinkedIn](${personal.linkedin})`)
+  lines.push("")
+
+  return lines.join("\n")
+}
+
+export function generateProjectMarkdown(projectId: string): string | null {
+  const { personal, projects } = portfolioConfig
+  const p = projects.find((proj) => proj.id === projectId)
+  if (!p) return null
+
+  const lines: string[] = []
+  lines.push(`# ${p.name} — by ${personal.displayName}`)
+  lines.push("")
+  lines.push(`A project built by ${personal.displayName}, ${personal.title}.`)
+  lines.push("")
+  lines.push(`Tags: ${p.tags.join(", ")}`)
+  lines.push("")
+  lines.push(p.description)
+  lines.push("")
+  if ("impact" in p && p.impact) {
+    lines.push(`Impact: ${p.impact}`)
+    lines.push("")
+  }
+  lines.push(`Status: ${p.status}`)
+  lines.push("")
+  if ("githubUrl" in p && p.githubUrl) {
+    lines.push(`GitHub: ${p.githubUrl}`)
+    lines.push("")
+  }
+  lines.push(`## About ${personal.displayName}`)
+  lines.push("")
+  lines.push(personal.tagline)
+  lines.push("")
+  lines.push(`- [Full profile](${SITE_URL}/index.md)`)
+  lines.push(`- [FAQ](${SITE_URL}/faq.md)`)
+  lines.push(`- [GitHub](${personal.github})`)
+  lines.push(`- [LinkedIn](${personal.linkedin})`)
+  lines.push("")
+
+  return lines.join("\n")
+}
+
 const FAQ: { q: string; a: string }[] = [
   {
     q: "Who is Euan Smith?",
@@ -187,13 +258,14 @@ export function generateLlmsTxt(): string {
 
 > ${personal.title}. ${personal.tagline}
 
-${personal.displayName} is a cybersecurity student based in Dublin, Ireland, starting a BSc in Cybersecurity & Digital Forensics at Technological University Dublin in September 2026. He works on client web development under the Forged Websites brand, AI/automation projects, and counter-disinformation research with ${edmo.organisation} (${edmo.affiliation}).
+Dublin, Ireland. Cybersecurity student (TU Dublin, BSc Cybersecurity & Digital Forensics, Sept 2026) · Founder, Forged Websites (custom hand-coded client sites) · Researcher, ${edmo.organisation} (${edmo.affiliation}).
 
 Also searched as: Euan Smith Dublin, Euan Smith cybersecurity, Euan Smith TU Dublin, Euan Smith Forged Websites, Euan Smith EDMO, Euan Smith GitHub.
 
 ## Profile
 - [Full profile](${SITE_URL}/index.md): complete background, projects, certifications, and timeline in plain markdown
 - [FAQ](${SITE_URL}/faq.md): detailed answers to common questions about Euan Smith
+- [EDMO research](${SITE_URL}/edmo.md): counter-disinformation research work
 - [CV](${SITE_URL}${personal.cv}): downloadable CV/resume
 - [GitHub](${personal.github})
 - [LinkedIn](${personal.linkedin})
@@ -201,7 +273,7 @@ Also searched as: Euan Smith Dublin, Euan Smith cybersecurity, Euan Smith TU Dub
 - [Credly (certifications)](${personal.credly})
 
 ## Projects
-${projects.map((p) => `- ${p.name}${"githubUrl" in p && p.githubUrl ? ` (${p.githubUrl})` : ""}: ${p.description}`).join("\n")}
+${projects.map((p) => `- [${p.name}](${SITE_URL}/projects/${p.id}.md)${"githubUrl" in p && p.githubUrl ? ` ([code](${p.githubUrl}))` : ""}: ${p.description}`).join("\n")}
 
 ## Research
 - ${edmo.organisation} — ${edmo.role}, affiliated with ${edmo.affiliation}

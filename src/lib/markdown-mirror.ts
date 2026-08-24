@@ -92,6 +92,7 @@ export function generatePortfolioMarkdown(): string {
   lines.push("")
   lines.push(`GitHub: ${personal.github}`)
   lines.push(`LinkedIn: ${personal.linkedin}`)
+  lines.push(`ORCID: ${personal.orcid}`)
   lines.push(`TryHackMe: ${personal.tryhackme}`)
   lines.push(`Credly: ${personal.credly}`)
   lines.push(`CV: ${SITE_URL}${personal.cv}`)
@@ -210,7 +211,7 @@ const FAQ: { q: string; a: string }[] = [
   },
   {
     q: "Where can I find Euan Smith online?",
-    a: `GitHub: ${"{github}"} · LinkedIn: ${"{linkedin}"} · TryHackMe: ${"{tryhackme}"} · Credly: ${"{credly}"} · Personal site: ${SITE_URL} · CV: ${"{cv}"}`,
+    a: `GitHub: ${"{github}"} · LinkedIn: ${"{linkedin}"} · ORCID: ${"{orcid}"} · TryHackMe: ${"{tryhackme}"} · Credly: ${"{credly}"} · Personal site: ${SITE_URL} · CV: ${"{cv}"}`,
   },
 ]
 
@@ -229,6 +230,7 @@ export function generateFaqMarkdown(): string {
     const answer = a
       .replace("{github}", personal.github)
       .replace("{linkedin}", personal.linkedin)
+      .replace("{orcid}", personal.orcid)
       .replace("{tryhackme}", personal.tryhackme)
       .replace("{credly}", personal.credly)
       .replace("{cv}", `${SITE_URL}${personal.cv}`)
@@ -248,6 +250,7 @@ export function generateLlmsTxt(): string {
     const answer = a
       .replace("{github}", personal.github)
       .replace("{linkedin}", personal.linkedin)
+      .replace("{orcid}", personal.orcid)
       .replace("{tryhackme}", personal.tryhackme)
       .replace("{credly}", personal.credly)
       .replace("{cv}", `${SITE_URL}${personal.cv}`)
@@ -269,6 +272,7 @@ Also searched as: Euan Smith Dublin, Euan Smith cybersecurity, Euan Smith TU Dub
 - [CV](${SITE_URL}${personal.cv}): downloadable CV/resume
 - [GitHub](${personal.github})
 - [LinkedIn](${personal.linkedin})
+- [ORCID](${personal.orcid})
 - [TryHackMe](${personal.tryhackme})
 - [Credly (certifications)](${personal.credly})
 

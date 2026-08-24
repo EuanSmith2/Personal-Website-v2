@@ -73,7 +73,7 @@ const personJsonLd = {
     "AI/ML Automation",
     "Web Development",
   ],
-  sameAs: [personal.github, personal.linkedin, personal.tryhackme, personal.credly],
+  sameAs: [personal.github, personal.linkedin, personal.tryhackme, personal.credly, personal.orcid],
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

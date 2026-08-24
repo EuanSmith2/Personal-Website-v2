@@ -9,6 +9,7 @@ export const portfolioConfig = {
     tryhackme: "https://tryhackme.com/p/EuanSmith",
     credly: "https://www.credly.com/users/euan-smith.c95be961",
     github: "https://github.com/EuanSmith2",
+    orcid: "https://orcid.org/0009-0002-3699-9357",
     emailEncoded: "YnVzaW5lc3MuZXVhbkBob3RtYWlsLmNvbQ==", // btoa("business.euan@hotmail.com")
     cv: "/api/cv",
   },

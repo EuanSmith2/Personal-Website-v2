@@ -189,6 +189,7 @@ export function CVDocument() {
             <Link src="mailto:business.euan@hotmail.com" style={s.contactLink}>business.euan@hotmail.com</Link>
             <Link src="https://github.com/EuanSmith2" style={s.contactLink}>github.com/EuanSmith2</Link>
             <Link src="https://www.linkedin.com/in/euan-smith-4295123a6/" style={s.contactLink}>linkedin.com/in/euan-smith</Link>
+            <Link src="https://orcid.org/0009-0002-3699-9357" style={s.contactLink}>orcid.org/0009-0002-3699-9357</Link>
           </View>
         </View>
 

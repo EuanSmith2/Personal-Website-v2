@@ -138,7 +138,7 @@ export const portfolioConfig = {
       description:
         "A research instrument for detecting, classifying, and mapping extremist content networks on short-form video platforms using only publicly accessible metadata. Flags coded language, numerical dog whistles, and hidden capitalisation sequences that evade automated moderation, then visualises the results as an interactive network graph. Grounded in DSA Article 40 researcher-access provisions and the GDPR Article 89 research exemption.",
       status: "Active",
-      githubUrl: "https://github.com/EuanSmith2/radical-network-map",
+      githubUrl: "https://github.com/EuanSmith2/radicalmap",
     },
   ],
 

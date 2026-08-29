@@ -2,8 +2,17 @@ export const portfolioConfig = {
   personal: {
     name: "EUAN SMITH",
     displayName: "Euan Smith",
-    title: "Aspiring BSc Cybersecurity & Digital Forensics · Technological University Dublin",
+    title: "BSc Cybersecurity & Digital Forensics · Technological University Dublin",
     tagline: "Building systems, analyzing complexity, securing infrastructure.",
+    // Single source of truth for the role strings used across <title>, the
+    // hero, the meta description, and the Person structured data.
+    roles: {
+      jobTitle: "Cybersecurity & Digital Forensics Student",
+      h1Descriptor:
+        "Euan Smith — cybersecurity and digital forensics student based in Dublin, Ireland",
+      metaDescription:
+        "Euan Smith — cybersecurity and digital forensics student at TU Dublin. Counter-disinformation research with EDMO Ireland, a Linux home lab, and Python security tooling.",
+    },
     avatar: "/profile.jpg",
     linkedin: "https://www.linkedin.com/in/euan-smith-4295123a6/details/courses/",
     tryhackme: "https://tryhackme.com/p/EuanSmith",
@@ -15,21 +24,23 @@ export const portfolioConfig = {
   },
 
   rotatingTitles: [
-    { text: "Ethical Hacker in Training",  funny: false },
-    { text: "InfoSec Student",             funny: false },
-    { text: "Developing Software",         funny: false },
-    { text: "Wannabe Mr. Robot",           funny: true  },
-    { text: "Aspiring Digital Analyst",    funny: false },
-    { text: "Building Weird AI Things",    funny: false },
-    { text: "D&D Nerd (Gimbo the Wizard)", funny: true  },
-    { text: "Uploading GitHub Repos",      funny: false },
-    { text: "Sometimes Breaking Things",   funny: true  },
-    { text: "Publishing Websites",         funny: false },
+    { text: "Ethical Hacker in Training",       funny: false },
+    { text: "InfoSec Student",                  funny: false },
+    { text: "Counter-Disinformation Researcher", funny: false },
+    { text: "Wannabe Mr. Robot",                funny: true  },
+    { text: "Aspiring Digital Analyst",         funny: false },
+    { text: "EU Changemaker (Team Ireland)",    funny: false },
+    { text: "D&D Nerd (Gimbo the Wizard)",      funny: true  },
+    { text: "Uploading GitHub Repos",           funny: false },
+    { text: "Brussels-Bound This October",      funny: true  },
+    { text: "Building Weird AI Things",         funny: false },
+    { text: "Sometimes Breaking Things",        funny: true  },
+    { text: "Publishing Websites",              funny: false },
   ],
 
   about: {
     narrative:
-      "I'm an aspiring cybersecurity student at Technological University Dublin with a background spanning AI automation, hardware systems, and digital forensics. I build things that work: automation tools that generate real returns, AI agents that explore emergent behaviour, and home lab infrastructure that mirrors production environments. I'm drawn to complex systems: understanding how they fail, how they can be exploited, and how to make them resilient. My thinking is neurodivergent by nature: I follow threads others overlook, sit with problems until patterns emerge, and rarely accept that's just how it works as an answer.",
+      "I'm a cybersecurity student at Technological University Dublin with a background spanning counter-disinformation research, AI automation, and hardware systems. I build things that work: a weekly fact-check pipeline for EDMO Ireland, automation tools that generate real returns, and home lab infrastructure that mirrors production environments. I'm drawn to complex systems: understanding how they fail, how they can be exploited, and how to make them resilient. My thinking is neurodivergent by nature: I follow threads others overlook, sit with problems until patterns emerge, and rarely accept that's just how it works as an answer.",
     tags: [
       "Cybersecurity", "Linux", "Python", "AI/ML", "Networking",
       "OSINT", "Hardware", "Virtualization", "Systems Admin", "Digital Forensics",
@@ -105,15 +116,35 @@ export const portfolioConfig = {
     responsibilities: [
       "Conducted original counter-disinformation research: ran a controlled two-account social media experiment to empirically document algorithmic radicalisation, and interviewed EDMO Ireland's lead researcher on radical recruitment tactics, Digital Services Act enforcement gaps, and Big Tech's Dublin-based accountability failures. Presented findings to ~60 students.",
       "Research project shared by EDMO Ireland with Dr Eileen Culloty and Dr Jane Suitor at DCU — being considered for adaptation into an MA journalism module in 2027, cited as an example of the practical research skills aspiring journalists and researchers should have.",
-      "Built a fortnightly automation pipeline as a freelance contributor: scrapes TheJournal.ie fact-checks, generates AI-assisted summaries, and publishes to edmohub.ie via the WordPress REST API.",
-      "Applied to the TEPSA Media Literacy Incubator (ChangingTIDE/DCU, EU co-funded) — a programme developing practical media literacy and counter-disinformation skills, with a Brussels intensive for a selected cohort of participants.",
+      "Built a weekly fact-check round-up pipeline as a freelance contributor: pulls TheJournal.ie fact-checks, formats them to EDMO's house style, and posts a draft to edmohub.ie via the WordPress REST API for an editor to review and publish.",
+      "Selected as one of four people representing Ireland in the ChangingTIDE Changemakers programme — an EU-funded (CERV) counter-disinformation initiative run by the Trans European Policy Studies Association in Brussels, with DCU's FuJo Institute as the Irish partner and mentoring from Young European Leadership. The cohort co-creates campaigns and brings them into dialogue with policymakers at national and EU level, starting with a Brussels intensive in October 2026.",
     ],
   },
 
   projects: [
     {
-      id: "marketplace",
+      id: "nzt-48",
       number: "01",
+      name: "NZT-48",
+      tags: ["Python", "AI Agents", "Self-Hosted", "Automation"],
+      description:
+        "A self-hosted personal AI system built on Claude Code: a Telegram interface, Obsidian-backed memory, and a set of background agents and monitors that handle briefings, research, and scheduling. Runs at zero marginal cost with no cloud dependency. My most-starred repository.",
+      status: "Active",
+      githubUrl: "https://github.com/EuanSmith2/NZT-48",
+    },
+    {
+      id: "radical-map",
+      number: "02",
+      name: "RadicalMap",
+      tags: ["OSINT", "Python", "Network Analysis", "Counter-Disinformation"],
+      description:
+        "A research instrument for detecting, classifying, and mapping extremist content networks on short-form video platforms using only publicly accessible metadata. Flags coded language, numerical dog whistles, and hidden capitalisation sequences that evade automated moderation, then visualises the results as an interactive network graph. Grounded in DSA Article 40 researcher-access provisions and the GDPR Article 89 research exemption.",
+      status: "Active",
+      githubUrl: "https://github.com/EuanSmith2/radicalmap",
+    },
+    {
+      id: "marketplace",
+      number: "03",
       name: "Marketplace Intelligence System",
       tags: ["Computer Vision", "Python", "ROI Modeling", "Automation"],
       description:
@@ -123,23 +154,14 @@ export const portfolioConfig = {
       status: "Active",
     },
     {
-      id: "ai-sandbox",
-      number: "02",
-      name: "Multi-Agent AI Sandbox",
-      tags: ["Multi-Agent", "LLM", "Browser Automation", "Research"],
+      id: "reflex",
+      number: "04",
+      name: "Reflex",
+      tags: ["Python", "Web Security", "XSS", "Security Tooling"],
       description:
-        "A controlled research environment running inside a fully sandboxed virtual machine. Autonomous agents interact with browser environments and simulated platforms to study emergent communication, coordination, and system-level behaviour dynamics. Designed as an experimental laboratory for AI interaction research.",
-      status: "In Development",
-    },
-    {
-      id: "radical-map",
-      number: "03",
-      name: "RadicalMap",
-      tags: ["OSINT", "Python", "Network Analysis", "Counter-Disinformation"],
-      description:
-        "A research instrument for detecting, classifying, and mapping extremist content networks on short-form video platforms using only publicly accessible metadata. Flags coded language, numerical dog whistles, and hidden capitalisation sequences that evade automated moderation, then visualises the results as an interactive network graph. Grounded in DSA Article 40 researcher-access provisions and the GDPR Article 89 research exemption.",
-      status: "Active",
-      githubUrl: "https://github.com/EuanSmith2/radicalmap",
+        "An educational Python toolkit for learning common web vulnerability classes: reflected and DOM-based XSS, open redirects, and a mutation fuzzer, with coloured output and HTML reports. Built to understand how these attacks actually work, not to run against live targets.",
+      status: "Complete",
+      githubUrl: "https://github.com/EuanSmith2/reflex",
     },
   ],
 
@@ -191,8 +213,8 @@ export const portfolioConfig = {
   },
 
   floatingBadge: {
-    title: "Available for Work",
-    subtitle: "",
+    title: "Open to internships",
+    subtitle: "and collaboration",
     link: "https://www.linkedin.com/in/euan-smith-4295123a6/details/courses/",
     tooltip: "Click to connect on LinkedIn",
   },

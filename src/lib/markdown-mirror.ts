@@ -1,6 +1,6 @@
 import { portfolioConfig } from "@/data/portfolio.config"
 
-const SITE_URL = "https://euansmith.net"
+import { SITE_URL } from "./site"
 
 export function generatePortfolioMarkdown(): string {
   const { personal, about, currentActivity, timeline, edmo, projects, certifications, learning, lifestyle, contact } =
@@ -175,11 +175,11 @@ export function generateProjectMarkdown(projectId: string): string | null {
 const FAQ: { q: string; a: string }[] = [
   {
     q: "Who is Euan Smith?",
-    a: "Euan Smith is a cybersecurity student, freelance web developer, and researcher based in Dublin, Ireland. He is entering the BSc in Cybersecurity & Digital Forensics at Technological University Dublin (TU Dublin) in September 2026, and works across three areas: hand-coded client websites for small businesses under the Forged Websites brand, AI-driven automation tooling, and counter-disinformation research with EDMO Ireland (the European Digital Media Observatory, operating under a European Commission mandate).",
+    a: "Euan Smith is a cybersecurity and digital forensics student based in Dublin, Ireland. He is entering the BSc in Cybersecurity & Digital Forensics at Technological University Dublin (TU Dublin) in September 2026. His main work is counter-disinformation research with EDMO Ireland (the European Digital Media Observatory, operating under a European Commission mandate), alongside a Linux home lab and a set of Python and AI automation projects.",
   },
   {
     q: "What does Euan Smith do professionally?",
-    a: "He runs Forged Websites, a Dublin-based service building custom, hand-coded websites for small and medium businesses — no templates, no AI-generated code, positioned deliberately against both. Alongside client work he builds AI/ML automation systems (including a computer-vision marketplace-intelligence tool and a WordPress publishing pipeline for EDMO Ireland) and studies cybersecurity, ethical hacking, and digital forensics.",
+    a: "He works as a freelance contributor and researcher for EDMO Ireland on counter-disinformation, and is one of four people representing Ireland in the EU-funded ChangingTIDE Changemakers programme. He runs a home lab (SIEM stack, network segmentation, honeypots), builds Python and AI automation tools, and studies cybersecurity, ethical hacking, and digital forensics. He also occasionally builds hand-coded websites and helps other students with their own portfolios.",
   },
   {
     q: "What is Euan Smith's educational background?",
@@ -191,19 +191,19 @@ const FAQ: { q: string; a: string }[] = [
   },
   {
     q: "What projects has Euan Smith built?",
-    a: "The Marketplace Intelligence System — an autonomous computer-vision and pricing-intelligence tool that finds resale opportunities across online marketplaces, with ROI scoring and human-in-the-loop checks; it has generated measurable financial returns, some donated to Merchants Quay Ireland. RadicalMap — an open-source OSINT tool that detects and visualises extremist content networks on short-form video platforms from public metadata, built under DSA Article 40 researcher-access and GDPR Article 89 research-exemption provisions. A Multi-Agent AI Sandbox — a sandboxed VM environment for studying emergent behaviour in autonomous AI agents.",
+    a: "NZT-48 — a self-hosted personal AI system built on Claude Code, with a Telegram interface, Obsidian-backed memory, and background agents; it is his most-starred repository. RadicalMap — an open-source OSINT tool that detects and visualises extremist content networks on short-form video platforms from public metadata, built under DSA Article 40 researcher-access and GDPR Article 89 research-exemption provisions. The Marketplace Intelligence System — an autonomous computer-vision and pricing-intelligence tool that finds resale opportunities across online marketplaces, with ROI scoring and human-in-the-loop checks; it has generated measurable financial returns, some donated to Merchants Quay Ireland. Reflex — an educational Python toolkit for learning common web vulnerability classes (XSS, open redirects, a mutation fuzzer).",
   },
   {
-    q: "Does Euan Smith do freelance web development?",
-    a: "Yes — he builds custom, hand-coded websites for Dublin-area small and medium businesses under the Forged Websites brand. His stack is Next.js, Tailwind CSS, Framer Motion and GSAP on the front end, with Python and Linux for backend and automation work.",
+    q: "Does Euan Smith do web development?",
+    a: "Yes, occasionally — he hand-codes websites (this site included) with Next.js, Tailwind CSS, Framer Motion and GSAP, and Python and Linux for backend and automation work. It is a side interest rather than his focus, and he informally helps other students build their own portfolio sites.",
   },
   {
     q: "What is Euan Smith's connection to EDMO (European Digital Media Observatory)?",
-    a: "Since 2025 he has worked as a researcher and freelance contributor for EDMO Ireland, which operates under a direct European Commission mandate as part of the European Democracy Action Plan. He ran a controlled two-account social-media experiment documenting algorithmic radicalisation and interviewed EDMO Ireland's lead researcher on recruitment tactics and Digital Services Act enforcement gaps, presenting findings to roughly 60 students; the work was shared by EDMO Ireland with Dublin City University academics and is being considered for a 2027 MA journalism module. He also built a fortnightly automation pipeline that scrapes fact-checks and publishes AI-assisted summaries via the WordPress REST API.",
+    a: "Since 2025 he has worked as a researcher and freelance contributor for EDMO Ireland, which operates under a direct European Commission mandate as part of the European Democracy Action Plan. He ran a controlled two-account social-media experiment documenting algorithmic radicalisation and interviewed EDMO Ireland's lead researcher on recruitment tactics and Digital Services Act enforcement gaps, presenting findings to roughly 60 students; the work was shared by EDMO Ireland with Dublin City University academics and is being considered for a 2027 MA journalism module. He built a weekly fact-check round-up pipeline that formats TheJournal.ie fact-checks to EDMO's house style and posts a draft to edmohub.ie via the WordPress REST API. Through EDMO's network he was also selected as one of four people representing Ireland in the EU-funded ChangingTIDE Changemakers programme, run by the Trans European Policy Studies Association in Brussels.",
   },
   {
     q: "Where is Euan Smith based, and is he open to work?",
-    a: "He is based in Dublin, Ireland. He is interested in opportunities at the intersection of security, automation, and complex systems — technical internships, collaborative projects, or freelance web work — and is reachable via LinkedIn or GitHub.",
+    a: "He is based in Dublin, Ireland. He is open to internships and collaboration at the intersection of security, automation, and complex systems, and is reachable via LinkedIn or GitHub.",
   },
   {
     q: "What are Euan Smith's core technical skills?",
@@ -222,7 +222,7 @@ export function generateFaqMarkdown(): string {
   lines.push(`# ${personal.displayName} — Frequently Asked Questions`)
   lines.push("")
   lines.push(
-    `Also searched as: Euan Smith Dublin, Euan Smith cybersecurity, Euan Smith TU Dublin, Euan Smith Forged Websites, Euan Smith EDMO, Euan Smith GitHub.`,
+    `Also searched as: Euan Smith Dublin, Euan Smith cybersecurity, Euan Smith TU Dublin, Euan Smith EDMO, Euan Smith Changemakers, Euan Smith GitHub.`,
   )
   lines.push("")
 
@@ -261,9 +261,9 @@ export function generateLlmsTxt(): string {
 
 > ${personal.title}. ${personal.tagline}
 
-Dublin, Ireland. Cybersecurity student (TU Dublin, BSc Cybersecurity & Digital Forensics, Sept 2026) · Founder, Forged Websites (custom hand-coded client sites) · Researcher, ${edmo.organisation} (${edmo.affiliation}).
+Dublin, Ireland. Cybersecurity & Digital Forensics student (TU Dublin, BSc, Sept 2026) · Researcher & freelance contributor, ${edmo.organisation} (${edmo.affiliation}) · One of four representing Ireland in the EU-funded ChangingTIDE Changemakers programme (TEPSA, Brussels).
 
-Also searched as: Euan Smith Dublin, Euan Smith cybersecurity, Euan Smith TU Dublin, Euan Smith Forged Websites, Euan Smith EDMO, Euan Smith GitHub.
+Also searched as: Euan Smith Dublin, Euan Smith cybersecurity, Euan Smith TU Dublin, Euan Smith EDMO, Euan Smith Changemakers, Euan Smith GitHub.
 
 ## Profile
 - [Full profile](${SITE_URL}/index.md): complete background, projects, certifications, and timeline in plain markdown

@@ -19,12 +19,22 @@ import { NextResponse, type NextRequest } from "next/server"
 const WINDOW_MS = 60_000
 
 const LIMIT: Record<string, number> = {
-  bot:       30,
+  bot:       60,
   public:   120,
   corporate: 300,
 }
 
 const BOT_UA = /bot|crawler|spider|scraper|python|curl|wget|go-http|java\/|ruby|php\/|axios|node-fetch|undici|httpx/i
+
+// Verified search + AI crawlers we deliberately want indexing the site (the
+// AI-discoverability layer — llms.txt, markdown mirrors, JSON-LD — exists for
+// exactly these). Given the generous "corporate" ceiling so a real crawl isn't
+// throttled. UA spoofing is possible but the site exposes nothing sensitive.
+const GOOD_BOT_UA = /Googlebot|Google-Extended|Bingbot|DuckDuckBot|Applebot|YandexBot|GPTBot|OAI-SearchBot|ChatGPT-User|ClaudeBot|Claude-Web|anthropic-ai|PerplexityBot|CCBot/i
+
+// Paths that are meant to be fetched freely by crawlers and agents — never
+// rate-limited regardless of UA.
+const DISCOVERY_PATH = /^\/(llms\.txt|robots\.txt|sitemap\.xml)$/
 
 interface Entry { count: number; resetAt: number }
 
@@ -42,6 +52,7 @@ function cleanup() {
 
 function tier(request: NextRequest): "bot" | "public" | "corporate" {
   const ua = request.headers.get("user-agent") ?? ""
+  if (GOOD_BOT_UA.test(ua)) return "corporate"
   if (!ua || BOT_UA.test(ua)) return "bot"
 
   // Via header is set by HTTP proxies (corporate, ISP transparent proxies)
@@ -62,6 +73,15 @@ export function middleware(request: NextRequest) {
     pathname.startsWith("/_next/static") ||
     pathname.startsWith("/_next/image") ||
     pathname === "/favicon.ico"
+  ) {
+    return NextResponse.next()
+  }
+
+  // The AI-discoverability surface is meant to be crawled freely.
+  if (
+    DISCOVERY_PATH.test(pathname) ||
+    pathname.endsWith(".md") ||
+    pathname.startsWith("/.well-known/")
   ) {
     return NextResponse.next()
   }

@@ -4,6 +4,7 @@ import { PrintButton } from "./PrintButton"
 export const metadata: Metadata = {
   title: "Euan Smith — CV",
   description: "Curriculum Vitae — Euan Smith",
+  alternates: { canonical: "/cv" },
 }
 
 export default function CVPage() {
@@ -178,7 +179,7 @@ export default function CVPage() {
 
         {/* Header */}
         <div className="cv-header">
-          <div className="cv-name">Euan Smith</div>
+          <h1 className="cv-name">Euan Smith</h1>
           <div className="cv-contact">
             <span>Dublin, Ireland</span>
             <a href="mailto:business.euan@hotmail.com">business.euan@hotmail.com</a>
@@ -189,9 +190,9 @@ export default function CVPage() {
 
         {/* Profile */}
         <div className="cv-section">
-          <div className="cv-section-title">Profile</div>
+          <h2 className="cv-section-title">Profile</h2>
           <p className="cv-para">
-            Aspiring cybersecurity student at Technological University Dublin, currently interning at the European Digital Media
+            Cybersecurity student at Technological University Dublin, currently working with the European Digital Media
             Observatory. I build practical tools — a computer vision system that identifies marketplace resale
             opportunities and has generated real financial returns, a home lab running SIEM stacks and honeypot setups,
             and custom websites for paying clients. I&rsquo;m interested in how systems fail, how attackers think, and how to
@@ -201,16 +202,16 @@ export default function CVPage() {
 
         {/* Education */}
         <div className="cv-section">
-          <div className="cv-section-title">Education</div>
+          <h2 className="cv-section-title">Education</h2>
 
           <div className="cv-entry">
-            <div className="cv-entry-title">BSc Cybersecurity &amp; Digital Forensics</div>
+            <h3 className="cv-entry-title">BSc Cybersecurity &amp; Digital Forensics</h3>
             <div className="cv-entry-sub">Technological University Dublin · Starting September 2026</div>
             <div className="cv-entry-note">Modules: network security, digital forensics, ethical hacking, cryptography, security operations</div>
           </div>
 
           <div className="cv-entry">
-            <div className="cv-entry-title">Harold&rsquo;s Cross Educate Together Secondary School</div>
+            <h3 className="cv-entry-title">Harold&rsquo;s Cross Educate Together Secondary School</h3>
             <ul className="cv-list">
               <li>Student Council Representative</li>
               <li>Spirit of the Class Award</li>
@@ -222,11 +223,11 @@ export default function CVPage() {
 
         {/* Experience */}
         <div className="cv-section">
-          <div className="cv-section-title">Experience</div>
+          <h2 className="cv-section-title">Experience</h2>
 
           <div className="cv-entry">
             <div className="cv-entry-header">
-              <div className="cv-entry-title">Software Developer Intern — European Digital Media Observatory</div>
+              <h3 className="cv-entry-title">Software Developer Intern — European Digital Media Observatory</h3>
               <div className="cv-entry-sub">Dublin City University · Summer 2026</div>
             </div>
             <div className="cv-entry-note">EDMO operates under European Commission mandate as part of the European Democracy Action Plan, coordinating anti-disinformation research across all EU member states.</div>
@@ -240,7 +241,7 @@ export default function CVPage() {
 
           <div className="cv-entry">
             <div className="cv-entry-header">
-              <div className="cv-entry-title">Freelance Web Developer</div>
+              <h3 className="cv-entry-title">Freelance Web Developer</h3>
               <div className="cv-entry-sub">Independent</div>
             </div>
             <ul className="cv-list">
@@ -252,10 +253,10 @@ export default function CVPage() {
 
         {/* Projects */}
         <div className="cv-section">
-          <div className="cv-section-title">Projects</div>
+          <h2 className="cv-section-title">Projects</h2>
 
           <div className="cv-entry">
-            <div className="cv-entry-title">Marketplace Intelligence System</div>
+            <h3 className="cv-entry-title">Marketplace Intelligence System</h3>
             <ul className="cv-list">
               <li>Computer vision tool that scans online marketplaces for profitable resale opportunities</li>
               <li>Automated ROI calculation, risk scoring, and human-in-the-loop decision gates</li>
@@ -265,7 +266,7 @@ export default function CVPage() {
           </div>
 
           <div className="cv-entry">
-            <div className="cv-entry-title">Multi-Agent AI Sandbox</div>
+            <h3 className="cv-entry-title">Multi-Agent AI Sandbox</h3>
             <ul className="cv-list">
               <li>Isolated VM running autonomous LLM agents interacting with browser environments</li>
               <li>Studies emergent agent communication and coordination without human supervision</li>
@@ -274,7 +275,7 @@ export default function CVPage() {
           </div>
 
           <div className="cv-entry">
-            <div className="cv-entry-title">Home Lab Infrastructure</div>
+            <h3 className="cv-entry-title">Home Lab Infrastructure</h3>
             <ul className="cv-list">
               <li>Linux servers, VMs, and network simulation — mirrors production security environments</li>
               <li>Running SIEM stack, honeypot infrastructure, and network segmentation experiments</li>
@@ -284,7 +285,7 @@ export default function CVPage() {
 
         {/* Certifications */}
         <div className="cv-section">
-          <div className="cv-section-title">Certifications</div>
+          <h2 className="cv-section-title">Certifications</h2>
           <div className="cv-certs-grid">
             <div className="cv-cert-item">SAP: Security and Compliance Learning Journey <span className="cert-status">Earned</span></div>
             <div className="cv-cert-item">SAP: Business Integrity Screening Fundamentals <span className="cert-status">Earned</span></div>
@@ -296,7 +297,7 @@ export default function CVPage() {
 
         {/* In Progress */}
         <div className="cv-section">
-          <div className="cv-section-title">In Progress</div>
+          <h2 className="cv-section-title">In Progress</h2>
           <p className="cv-inline-list">
             Google Cybersecurity Certificate &nbsp;·&nbsp; CompTIA Security+ &nbsp;·&nbsp; GRC Mastery Programme &nbsp;·&nbsp; Hack The Box (Active player)
           </p>
@@ -304,7 +305,7 @@ export default function CVPage() {
 
         {/* Skills */}
         <div className="cv-section">
-          <div className="cv-section-title">Technical Skills</div>
+          <h2 className="cv-section-title">Technical Skills</h2>
           <p className="cv-inline-list">
             <strong>Languages:</strong> Python, JavaScript/TypeScript, HTML/CSS<br />
             <strong>Security:</strong> OSINT, network security, digital forensics, SIEM, honeypots, home lab ops<br />
@@ -315,7 +316,7 @@ export default function CVPage() {
 
         {/* Interests */}
         <div className="cv-section">
-          <div className="cv-section-title">Interests</div>
+          <h2 className="cv-section-title">Interests</h2>
           <p className="cv-inline-list">
             Chess &nbsp;·&nbsp; Dungeons &amp; Dragons &nbsp;·&nbsp; Bouldering &nbsp;·&nbsp; Reading (security, systems thinking, economics)
           </p>

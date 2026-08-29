@@ -1,3 +1,4 @@
+import type { Metadata } from "next"
 import { CursorGlow } from "@/components/ui/CursorGlow"
 import { ScrollToTop } from "@/components/ui/ScrollToTop"
 import { Navbar } from "@/components/layout/Navbar"
@@ -11,6 +12,10 @@ import { Projects } from "@/components/sections/Projects"
 import { Certifications } from "@/components/sections/Certifications"
 import { Personal } from "@/components/sections/Personal"
 import { Contact } from "@/components/sections/Contact"
+
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+}
 
 export default function Home() {
   return (

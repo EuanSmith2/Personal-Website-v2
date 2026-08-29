@@ -90,15 +90,17 @@ export function Hero() {
                 <h1
                   className="font-bold tracking-tight leading-none"
                   style={{ fontSize: "clamp(2.8rem, 8vw, 6rem)" }}
-                  aria-label={personal.name}
                 >
-                  <TextScramble
-                    ref={scrambleRef}
-                    text={personal.name}
-                    autoStart={false}
-                    scrambleOnHover
-                    speed={80}
-                  />
+                  <span aria-hidden="true">
+                    <TextScramble
+                      ref={scrambleRef}
+                      text={personal.name}
+                      autoStart={false}
+                      scrambleOnHover
+                      speed={80}
+                    />
+                  </span>
+                  <span className="sr-only">{personal.roles.h1Descriptor}</span>
                 </h1>
               </div>
             </motion.div>

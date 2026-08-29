@@ -1,8 +1,10 @@
-import type { Metadata } from "next"
+import type { Metadata, Viewport } from "next"
 import { IBM_Plex_Sans, JetBrains_Mono } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import "./globals.css"
 import { portfolioConfig } from "@/data/portfolio.config"
+import { SITE_ORIGIN } from "@/lib/site"
+import { structuredDataGraph } from "@/lib/structured-data"
 
 const ibmPlexSans = IBM_Plex_Sans({
   subsets: ["latin"],
@@ -19,61 +21,27 @@ const jetbrainsMono = JetBrains_Mono({
 const { personal } = portfolioConfig
 
 export const metadata: Metadata = {
-  title: `${personal.displayName} — Cybersecurity & Digital Forensics`,
-  description: personal.tagline,
+  metadataBase: SITE_ORIGIN,
+  title: `${personal.displayName} — ${personal.roles.jobTitle}`,
+  description: personal.roles.metaDescription,
   openGraph: {
-    title: personal.displayName,
-    description: personal.tagline,
+    title: `${personal.displayName} — ${personal.roles.jobTitle}`,
+    description: personal.roles.metaDescription,
     type: "website",
-    url: "https://euansmith.net",
-    images: [
-      {
-        url: "https://euansmith.net/og-image.jpg",
-        width: 1036,
-        height: 1085,
-        alt: personal.displayName,
-      },
-    ],
+    siteName: personal.displayName,
+    locale: "en_IE",
+    url: "/",
   },
   twitter: {
     card: "summary_large_image",
-    title: personal.displayName,
-    description: personal.tagline,
-    images: ["https://euansmith.net/og-image.jpg"],
+    title: `${personal.displayName} — ${personal.roles.jobTitle}`,
+    description: personal.roles.metaDescription,
   },
 }
 
-const personJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "Person",
-  name: personal.displayName,
-  alternateName: personal.name,
-  url: "https://euansmith.net",
-  jobTitle: "Cybersecurity Student & Web Developer",
-  description: personal.tagline,
-  address: {
-    "@type": "PostalAddress",
-    addressLocality: "Dublin",
-    addressCountry: "IE",
-  },
-  alumniOf: {
-    "@type": "CollegeOrUniversity",
-    name: "Technological University Dublin",
-  },
-  worksFor: {
-    "@type": "Organization",
-    name: "Forged Websites",
-  },
-  knowsAbout: [
-    "Cybersecurity",
-    "Digital Forensics",
-    "Ethical Hacking",
-    "OSINT",
-    "Python",
-    "AI/ML Automation",
-    "Web Development",
-  ],
-  sameAs: [personal.github, personal.linkedin, personal.tryhackme, personal.credly, personal.orcid],
+export const viewport: Viewport = {
+  themeColor: "#09090b",
+  colorScheme: "dark",
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -82,7 +50,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head>
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredDataGraph()) }}
         />
       </head>
       <body className="font-sans antialiased" style={{ background: "var(--bg-base)", color: "var(--text-primary)" }}>

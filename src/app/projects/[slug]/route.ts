@@ -1,4 +1,12 @@
 import { generateProjectMarkdown } from "@/lib/markdown-mirror"
+import { portfolioConfig } from "@/data/portfolio.config"
+
+export const dynamic = "force-static"
+export const dynamicParams = false
+
+export function generateStaticParams() {
+  return portfolioConfig.projects.map((p) => ({ slug: `${p.id}.md` }))
+}
 
 export async function GET(_request: Request, { params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params

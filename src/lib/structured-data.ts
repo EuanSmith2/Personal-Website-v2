@@ -56,3 +56,52 @@ export function structuredDataGraph() {
     "@graph": [personSchema(), websiteSchema()],
   }
 }
+
+type ProjectLike = {
+  id: string
+  name: string
+  description: string
+  tags: string[]
+  githubUrl?: string
+}
+
+export function projectGraph(project: ProjectLike) {
+  const url = `${SITE_URL}/projects/${project.id}`
+  const isTool = /toolkit|instrument|system|pipeline|tool/i.test(project.description)
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": isTool ? "SoftwareApplication" : "CreativeWork",
+        "@id": `${url}#project`,
+        name: project.name,
+        description: project.description,
+        url,
+        keywords: project.tags.join(", "),
+        author: { "@id": PERSON_ID },
+        ...(isTool ? { applicationCategory: "DeveloperApplication" } : {}),
+        ...(project.githubUrl ? { codeRepository: project.githubUrl } : {}),
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
+          { "@type": "ListItem", position: 2, name: "Projects", item: `${SITE_URL}/#projects` },
+          { "@type": "ListItem", position: 3, name: project.name, item: url },
+        ],
+      },
+    ],
+  }
+}
+
+export function faqPageSchema(items: { q: string; a: string }[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: items.map(({ q, a }) => ({
+      "@type": "Question",
+      name: q,
+      acceptedAnswer: { "@type": "Answer", text: a },
+    })),
+  }
+}

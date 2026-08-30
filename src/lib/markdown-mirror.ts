@@ -149,6 +149,22 @@ export function generateProjectMarkdown(projectId: string): string | null {
   lines.push("")
   lines.push(p.description)
   lines.push("")
+  lines.push(`Page: ${SITE_URL}/projects/${p.id}`)
+  lines.push("")
+  if ("caseStudy" in p && p.caseStudy) {
+    lines.push(`## Problem`)
+    lines.push("")
+    lines.push(p.caseStudy.problem)
+    lines.push("")
+    lines.push(`## Approach`)
+    lines.push("")
+    lines.push(p.caseStudy.approach)
+    lines.push("")
+    lines.push(`## Outcome`)
+    lines.push("")
+    lines.push(p.caseStudy.outcome)
+    lines.push("")
+  }
   if ("impact" in p && p.impact) {
     lines.push(`Impact: ${p.impact}`)
     lines.push("")
@@ -172,7 +188,7 @@ export function generateProjectMarkdown(projectId: string): string | null {
   return lines.join("\n")
 }
 
-const FAQ: { q: string; a: string }[] = [
+export const FAQ: { q: string; a: string }[] = [
   {
     q: "Who is Euan Smith?",
     a: "Euan Smith is a cybersecurity and digital forensics student based in Dublin, Ireland. He is entering the BSc in Cybersecurity & Digital Forensics at Technological University Dublin (TU Dublin) in September 2026. His main work is counter-disinformation research with EDMO Ireland (the European Digital Media Observatory, operating under a European Commission mandate), alongside a Linux home lab and a set of Python and AI automation projects.",
@@ -215,6 +231,20 @@ const FAQ: { q: string; a: string }[] = [
   },
 ]
 
+export function resolvedFaq(): { q: string; a: string }[] {
+  const { personal } = portfolioConfig
+  return FAQ.map(({ q, a }) => ({
+    q,
+    a: a
+      .replace("{github}", personal.github)
+      .replace("{linkedin}", personal.linkedin)
+      .replace("{orcid}", personal.orcid)
+      .replace("{tryhackme}", personal.tryhackme)
+      .replace("{credly}", personal.credly)
+      .replace("{cv}", `${SITE_URL}${personal.cv}`),
+  }))
+}
+
 export function generateFaqMarkdown(): string {
   const { personal } = portfolioConfig
   const lines: string[] = []
@@ -226,17 +256,10 @@ export function generateFaqMarkdown(): string {
   )
   lines.push("")
 
-  for (const { q, a } of FAQ) {
-    const answer = a
-      .replace("{github}", personal.github)
-      .replace("{linkedin}", personal.linkedin)
-      .replace("{orcid}", personal.orcid)
-      .replace("{tryhackme}", personal.tryhackme)
-      .replace("{credly}", personal.credly)
-      .replace("{cv}", `${SITE_URL}${personal.cv}`)
+  for (const { q, a } of resolvedFaq()) {
     lines.push(`## ${q}`)
     lines.push("")
-    lines.push(answer)
+    lines.push(a)
     lines.push("")
   }
 
@@ -277,7 +300,7 @@ Also searched as: Euan Smith Dublin, Euan Smith cybersecurity, Euan Smith TU Dub
 - [Credly (certifications)](${personal.credly})
 
 ## Projects
-${projects.map((p) => `- [${p.name}](${SITE_URL}/projects/${p.id}.md)${"githubUrl" in p && p.githubUrl ? ` ([code](${p.githubUrl}))` : ""}: ${p.description}`).join("\n")}
+${projects.map((p) => `- [${p.name}](${SITE_URL}/projects/${p.id}) ([markdown](${SITE_URL}/projects/md/${p.id}.md))${"githubUrl" in p && p.githubUrl ? ` ([code](${p.githubUrl}))` : ""}: ${p.description}`).join("\n")}
 
 ## Research
 - ${edmo.organisation} — ${edmo.role}, affiliated with ${edmo.affiliation}

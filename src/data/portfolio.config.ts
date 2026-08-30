@@ -131,6 +131,14 @@ export const portfolioConfig = {
         "A self-hosted personal AI system built on Claude Code: a Telegram interface, Obsidian-backed memory, and a set of background agents and monitors that handle briefings, research, and scheduling. Runs at zero marginal cost with no cloud dependency. My most-starred repository.",
       status: "Active",
       githubUrl: "https://github.com/EuanSmith2/NZT-48",
+      caseStudy: {
+        problem:
+          "I wanted a genuinely capable personal assistant without paying per message or handing my notes to a third-party cloud API. Off-the-shelf tools either cost per use or lock your data in.",
+        approach:
+          "Built a personal AI operating system on top of a single Claude Code subscription: a Telegram bot as the interface, an Obsidian vault as long-term memory, a set of task agents (briefing, research, scheduling, recall) and background monitors, outbound email over SMTP, and a small web dashboard. Everything runs locally.",
+        outcome:
+          "Runs at zero marginal cost. Public on GitHub and my most-starred repository; reviewers described it as “clean code, no red flags, does what it says on the tin.”",
+      },
     },
     {
       id: "radical-map",
@@ -141,6 +149,14 @@ export const portfolioConfig = {
         "A research instrument for detecting, classifying, and mapping extremist content networks on short-form video platforms using only publicly accessible metadata. Flags coded language, numerical dog whistles, and hidden capitalisation sequences that evade automated moderation, then visualises the results as an interactive network graph. Grounded in DSA Article 40 researcher-access provisions and the GDPR Article 89 research exemption.",
       status: "Active",
       githubUrl: "https://github.com/EuanSmith2/radicalmap",
+      caseStudy: {
+        problem:
+          "Extremist content spreads on short-form video platforms through coded language and numeric dog whistles that automated moderation misses. Researchers have a legal basis to study platform data under the DSA, but few practical tools to do it.",
+        approach:
+          "Built a Python instrument that scrapes public TikTok metadata, classifies content across categories (antisemitic, white-nationalist, conspiracy, radicalisation pipeline), and renders the connections as an interactive network graph. Framed explicitly as academic research tooling under DSA Article 40, GDPR Article 89, and CDSM Directive Article 3 — not activism.",
+        outcome:
+          "A working prototype (FastAPI + SQLite, dev dataset of one interconnected cluster). Shown to EDMO Ireland's lead researcher during a project kickoff — it was already a small-scale version of the network-mapping tool they were scoping.",
+      },
     },
     {
       id: "marketplace",
@@ -152,6 +168,14 @@ export const portfolioConfig = {
       impact: "Donated to Merchants Quay Ireland",
       charityLogo: "/logos/mqi-logo.png",
       status: "Active",
+      caseStudy: {
+        problem:
+          "Resale arbitrage is a real opportunity, but scanning listings across marketplaces by hand doesn't scale and it's easy to buy badly.",
+        approach:
+          "An autonomous pipeline: computer vision to read the item and its condition from listing photos, a pricing model for expected resale value, ROI and risk scoring, and a human-in-the-loop gate before any purchase is made.",
+        outcome:
+          "Has generated measurable financial returns. Proceeds donated to Merchants Quay Ireland.",
+      },
     },
     {
       id: "reflex",
@@ -162,6 +186,14 @@ export const portfolioConfig = {
         "An educational Python toolkit for learning common web vulnerability classes: reflected and DOM-based XSS, open redirects, and a mutation fuzzer, with coloured output and HTML reports. Built to understand how these attacks actually work, not to run against live targets.",
       status: "Complete",
       githubUrl: "https://github.com/EuanSmith2/reflex",
+      caseStudy: {
+        problem:
+          "The best way to understand a vulnerability class is to implement its detection yourself, not read about it.",
+        approach:
+          "A Python toolkit covering reflected and DOM-based XSS, open redirects, and a mutation fuzzer, with coloured terminal output and HTML reports. Inspired by Google's Project Zero. Built for learning and demonstration against intentionally vulnerable test targets.",
+        outcome:
+          "Public on GitHub and pinned on my profile. Defensive framing throughout — it's a learning tool, not an attack tool.",
+      },
     },
   ],
 

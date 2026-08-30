@@ -28,15 +28,25 @@ const CV = "src/app/cv/page.tsx"
 export default function sitemap(): MetadataRoute.Sitemap {
   const contentMod = lastMod(CONFIG, MIRROR)
 
-  const projectUrls: MetadataRoute.Sitemap = portfolioConfig.projects.map((p) => ({
-    url: `${SITE_URL}/projects/${p.id}.md`,
-    lastModified: contentMod,
-    changeFrequency: "monthly",
-  }))
+  const projectUrls: MetadataRoute.Sitemap = portfolioConfig.projects.flatMap((p) => [
+    {
+      url: `${SITE_URL}/projects/${p.id}`,
+      lastModified: contentMod,
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
+    },
+    {
+      url: `${SITE_URL}/projects/md/${p.id}.md`,
+      lastModified: contentMod,
+      changeFrequency: "monthly" as const,
+    },
+  ])
 
   return [
     { url: SITE_URL, lastModified: contentMod, changeFrequency: "monthly", priority: 1 },
     { url: `${SITE_URL}/cv`, lastModified: lastMod(CV), changeFrequency: "yearly", priority: 0.8 },
+    { url: `${SITE_URL}/faq`, lastModified: contentMod, changeFrequency: "monthly", priority: 0.6 },
+    { url: `${SITE_URL}/privacy`, lastModified: lastMod("src/app/privacy/page.tsx"), changeFrequency: "yearly", priority: 0.2 },
     { url: `${SITE_URL}/llms.txt`, lastModified: lastMod(MIRROR), changeFrequency: "monthly" },
     { url: `${SITE_URL}/index.md`, lastModified: contentMod, changeFrequency: "monthly" },
     { url: `${SITE_URL}/faq.md`, lastModified: contentMod, changeFrequency: "monthly" },

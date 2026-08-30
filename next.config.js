@@ -1,6 +1,15 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   poweredByHeader: false,
+  async redirects() {
+    // The per-project markdown moved under /projects/md/ so the HTML
+    // case-study page could take the clean URL.
+    return [
+      { source: "/projects/marketplace.md", destination: "/projects/md/marketplace.md", permanent: true },
+      { source: "/projects/radical-map.md", destination: "/projects/md/radical-map.md", permanent: true },
+      { source: "/projects/ai-sandbox.md", destination: "/#projects", permanent: true },
+    ];
+  },
   async headers() {
     return [
       {

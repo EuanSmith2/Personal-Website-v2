@@ -57,14 +57,11 @@ export function Hero() {
         <DotGridBackground />
 
         <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-24 w-full">
-          {/* Rendered visible on mount (behind the intro overlay) so the hero
-              is the LCP element, not the terminal boot animation. The scramble
-              still fires when the intro finishes so the reveal is seen. */}
           <motion.div
             className="flex flex-col gap-8"
             variants={containerVariants}
             initial="hidden"
-            animate="visible"
+            animate={heroVisible ? "visible" : "hidden"}
           >
             {/* Top row: avatar + name */}
             <motion.div variants={itemVariants} className="flex items-center gap-5 lg:gap-7">

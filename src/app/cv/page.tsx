@@ -168,10 +168,12 @@ export default function CVPage() {
           .cv-root { padding: 24px 20px 40px; }
           .cv-certs-grid { grid-template-columns: 1fr; }
           .cv-entry-header { flex-direction: column; }
+          .cv-contact { gap: 6px 16px; }
+          .cv-contact a { display: inline-block; padding: 4px 0; }
         }
       `}</style>
 
-      <div className="cv-root">
+      <main className="cv-root">
         {/* Download / Print button */}
         <div className="print-only-hidden">
           <PrintButton />
@@ -329,7 +331,7 @@ export default function CVPage() {
             Chess &nbsp;·&nbsp; Dungeons &amp; Dragons &nbsp;·&nbsp; Bouldering &nbsp;·&nbsp; Reading (security, systems thinking, economics)
           </p>
         </div>
-      </div>
+      </main>
     </>
   )
 }

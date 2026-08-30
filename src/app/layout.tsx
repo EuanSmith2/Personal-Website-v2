@@ -5,6 +5,7 @@ import "./globals.css"
 import { portfolioConfig } from "@/data/portfolio.config"
 import { SITE_ORIGIN } from "@/lib/site"
 import { structuredDataGraph } from "@/lib/structured-data"
+import { AnalyticsConsent } from "@/components/AnalyticsConsent"
 
 const ibmPlexSans = IBM_Plex_Sans({
   subsets: ["latin"],
@@ -56,6 +57,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="font-sans antialiased" style={{ background: "var(--bg-base)", color: "var(--text-primary)" }}>
         {children}
         <Analytics />
+        <AnalyticsConsent />
       </body>
     </html>
   )

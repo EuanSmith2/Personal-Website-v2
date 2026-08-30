@@ -1,6 +1,7 @@
 "use client"
 import { useEffect, useRef, useState } from "react"
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion"
+import { readConsent, setConsent } from "@/components/AnalyticsConsent"
 
 interface TerminalIntroProps {
   onComplete: () => void
@@ -26,6 +27,8 @@ type ExtNavigator = Navigator & {
   deviceMemory?: number
   connection?: { effectiveType?: string; type?: string }
 }
+
+const GA_ID = process.env.NEXT_PUBLIC_GA_ID
 
 function estimateMemory(cores: number, os: string): string {
   if (os === "iOS")     return "8GB (est.)"
@@ -138,16 +141,23 @@ export function TerminalIntro({ onComplete }: TerminalIntroProps) {
   const [visible, setVisible]             = useState(false)
   const [bootLines, setBootLines]         = useState<BootLine[]>([])
   const [renderedLines, setRenderedLines] = useState<string[]>([])
+  const [phase, setPhase]                 = useState<"boot" | "consent">("boot")
   const dismissed = useRef(false)
 
   useEffect(() => {
     if (prefersReducedMotion) { onComplete(); return }
-    if (sessionStorage.getItem("intro_seen")) { onComplete(); return }
+    if (sessionStorage.getItem("intro_seen") && !(GA_ID && readConsent() === null)) {
+      onComplete()
+      return
+    }
     setVisible(true)
 
     let cancelled = false
     const timeouts: ReturnType<typeof setTimeout>[] = []
+    let consentFallback: ReturnType<typeof setTimeout> | undefined
     const cleanup = { fn: () => {} }
+
+    const needsConsent = !!GA_ID && readConsent() === null
 
     const run = async () => {
       const osInfo = await getSysInfo()
@@ -156,20 +166,59 @@ export function TerminalIntro({ onComplete }: TerminalIntroProps) {
       const lines = generateBootLines(osInfo)
       setBootLines(lines)
 
+      let localPhase: "boot" | "consent" = "boot"
+
       const dismiss = () => {
         if (dismissed.current) return
         dismissed.current = true
         sessionStorage.setItem("intro_seen", "true")
+        if (consentFallback) clearTimeout(consentFallback)
         setVisible(false)
         setTimeout(onComplete, 200)
       }
 
-      const skipHandler = () => dismiss()
-      window.addEventListener("keydown", skipHandler)
-      window.addEventListener("click", skipHandler)
+      const answerConsent = (value: "granted" | "denied") => {
+        if (dismissed.current) return
+        setConsent(value)
+        dismiss()
+      }
+
+      const onKey = (e: KeyboardEvent) => {
+        if (localPhase === "consent") {
+          if (e.key === "y" || e.key === "Y") answerConsent("granted")
+          else if (e.key === "n" || e.key === "N" || e.key === "Escape") answerConsent("denied")
+          // any other key: ignore, keep waiting
+        } else {
+          handleSkip()
+        }
+      }
+      // During the consent prompt, only an explicit key answers. Clicks are
+      // ignored (except the privacy link) so a stray tap can't force a choice;
+      // the fallback timeout below defaults to "denied" if there is no answer.
+      const onClick = (e: MouseEvent) => {
+        if (localPhase !== "consent") handleSkip()
+        else if ((e.target as HTMLElement).closest("a")) return
+      }
+
+      const enterConsent = () => {
+        if (cancelled || dismissed.current || localPhase === "consent") return
+        localPhase = "consent"
+        timeouts.forEach(clearTimeout)
+        setRenderedLines(lines.map((l) => l.text))
+        setPhase("consent")
+        consentFallback = setTimeout(() => answerConsent("denied"), 20_000)
+      }
+
+      const handleSkip = () => {
+        if (needsConsent) enterConsent()
+        else dismiss()
+      }
+
+      window.addEventListener("keydown", onKey)
+      window.addEventListener("click", onClick)
       cleanup.fn = () => {
-        window.removeEventListener("keydown", skipHandler)
-        window.removeEventListener("click", skipHandler)
+        window.removeEventListener("keydown", onKey)
+        window.removeEventListener("click", onClick)
       }
 
       let cursor = 0
@@ -206,7 +255,7 @@ export function TerminalIntro({ onComplete }: TerminalIntroProps) {
         cursor += chars.length * line.delay + 120
       })
 
-      timeouts.push(setTimeout(() => { if (!cancelled) dismiss() }, cursor + 400))
+      timeouts.push(setTimeout(() => { if (!cancelled) handleSkip() }, cursor + 400))
     }
 
     run()
@@ -214,6 +263,7 @@ export function TerminalIntro({ onComplete }: TerminalIntroProps) {
     return () => {
       cancelled = true
       timeouts.forEach(clearTimeout)
+      if (consentFallback) clearTimeout(consentFallback)
       cleanup.fn()
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -272,12 +322,29 @@ export function TerminalIntro({ onComplete }: TerminalIntroProps) {
                 return (
                   <p key={i} className={line.color || "text-zinc-400"}>
                     {rendered}
-                    {i === renderedLines.length - 1 && rendered !== line.text && (
+                    {phase === "boot" && i === renderedLines.length - 1 && rendered !== line.text && (
                       <span className="animate-pulse text-[#00ff41]">█</span>
                     )}
                   </p>
                 )
               })}
+
+              {phase === "consent" && (
+                <div className="pt-3">
+                  <p className="text-zinc-300">
+                    <span className="text-[#00ff41]">~</span> $ allow anonymous analytics?{" "}
+                    <span className="text-zinc-500">[y/N]</span>
+                    <span className="animate-pulse text-[#00ff41]">█</span>
+                  </p>
+                  <p className="text-zinc-600 text-xs mt-1">
+                    press <span className="text-zinc-400">y</span> to allow, <span className="text-zinc-400">n</span> to
+                    decline ·{" "}
+                    <a href="/privacy" className="underline hover:text-[#00ff41]">
+                      privacy
+                    </a>
+                  </p>
+                </div>
+              )}
             </div>
 
             {/* Footer */}
@@ -285,7 +352,7 @@ export function TerminalIntro({ onComplete }: TerminalIntroProps) {
               className="px-5 py-2 border-t text-zinc-600 text-xs"
               style={{ borderColor: "rgba(0,255,65,0.12)" }}
             >
-              ↵ any key — abort sequence
+              {phase === "consent" ? "awaiting response — y / n" : "↵ any key — abort sequence"}
             </div>
           </div>
         </motion.div>

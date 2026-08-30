@@ -27,10 +27,10 @@ export function ExpandableCard({ id, icon, title, summary, detail, isOpen, onTog
 
   return (
     <div
-      className={`rounded-xl border p-6 transition-all duration-200 cursor-pointer ${
+      className={`rounded-lg border p-6 transition-colors duration-200 cursor-pointer ${
         isOpen
-          ? "border-[color:var(--border-glow)] shadow-[0_0_20px_rgba(34,211,238,0.08)]"
-          : "border-[color:var(--border)] hover:border-[color:var(--border-glow)] hover:shadow-[0_0_20px_rgba(34,211,238,0.08)]"
+          ? "border-[color:var(--border-glow)]"
+          : "border-[color:var(--border)] hover:border-[color:var(--border-glow)]"
       }`}
       style={{ background: "var(--bg-card)" }}
       onClick={() => onToggle(id)}

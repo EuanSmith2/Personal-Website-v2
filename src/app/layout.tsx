@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   description: personal.roles.metaDescription,
   openGraph: {
     title: `${personal.displayName} — ${personal.roles.jobTitle}`,
-    description: personal.roles.metaDescription,
+    description: personal.roles.ogDescription,
     type: "website",
     siteName: personal.displayName,
     locale: "en_IE",
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: `${personal.displayName} — ${personal.roles.jobTitle}`,
-    description: personal.roles.metaDescription,
+    description: personal.roles.ogDescription,
   },
   // Optional Search Console / Bing verification via env var — an alternative
   // to a DNS TXT record. Set GSC_VERIFICATION / BING_VERIFICATION in Vercel
@@ -77,6 +77,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body className="font-sans antialiased" style={{ background: "var(--bg-base)", color: "var(--text-primary)" }}>
         {children}
+        <div className="grain-overlay" aria-hidden="true" />
         <Analytics />
         <AnalyticsConsent />
       </body>

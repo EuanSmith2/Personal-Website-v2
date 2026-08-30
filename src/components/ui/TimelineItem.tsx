@@ -8,9 +8,9 @@ interface TimelineItemProps {
 }
 
 const eraColor: Record<string, string> = {
-  early:   "var(--accent-amber)",
-  mid:     "var(--accent-cyan)",
-  present: "var(--accent-purple)",
+  early:   "var(--text-muted)",
+  mid:     "var(--text-secondary)",
+  present: "var(--accent-cyan)",
 }
 
 export function TimelineItem({ year, label, description, era, side }: TimelineItemProps) {
@@ -21,7 +21,7 @@ export function TimelineItem({ year, label, description, era, side }: TimelineIt
       {/* Content card — takes half width on desktop */}
       <div className={`flex-1 lg:w-[calc(50%-2rem)] ${side === "right" ? "lg:pl-8" : "lg:pr-8"}`}>
         <div
-          className="rounded-xl border border-[color:var(--border)] p-4 lg:p-6 transition-all duration-200 hover:border-[color:var(--border-glow)]"
+          className="rounded-lg border border-[color:var(--border)] p-4 lg:p-6 transition-colors duration-200 hover:border-[color:var(--border-glow)]"
           style={{ background: "var(--bg-card)" }}
         >
           <span className="font-mono text-sm mb-1 block" style={{ color }}>
@@ -34,14 +34,7 @@ export function TimelineItem({ year, label, description, era, side }: TimelineIt
 
       {/* Node — centred on desktop */}
       <div className="relative z-10 flex-shrink-0 lg:absolute lg:left-1/2 lg:-translate-x-1/2">
-        <div
-          className="w-3 h-3 rounded-full"
-          style={{
-            backgroundColor: color,
-            border: `2px solid ${color}`,
-            boxShadow: `0 0 8px ${color}40`,
-          }}
-        />
+        <div className="w-2 h-2 rounded-full" style={{ backgroundColor: color }} />
       </div>
 
       {/* Spacer for the other side on desktop */}

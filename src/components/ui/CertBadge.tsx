@@ -37,24 +37,21 @@ function CertBadgeInner({ issuer, name, status, issuerColor }: Omit<CertBadgePro
   const isSAP = issuer.toLowerCase() === "sap"
   return (
     <div
-      className="rounded-xl border border-[color:var(--border)] p-4 lg:p-5 flex items-start gap-4 transition-all duration-200 hover:border-[color:var(--border-glow)] hover:shadow-[0_0_20px_rgba(34,211,238,0.08)] h-full"
+      className="rounded-lg border border-[color:var(--border)] p-4 lg:p-5 flex items-start gap-4 transition-colors duration-200 hover:border-[color:var(--border-glow)] h-full"
       style={{ background: "var(--bg-card)" }}
     >
       {isSAP ? (
         <div
-          className="w-12 h-12 rounded-full flex-shrink-0 overflow-hidden flex items-center justify-center"
-          style={{ background: "linear-gradient(180deg, #00b1eb 0%, #0069b4 100%)", border: "1px solid #0070f340" }}
+          className="w-11 h-11 rounded-md flex-shrink-0 overflow-hidden flex items-center justify-center"
+          style={{ background: "#0069b4" }}
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/logos/sap-logo.svg" alt="SAP" width={42} height={42} style={{ width: "88%", height: "88%", objectFit: "contain" }} />
         </div>
       ) : (
         <div
-          className="w-12 h-12 rounded-full flex-shrink-0 flex items-center justify-center"
-          style={{
-            background: `linear-gradient(135deg, ${issuerColor}cc, ${issuerColor}55)`,
-            border: `1px solid ${issuerColor}40`,
-          }}
+          className="w-11 h-11 rounded-md flex-shrink-0 flex items-center justify-center"
+          style={{ background: issuerColor }}
         >
           <IssuerLogo issuer={issuer} />
         </div>
@@ -62,10 +59,10 @@ function CertBadgeInner({ issuer, name, status, issuerColor }: Omit<CertBadgePro
       <div className="flex-1 min-w-0">
         <p className="text-xs font-mono text-zinc-400 uppercase tracking-wider mb-1">{issuer}</p>
         <p className="text-sm font-medium text-zinc-100 mb-2 leading-snug">{name}</p>
-        <span className={`text-xs font-mono px-2 py-0.5 rounded-full border ${
+        <span className={`text-xs font-mono px-2 py-0.5 rounded border ${
           status === "Earned"
             ? "bg-cyan-400/10 border-cyan-400/30 text-cyan-400"
-            : "bg-purple-400/10 border-purple-400/30 text-purple-400"
+            : "bg-zinc-800 border-zinc-700 text-zinc-400"
         }`}>
           {status}
         </span>

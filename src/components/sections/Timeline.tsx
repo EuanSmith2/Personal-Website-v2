@@ -4,10 +4,11 @@ import { motion } from "framer-motion"
 import { SectionWrapper } from "@/components/ui/SectionWrapper"
 import { portfolioConfig } from "@/data/portfolio.config"
 
+// Past eras fade back in greyscale; the present is the only lit point.
 const ERA_COLOR: Record<string, string> = {
-  early:   "var(--accent-amber)",
-  mid:     "var(--accent-cyan)",
-  present: "var(--accent-purple)",
+  early:   "var(--text-muted)",
+  mid:     "var(--text-secondary)",
+  present: "var(--accent-cyan)",
 }
 
 // Serpentine S-curve — 6 events alternating left/right
@@ -105,18 +106,11 @@ export function Timeline() {
             preserveAspectRatio="none"
             aria-hidden="true"
           >
-            <defs>
-              <linearGradient id="sCurveGrad" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%"   stopColor="var(--accent-amber)" />
-                <stop offset="50%"  stopColor="var(--accent-cyan)" />
-                <stop offset="100%" stopColor="var(--accent-purple)" />
-              </linearGradient>
-            </defs>
             <path
               ref={pathRef}
               d={sPath}
               fill="none"
-              stroke="url(#sCurveGrad)"
+              stroke="var(--border)"
               strokeWidth="0.4"
               vectorEffect="non-scaling-stroke"
               style={{ strokeWidth: 2 }}
@@ -133,7 +127,7 @@ export function Timeline() {
 
           {/* "Present" label */}
           <div
-            className="absolute text-xs font-mono text-purple-400 uppercase tracking-widest"
+            className="absolute text-xs font-mono text-cyan-400 uppercase tracking-widest"
             style={{
               left: `${timeline.length % 2 === 0 ? RIGHT_X : LEFT_X}%`,
               bottom: -20,
@@ -164,7 +158,7 @@ export function Timeline() {
                 transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1], delay: i * 0.05 }}
               >
                 <div
-                  className="rounded-xl border border-[color:var(--border)] p-4 transition-all duration-200 hover:border-[color:var(--border-glow)] hover:shadow-[0_0_20px_rgba(34,211,238,0.08)]"
+                  className="rounded-lg border border-[color:var(--border)] p-4 transition-colors duration-200 hover:border-[color:var(--border-glow)]"
                   style={{ background: "var(--bg-card)" }}
                 >
                   <span className="font-mono text-sm font-bold mb-1 block" style={{ color }}>
@@ -176,10 +170,9 @@ export function Timeline() {
 
                 {/* Dot — positioned at the S-curve point */}
                 <div
-                  className="absolute w-3 h-3 rounded-full z-10"
+                  className="absolute w-2 h-2 rounded-full z-10"
                   style={{
                     backgroundColor: color,
-                    boxShadow: `0 0 8px ${color}`,
                     top: "50%",
                     [isLeft ? "right" : "left"]: "-6%",
                     transform: "translateY(-50%)",
@@ -198,11 +191,11 @@ export function Timeline() {
               <SectionWrapper key={entry.year} delay={i * 0.05}>
                 <div className="relative">
                   <div
-                    className="absolute -left-[31px] top-4 w-3 h-3 rounded-full"
-                    style={{ backgroundColor: color, boxShadow: `0 0 6px ${color}` }}
+                    className="absolute -left-[30px] top-4 w-2 h-2 rounded-full"
+                    style={{ backgroundColor: color }}
                   />
                   <div
-                    className="rounded-xl border border-[color:var(--border)] p-4"
+                    className="rounded-lg border border-[color:var(--border)] p-4"
                     style={{ background: "var(--bg-card)" }}
                   >
                     <span className="font-mono text-sm font-bold mb-1 block" style={{ color }}>

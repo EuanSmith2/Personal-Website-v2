@@ -96,7 +96,7 @@ export function Personal() {
           <div className="mt-14">
             <div className="flex items-center gap-2 mb-6">
               <h3 className="text-sm font-mono text-zinc-500 uppercase tracking-wider">Finished reading</h3>
-              <CheckCircle2 size={14} className="text-emerald-500" />
+              <CheckCircle2 size={14} className="text-zinc-500" />
             </div>
             <div className="flex gap-5 overflow-x-auto pb-3 scrollbar-none">
               {lifestyle.finishedReading.map((book, i) => (

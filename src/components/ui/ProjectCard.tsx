@@ -21,7 +21,7 @@ interface Project {
 export function ProjectCard({ project }: { project: Project }) {
   return (
     <div
-      className="relative rounded-xl border border-[color:var(--border)] p-6 lg:p-8 transition-all duration-[250ms] hover:-translate-y-1 hover:border-[color:var(--border-glow)] hover:shadow-[0_0_20px_rgba(34,211,238,0.08)] overflow-hidden cursor-pointer"
+      className="relative rounded-lg border border-[color:var(--border)] p-6 lg:p-8 transition-colors duration-200 hover:border-[color:var(--border-glow)] overflow-hidden"
       style={{ background: "var(--bg-card)" }}
     >
       {/* Watermark number */}
@@ -32,7 +32,7 @@ export function ProjectCard({ project }: { project: Project }) {
       {/* Tags */}
       <div className="flex flex-wrap gap-2 mb-4">
         {project.tags.map((tag) => (
-          <span key={tag} className="font-mono text-xs px-2 py-0.5 rounded-full bg-zinc-800 text-zinc-400 border border-zinc-700">
+          <span key={tag} className="font-mono text-xs px-2 py-0.5 rounded bg-zinc-800 text-zinc-400 border border-zinc-700">
             {tag}
           </span>
         ))}
@@ -64,12 +64,10 @@ export function ProjectCard({ project }: { project: Project }) {
       )}
 
       <div className="flex items-center justify-between mt-2">
-        <span className={`text-xs font-mono px-2 py-0.5 rounded-full border ${
+        <span className={`text-xs font-mono px-2 py-0.5 rounded border ${
           project.status === "Active"
             ? "bg-cyan-400/10 border-cyan-400/30 text-cyan-400"
-            : project.status === "Complete"
-            ? "bg-emerald-400/10 border-emerald-400/30 text-emerald-400"
-            : "bg-amber-400/10 border-amber-400/30 text-amber-400"
+            : "bg-zinc-800 border-zinc-700 text-zinc-400"
         }`}>
           {project.status}
         </span>

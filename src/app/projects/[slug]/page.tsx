@@ -80,7 +80,7 @@ export default async function ProjectPage({
           {project.tags.map((tag) => (
             <span
               key={tag}
-              className="font-mono text-xs px-2 py-0.5 rounded-full bg-zinc-800 text-zinc-400 border border-zinc-700"
+              className="font-mono text-xs px-2 py-0.5 rounded bg-zinc-800 text-zinc-400 border border-zinc-700"
             >
               {tag}
             </span>

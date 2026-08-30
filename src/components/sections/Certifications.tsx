@@ -40,32 +40,23 @@ export function Certifications() {
               {learning.map((item, i) => (
                 <div
                   key={i}
-                  className="flex items-start gap-3 rounded-lg border border-[color:var(--border)] p-3 min-w-[200px] flex-1"
-                  style={{
-                    background: "var(--bg-card)",
-                    borderLeft: `3px solid ${item.color}`,
-                  }}
+                  className="flex items-start gap-3 rounded border border-[color:var(--border)] p-3 min-w-[200px] flex-1"
+                  style={{ background: "var(--bg-card)" }}
                 >
                   <div className="flex-1 min-w-0">
-                    <p className="text-xs font-mono mb-0.5" style={{ color: item.color }}>
-                      {item.platform}
-                    </p>
+                    <p className="text-xs font-mono text-zinc-400 mb-0.5">{item.platform}</p>
                     <p className="text-sm text-zinc-300 leading-snug mb-1.5">{item.name}</p>
                     <div className="flex items-center gap-1.5">
-                      {item.status === "Active" && (
-                        <span
-                          className="w-1.5 h-1.5 rounded-full animate-pulse"
-                          style={{ backgroundColor: item.color }}
-                        />
-                      )}
                       <span
-                        className="text-xs font-mono"
+                        className="w-1.5 h-1.5 rounded-full"
                         style={{
-                          color: item.status === "Active" ? item.color : "var(--accent-amber)",
+                          backgroundColor:
+                            item.status === "Active" || item.status === "In Progress"
+                              ? "var(--accent-cyan)"
+                              : "var(--text-muted)",
                         }}
-                      >
-                        {item.status}
-                      </span>
+                      />
+                      <span className="text-xs font-mono text-zinc-500">{item.status}</span>
                     </div>
                   </div>
                 </div>

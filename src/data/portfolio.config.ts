@@ -12,6 +12,8 @@ export const portfolioConfig = {
         "Euan Smith — cybersecurity and digital forensics student based in Dublin, Ireland",
       metaDescription:
         "Euan Smith — cybersecurity and digital forensics student at TU Dublin. Counter-disinformation research with EDMO Ireland, a Linux home lab, and Python security tooling.",
+      ogDescription:
+        "Student portfolio: counter-disinformation work with EDMO Ireland, a Linux home lab, Python security tooling, and the ChangingTIDE Changemakers programme.",
     },
     avatar: "/profile.jpg",
     linkedin: "https://www.linkedin.com/in/euan-smith-4295123a6/details/courses/",

@@ -66,8 +66,8 @@ export function Hero() {
             {/* Top row: avatar + name */}
             <motion.div variants={itemVariants} className="flex items-center gap-5 lg:gap-7">
               {/* Avatar — small, left-aligned */}
-              <div className="relative flex-shrink-0">
-                <div className="w-16 h-16 lg:w-20 lg:h-20 rounded-full overflow-hidden border-2 border-cyan-400/40 bg-zinc-800 flex items-center justify-center">
+              <div className="flex-shrink-0">
+                <div className="w-16 h-16 lg:w-20 lg:h-20 rounded-full overflow-hidden border border-zinc-700 bg-zinc-800 flex items-center justify-center">
                   {!imgError ? (
                     <Image
                       src={personal.avatar}
@@ -79,10 +79,9 @@ export function Hero() {
                       priority
                     />
                   ) : (
-                    <span className="text-sm font-mono text-cyan-400 select-none font-bold">ES</span>
+                    <span className="text-sm font-mono text-zinc-300 select-none font-bold">ES</span>
                   )}
                 </div>
-                <div className="absolute inset-0 rounded-full bg-cyan-400/8 blur-lg -z-10" />
               </div>
 
               {/* Name */}

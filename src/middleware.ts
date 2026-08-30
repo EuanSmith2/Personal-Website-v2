@@ -77,11 +77,14 @@ export function middleware(request: NextRequest) {
     return NextResponse.next()
   }
 
-  // The AI-discoverability surface is meant to be crawled freely.
+  // The AI-discoverability surface, and search-engine verification files, are
+  // meant to be fetched freely.
   if (
     DISCOVERY_PATH.test(pathname) ||
     pathname.endsWith(".md") ||
-    pathname.startsWith("/.well-known/")
+    pathname.startsWith("/.well-known/") ||
+    /^\/google[0-9a-f]+\.html$/.test(pathname) ||
+    pathname === "/BingSiteAuth.xml"
   ) {
     return NextResponse.next()
   }

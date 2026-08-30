@@ -66,6 +66,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredDataGraph()) }}
         />
+        {/* If a new deployment lands mid-session, an old page can reference a
+            JS chunk that no longer exists. Recover by reloading once. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              "addEventListener('error',function(e){var m=(e&&(e.message||(e.error&&e.error.message)))||'';if(/Loading chunk|Failed to load chunk|error loading dynamically imported module|Importing a module script failed/i.test(m)&&!sessionStorage.getItem('__chunkReload')){sessionStorage.setItem('__chunkReload','1');location.reload()}});",
+          }}
+        />
       </head>
       <body className="font-sans antialiased" style={{ background: "var(--bg-base)", color: "var(--text-primary)" }}>
         {children}

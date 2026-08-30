@@ -38,6 +38,19 @@ export const metadata: Metadata = {
     title: `${personal.displayName} — ${personal.roles.jobTitle}`,
     description: personal.roles.metaDescription,
   },
+  // Optional Search Console / Bing verification via env var — an alternative
+  // to a DNS TXT record. Set GSC_VERIFICATION / BING_VERIFICATION in Vercel
+  // and redeploy; leave unset to render nothing.
+  ...((process.env.GSC_VERIFICATION || process.env.BING_VERIFICATION)
+    ? {
+        verification: {
+          ...(process.env.GSC_VERIFICATION ? { google: process.env.GSC_VERIFICATION } : {}),
+          ...(process.env.BING_VERIFICATION
+            ? { other: { "msvalidate.01": process.env.BING_VERIFICATION } }
+            : {}),
+        },
+      }
+    : {}),
 }
 
 export const viewport: Viewport = {

@@ -1,12 +1,18 @@
 "use client"
 import { useEffect, useRef, useState } from "react"
-import { motion, AnimatePresence, useReducedMotion } from "framer-motion"
+import { useReducedMotion } from "framer-motion"
 import { readConsent, setConsent } from "@/components/AnalyticsConsent"
 import { GA_ID } from "@/lib/analytics"
 
 interface TerminalIntroProps {
   onComplete: () => void
 }
+
+// If the visitor never answers the analytics prompt, default to "denied"
+// after this long and get out of the way. Short on purpose: the buttons
+// mean nobody is actually blocked on a keypress, and the choice can be
+// changed at any time on /privacy.
+const CONSENT_TIMEOUT_MS = 8_000
 
 type BootLine = {
   text: string
@@ -131,17 +137,25 @@ function generateBootLines(h: SysInfo): BootLine[] {
     { text: "[BREACH] portfolio.enc  ..... decrypted",         delay: 0,  color: "text-[#00ff41]", fast: true  },
     { text: "[BREACH] assets.bundle  ..... loaded",            delay: 0,  color: "text-[#00ff41]", fast: true  },
     { text: "",                                                delay: 0,  color: "",               fast: true  },
-    { text: "[AUTH] > ACCESS GRANTED  ████████████████ 100%",  delay: 20, color: "text-[#00ff41]", fast: false },
+    { text: "[AUTH] > ACCESS GRANTED  ██████████ 100%",        delay: 20, color: "text-[#00ff41]", fast: false },
   ]
 }
 
 export function TerminalIntro({ onComplete }: TerminalIntroProps) {
   const prefersReducedMotion = useReducedMotion()
   const [visible, setVisible]             = useState(false)
+  const [exiting, setExiting]             = useState(false)
   const [bootLines, setBootLines]         = useState<BootLine[]>([])
   const [renderedLines, setRenderedLines] = useState<string[]>([])
   const [phase, setPhase]                 = useState<"boot" | "consent">("boot")
+  const [coarsePointer, setCoarsePointer] = useState(false)
   const dismissed = useRef(false)
+  const answerRef = useRef<(value: "granted" | "denied") => void>(() => {})
+
+  useEffect(() => {
+    if (typeof window === "undefined" || typeof window.matchMedia !== "function") return
+    setCoarsePointer(window.matchMedia("(pointer: coarse)").matches)
+  }, [])
 
   useEffect(() => {
     if (prefersReducedMotion) { onComplete(); return }
@@ -170,10 +184,16 @@ export function TerminalIntro({ onComplete }: TerminalIntroProps) {
       const dismiss = () => {
         if (dismissed.current) return
         dismissed.current = true
-        sessionStorage.setItem("intro_seen", "true")
+        try { sessionStorage.setItem("intro_seen", "true") } catch {}
         if (consentFallback) clearTimeout(consentFallback)
-        setVisible(false)
-        setTimeout(onComplete, 200)
+        // Fade the overlay out with a plain CSS transition, then unmount it
+        // and hand control to the page. A fixed timeout guarantees teardown
+        // regardless of what else is rendering.
+        setExiting(true)
+        setTimeout(() => {
+          setVisible(false)
+          onComplete()
+        }, prefersReducedMotion ? 0 : 260)
       }
 
       const answerConsent = (value: "granted" | "denied") => {
@@ -181,6 +201,7 @@ export function TerminalIntro({ onComplete }: TerminalIntroProps) {
         setConsent(value)
         dismiss()
       }
+      answerRef.current = answerConsent
 
       const onKey = (e: KeyboardEvent) => {
         if (localPhase === "consent") {
@@ -191,12 +212,12 @@ export function TerminalIntro({ onComplete }: TerminalIntroProps) {
           handleSkip()
         }
       }
-      // During the consent prompt, only an explicit key answers. Clicks are
-      // ignored (except the privacy link) so a stray tap can't force a choice;
-      // the fallback timeout below defaults to "denied" if there is no answer.
-      const onClick = (e: MouseEvent) => {
+      // During the consent prompt, only the [ allow ] / [ decline ] buttons or
+      // the y/n keys answer. A stray tap on the backdrop is ignored so it can't
+      // force a choice; the fallback timeout defaults to "denied" if there is
+      // no answer.
+      const onClick = () => {
         if (localPhase !== "consent") handleSkip()
-        else if ((e.target as HTMLElement).closest("a")) return
       }
 
       const enterConsent = () => {
@@ -205,7 +226,7 @@ export function TerminalIntro({ onComplete }: TerminalIntroProps) {
         timeouts.forEach(clearTimeout)
         setRenderedLines(lines.map((l) => l.text))
         setPhase("consent")
-        consentFallback = setTimeout(() => answerConsent("denied"), 20_000)
+        consentFallback = setTimeout(() => answerConsent("denied"), CONSENT_TIMEOUT_MS)
       }
 
       const handleSkip = () => {
@@ -268,94 +289,116 @@ export function TerminalIntro({ onComplete }: TerminalIntroProps) {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
+  if (!visible) return null
+
   return (
-    <AnimatePresence>
-      {visible && (
-        <motion.div
-          className="fixed inset-0 z-50 flex items-center justify-center p-4"
-          style={{ background: "#000" }}
-          initial={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.25 }}
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center p-4"
+      style={{
+        background: "#000",
+        opacity: exiting ? 0 : 1,
+        transition: prefersReducedMotion ? "none" : "opacity 0.25s ease",
+        pointerEvents: exiting ? "none" : "auto",
+      }}
+    >
+      <div
+        className="relative w-full max-w-2xl font-mono text-[11px] sm:text-sm"
+        style={{
+          background: "#080808",
+          border: "1px solid rgba(0,255,65,0.22)",
+          boxShadow: "0 0 40px rgba(0,255,65,0.08), 0 0 80px rgba(0,255,65,0.04)",
+        }}
+      >
+        {/* Scanlines */}
+        <div
+          className="absolute inset-0 pointer-events-none z-10"
+          aria-hidden
+          style={{
+            backgroundImage:
+              "repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.06) 2px, rgba(0,0,0,0.06) 4px)",
+          }}
+        />
+
+        {/* Title bar */}
+        <div
+          className="flex items-center justify-between px-4 py-2.5 border-b"
+          style={{ borderColor: "rgba(0,255,65,0.18)", background: "#0c0c0c" }}
         >
-          <div
-            className="relative w-full max-w-2xl font-mono text-xs sm:text-sm"
-            style={{
-              background: "#080808",
-              border: "1px solid rgba(0,255,65,0.22)",
-              boxShadow: "0 0 40px rgba(0,255,65,0.08), 0 0 80px rgba(0,255,65,0.04)",
-            }}
-          >
-            {/* Scanlines */}
-            <div
-              className="absolute inset-0 pointer-events-none z-10"
-              aria-hidden
-              style={{
-                backgroundImage:
-                  "repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.06) 2px, rgba(0,0,0,0.06) 4px)",
-              }}
-            />
-
-            {/* Title bar */}
-            <div
-              className="flex items-center justify-between px-4 py-2.5 border-b"
-              style={{ borderColor: "rgba(0,255,65,0.18)", background: "#0c0c0c" }}
-            >
-              <div className="flex items-center gap-3">
-                <span className="text-[#00ff41] font-bold tracking-[0.25em] text-xs">ctOS</span>
-                <span className="text-zinc-700 text-xs">─</span>
-                <span className="text-zinc-500 text-xs tracking-wider">REMOTE NODE</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#00ff41] animate-pulse" />
-                <span className="text-[#00ff41] text-xs tracking-widest">SECURE</span>
-              </div>
-            </div>
-
-            {/* Boot output */}
-            <div className="p-5 space-y-0.5 min-h-[300px]">
-              {bootLines.map((line, i) => {
-                const rendered = renderedLines[i]
-                if (rendered === undefined) return null
-                if (rendered === "") return <div key={i} className="h-3" />
-                return (
-                  <p key={i} className={line.color || "text-zinc-400"}>
-                    {rendered}
-                    {phase === "boot" && i === renderedLines.length - 1 && rendered !== line.text && (
-                      <span className="animate-pulse text-[#00ff41]">█</span>
-                    )}
-                  </p>
-                )
-              })}
-
-              {phase === "consent" && (
-                <div className="pt-3">
-                  <p className="text-zinc-300">
-                    <span className="text-[#00ff41]">~</span> $ allow anonymous analytics?{" "}
-                    <span className="text-zinc-500">[y/N]</span>
-                    <span className="animate-pulse text-[#00ff41]">█</span>
-                  </p>
-                  <p className="text-zinc-600 text-xs mt-1">
-                    press <span className="text-zinc-400">y</span> to allow, <span className="text-zinc-400">n</span> to
-                    decline ·{" "}
-                    <a href="/privacy" className="underline hover:text-[#00ff41]">
-                      privacy
-                    </a>
-                  </p>
-                </div>
-              )}
-            </div>
-
-            {/* Footer */}
-            <div
-              className="px-5 py-2 border-t text-zinc-600 text-xs"
-              style={{ borderColor: "rgba(0,255,65,0.12)" }}
-            >
-              {phase === "consent" ? "awaiting response — y / n" : "↵ any key — abort sequence"}
-            </div>
+          <div className="flex items-center gap-3">
+            <span className="text-[#00ff41] font-bold tracking-[0.25em] text-xs">ctOS</span>
+            <span className="text-zinc-700 text-xs">─</span>
+            <span className="text-zinc-500 text-xs tracking-wider">REMOTE NODE</span>
           </div>
-        </motion.div>
-      )}
-    </AnimatePresence>
+          <div className="flex items-center gap-2">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#00ff41] animate-pulse" />
+            <span className="text-[#00ff41] text-xs tracking-widest">SECURE</span>
+          </div>
+        </div>
+
+        {/* Boot output */}
+        <div className="p-5 space-y-0.5 min-h-[300px]">
+          {bootLines.map((line, i) => {
+            const rendered = renderedLines[i]
+            if (rendered === undefined) return null
+            if (rendered === "") return <div key={i} className="h-3" />
+            return (
+              <p key={i} className={line.color || "text-zinc-400"}>
+                {rendered}
+                {phase === "boot" && i === renderedLines.length - 1 && rendered !== line.text && (
+                  <span className="animate-pulse text-[#00ff41]">█</span>
+                )}
+              </p>
+            )
+          })}
+
+          {phase === "consent" && (
+            <div className="pt-3">
+              <p className="text-zinc-300">
+                <span className="text-[#00ff41]">~</span> $ allow anonymous analytics?{" "}
+                <span className="text-zinc-500">[y/N]</span>
+                <span className="animate-pulse text-[#00ff41]">█</span>
+              </p>
+              <div className="mt-3 flex flex-wrap items-center gap-2">
+                <button
+                  type="button"
+                  onClick={() => answerRef.current("granted")}
+                  className="border border-[#00ff41]/40 px-4 py-2 text-xs text-[#00ff41] transition-colors hover:bg-[#00ff41]/10 focus:outline-none focus-visible:ring-1 focus-visible:ring-[#00ff41]"
+                >
+                  [ allow ]
+                </button>
+                <button
+                  type="button"
+                  onClick={() => answerRef.current("denied")}
+                  className="border border-zinc-700 px-4 py-2 text-xs text-zinc-400 transition-colors hover:bg-zinc-800 hover:text-zinc-200 focus:outline-none focus-visible:ring-1 focus-visible:ring-zinc-500"
+                >
+                  [ decline ]
+                </button>
+                <a
+                  href="/privacy"
+                  className="ml-1 text-zinc-500 underline underline-offset-2 hover:text-[#00ff41]"
+                >
+                  privacy
+                </a>
+              </div>
+              <p className="text-zinc-600 text-[11px] mt-2">
+                {coarsePointer ? "tap a choice" : "press y to allow, n to decline"} · no answer defaults to decline
+              </p>
+            </div>
+          )}
+        </div>
+
+        {/* Footer */}
+        <div
+          className="px-5 py-2 border-t text-zinc-600 text-xs"
+          style={{ borderColor: "rgba(0,255,65,0.12)" }}
+        >
+          {phase === "consent"
+            ? coarsePointer
+              ? "awaiting response — tap allow or decline"
+              : "awaiting response — y / n"
+            : "↵ any key — abort sequence"}
+        </div>
+      </div>
+    </div>
   )
 }

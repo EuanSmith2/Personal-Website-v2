@@ -192,11 +192,12 @@ export default function CVPage() {
         <div className="cv-section">
           <h2 className="cv-section-title">Profile</h2>
           <p className="cv-para">
-            Cybersecurity student at Technological University Dublin, currently working with the European Digital Media
-            Observatory. I build practical tools — a computer vision system that identifies marketplace resale
-            opportunities and has generated real financial returns, a home lab running SIEM stacks and honeypot setups,
-            and custom websites for paying clients. I&rsquo;m interested in how systems fail, how attackers think, and how to
-            design things that stay secure. Background spans Python automation, web development, and hardware.
+            Cybersecurity and Digital Forensics student at Technological University Dublin. I work as a researcher and
+            freelance contributor for the European Digital Media Observatory on counter-disinformation, and build
+            practical tools alongside it — a computer vision system that identifies marketplace resale opportunities and
+            has generated real financial returns, and a home lab running SIEM stacks and honeypot setups. I&rsquo;m interested
+            in how systems fail, how attackers think, and how to design things that stay secure. Background spans Python
+            automation, OSINT, web development, and hardware.
           </p>
         </div>
 
@@ -227,15 +228,15 @@ export default function CVPage() {
 
           <div className="cv-entry">
             <div className="cv-entry-header">
-              <h3 className="cv-entry-title">Software Developer Intern — European Digital Media Observatory</h3>
-              <div className="cv-entry-sub">Dublin City University · Summer 2026</div>
+              <h3 className="cv-entry-title">Researcher &amp; Freelance Contributor — European Digital Media Observatory</h3>
+              <div className="cv-entry-sub">Dublin City University · 2025&ndash;2026</div>
             </div>
             <div className="cv-entry-note">EDMO operates under European Commission mandate as part of the European Democracy Action Plan, coordinating anti-disinformation research across all EU member states.</div>
             <ul className="cv-list">
-              <li>Built internal automation tooling and API integrations to EU institutional standards</li>
-              <li>Managed CMS workflows and the editorial publication pipeline</li>
-              <li>Developed social media scheduling tools and performance analytics scripts</li>
-              <li>Cut manual editorial overhead through backend process automation</li>
+              <li>Built a weekly fact-check round-up pipeline in Python: scrapes TheJournal.ie fact-checks, formats them to EDMO&rsquo;s house style, and posts drafts to edmohub.ie via the WordPress REST API</li>
+              <li>Ran a controlled two-account social media experiment documenting algorithmic radicalisation; presented findings to ~60 students</li>
+              <li>Research shared by EDMO Ireland with DCU academics, under consideration for an MA journalism module</li>
+              <li>Selected as one of four representing Ireland in the EU-funded ChangingTIDE Changemakers counter-disinformation programme (TEPSA, Brussels)</li>
             </ul>
           </div>
 
@@ -266,11 +267,18 @@ export default function CVPage() {
           </div>
 
           <div className="cv-entry">
-            <h3 className="cv-entry-title">Multi-Agent AI Sandbox</h3>
+            <h3 className="cv-entry-title">NZT-48</h3>
             <ul className="cv-list">
-              <li>Isolated VM running autonomous LLM agents interacting with browser environments</li>
-              <li>Studies emergent agent communication and coordination without human supervision</li>
-              <li>Designed as a controlled research environment, not a production system</li>
+              <li>Self-hosted personal AI system built on Claude Code — Telegram interface, Obsidian-backed memory, background agents and monitors</li>
+              <li>Runs at zero marginal cost with no cloud dependency; most-starred of my repositories</li>
+            </ul>
+          </div>
+
+          <div className="cv-entry">
+            <h3 className="cv-entry-title">RadicalMap</h3>
+            <ul className="cv-list">
+              <li>Python OSINT instrument that detects and maps extremist content networks on short-form video platforms from public metadata</li>
+              <li>Flags coded language and numerical dog whistles that evade automated moderation; grounded in DSA Article 40 and GDPR Article 89 research provisions</li>
             </ul>
           </div>
 

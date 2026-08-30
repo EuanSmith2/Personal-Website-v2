@@ -177,7 +177,7 @@ export function CVDocument() {
       title="Euan Smith — CV"
       author="Euan Smith"
       subject="Curriculum Vitae"
-      keywords="cybersecurity, digital forensics, Python, automation, web development, SIEM, TUD, internship"
+      keywords="cybersecurity, digital forensics, Python, automation, counter-disinformation, OSINT, SIEM, TU Dublin"
     >
       <Page size="A4" style={s.page}>
 
@@ -197,7 +197,7 @@ export function CVDocument() {
         <View style={s.section}>
           <Text style={s.sectionTitle}>Profile</Text>
           <Text style={s.para}>
-            {"Aspiring Cybersecurity and Digital Forensics student at Technological University Dublin, with practical experience building automation systems, security infrastructure, and web applications. Currently interning at the European Digital Media Observatory — part of the EU anti-disinformation network — where I build internal tooling, API integrations, and backend automation to EU institutional standards. Outside of work, I built a Python-based computer vision system that autonomously identifies resale opportunities across online marketplaces; it has generated real financial returns, with proceeds donated to Merchants Quay Ireland. I run a home lab with SIEM infrastructure, honeypots, and network segmentation — the kind of hands-on environment where you learn how systems actually break. I approach security from first principles: attacker mindset, failure modes, and building things that hold up under pressure."}
+            {"Cybersecurity and Digital Forensics student at Technological University Dublin, with practical experience building automation systems, security infrastructure, and web applications. I work as a researcher and freelance contributor for the European Digital Media Observatory — part of the EU anti-disinformation network — building a fact-check publishing pipeline and running original counter-disinformation research. Outside of that, I built a Python computer vision system that autonomously identifies resale opportunities across online marketplaces; it has generated real financial returns, with proceeds donated to Merchants Quay Ireland. I run a home lab with SIEM infrastructure, honeypots, and network segmentation — the kind of hands-on environment where you learn how systems actually break. I approach security from first principles: attacker mindset, failure modes, and building things that hold up under pressure."}
           </Text>
         </View>
 
@@ -225,15 +225,15 @@ export function CVDocument() {
 
           <View style={s.entry}>
             <View style={s.entryRow}>
-              <Text style={s.entryTitleInRow}>Software Developer Intern — European Digital Media Observatory</Text>
-              <Text style={s.entrySub}>Dublin City University · Summer 2026</Text>
+              <Text style={s.entryTitleInRow}>Researcher & Freelance Contributor — European Digital Media Observatory</Text>
+              <Text style={s.entrySub}>Dublin City University · 2025–2026</Text>
             </View>
             <Text style={s.entryNote}>EDMO operates under European Commission mandate, coordinating anti-disinformation research across all EU member states.</Text>
             <View style={s.list}>
-              <Bullet text="Built internal automation tooling and API integrations to EU institutional standards" />
-              <Bullet text="Managed CMS workflows and the editorial publication pipeline" />
-              <Bullet text="Developed social media scheduling tools and performance analytics scripts" />
-              <Bullet text="Reduced manual editorial overhead through backend process automation" />
+              <Bullet text="Built a weekly fact-check round-up pipeline in Python: scrapes TheJournal.ie fact-checks, formats them to EDMO's house style, and posts drafts to edmohub.ie via the WordPress REST API" />
+              <Bullet text="Ran a controlled two-account social media experiment documenting algorithmic radicalisation; presented findings to ~60 students" />
+              <Bullet text="Research shared by EDMO Ireland with DCU academics, under consideration for an MA journalism module" />
+              <Bullet text="Selected as one of four representing Ireland in the EU-funded ChangingTIDE Changemakers counter-disinformation programme (TEPSA, Brussels)" />
             </View>
           </View>
 
@@ -263,10 +263,18 @@ export function CVDocument() {
           </View>
 
           <View style={s.entry}>
-            <Text style={s.entryTitle}>Multi-Agent AI Sandbox</Text>
+            <Text style={s.entryTitle}>NZT-48</Text>
             <View style={s.list}>
-              <Bullet text="Isolated VM running autonomous LLM agents interacting with browser environments" />
-              <Bullet text="Research environment studying emergent agent communication and coordination without human supervision" />
+              <Bullet text="Self-hosted personal AI system built on Claude Code — Telegram interface, Obsidian-backed memory, background agents and monitors" />
+              <Bullet text="Runs at zero marginal cost with no cloud dependency; most-starred of my repositories" />
+            </View>
+          </View>
+
+          <View style={s.entry}>
+            <Text style={s.entryTitle}>RadicalMap</Text>
+            <View style={s.list}>
+              <Bullet text="Python OSINT instrument that detects and maps extremist content networks on short-form video platforms from public metadata" />
+              <Bullet text="Grounded in DSA Article 40 researcher-access and GDPR Article 89 research-exemption provisions" />
             </View>
           </View>
 

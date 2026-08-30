@@ -21,6 +21,12 @@ const config: Config = {
     },
   },
   plugins: [],
+  // No gradient utilities are used anywhere; dropping the core plugins keeps
+  // Tailwind's `--tw-gradient-*` custom properties out of the compiled base layer.
+  corePlugins: {
+    backgroundImage: false,
+    gradientColorStops: false,
+  },
 };
 
 export default config;

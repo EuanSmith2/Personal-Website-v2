@@ -1,5 +1,4 @@
 import type { Metadata } from "next"
-import { CursorGlow } from "@/components/ui/CursorGlow"
 import { ScrollToTop } from "@/components/ui/ScrollToTop"
 import { Navbar } from "@/components/layout/Navbar"
 import { Footer } from "@/components/layout/Footer"
@@ -22,7 +21,6 @@ export default function Home() {
     <>
       <Navbar />
       <main>
-        <CursorGlow />
         <Hero />
         <About />
         <CurrentActivity />

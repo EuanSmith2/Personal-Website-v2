@@ -25,6 +25,8 @@ export function EdmoExperience() {
               <img
                 src="/logos/eu-flag.webp"
                 alt="European Union flag"
+                width={80}
+                height={54}
                 className="rounded-sm shadow-lg flex-shrink-0"
                 style={{ width: 80, height: 54, objectFit: "cover" }}
               />
@@ -36,6 +38,8 @@ export function EdmoExperience() {
                 <img
                   src="/logos/edmo-logo.png"
                   alt="European Digital Media Observatory"
+                  width={107}
+                  height={40}
                   className="h-10 w-auto"
                 />
               </div>
@@ -49,6 +53,8 @@ export function EdmoExperience() {
                 <img
                   src="/logos/dcu-logo.png"
                   alt="Dublin City University"
+                  width={140}
+                  height={36}
                   className="h-9 w-auto"
                 />
               </div>

@@ -46,7 +46,7 @@ function CertBadgeInner({ issuer, name, status, issuerColor }: Omit<CertBadgePro
           style={{ background: "linear-gradient(180deg, #00b1eb 0%, #0069b4 100%)", border: "1px solid #0070f340" }}
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/logos/sap-logo.svg" alt="SAP" style={{ width: "88%", height: "88%", objectFit: "contain" }} />
+          <img src="/logos/sap-logo.svg" alt="SAP" width={42} height={42} style={{ width: "88%", height: "88%", objectFit: "contain" }} />
         </div>
       ) : (
         <div

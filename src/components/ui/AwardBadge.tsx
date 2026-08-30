@@ -178,6 +178,7 @@ export const AwardBadge = ({ type, place, link, customTitle, customSubtitle }: A
       href={link}
       target="_blank"
       rel="noopener noreferrer"
+      aria-label={hasSubtitle ? `${displayTitle} — ${customSubtitle}` : displayTitle}
       className="block w-[260px] sm:w-[360px] h-auto cursor-pointer"
       onMouseMove={onMouseMove}
       onMouseLeave={onMouseLeave}

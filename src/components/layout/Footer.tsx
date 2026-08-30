@@ -12,7 +12,7 @@ export function Footer() {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
         <span className="font-mono font-bold text-cyan-400 text-sm">{personal.displayName}</span>
 
-        <nav className="flex items-center gap-5 text-xs font-mono text-zinc-500">
+        <nav className="flex items-center gap-5 text-xs font-mono text-zinc-400">
           <Link href="/faq" className="hover:text-cyan-400 transition-colors">
             FAQ
           </Link>
@@ -27,7 +27,7 @@ export function Footer() {
           </a>
         </nav>
 
-        <p className="text-xs text-zinc-500 font-mono">
+        <p className="text-xs text-zinc-400 font-mono">
           Built with Next.js · Tailwind · Framer Motion · GSAP
         </p>
       </div>

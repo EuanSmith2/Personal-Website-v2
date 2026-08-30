@@ -54,6 +54,8 @@ export function ProjectCard({ project }: { project: Project }) {
               <img
                 src={project.charityLogo}
                 alt="Merchants Quay Ireland"
+                width={36}
+                height={20}
                 className="h-5 w-auto"
               />
             </div>

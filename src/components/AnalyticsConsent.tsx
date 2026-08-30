@@ -2,9 +2,9 @@
 
 import { useEffect, useState } from "react"
 import { GoogleAnalytics } from "@next/third-parties/google"
+import { GA_ID } from "@/lib/analytics"
 
 const KEY = "analytics-consent"
-const GA_ID = process.env.NEXT_PUBLIC_GA_ID
 
 export type ConsentValue = "granted" | "denied" | null
 

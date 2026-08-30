@@ -2,6 +2,7 @@
 import { useEffect, useRef, useState } from "react"
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion"
 import { readConsent, setConsent } from "@/components/AnalyticsConsent"
+import { GA_ID } from "@/lib/analytics"
 
 interface TerminalIntroProps {
   onComplete: () => void
@@ -27,8 +28,6 @@ type ExtNavigator = Navigator & {
   deviceMemory?: number
   connection?: { effectiveType?: string; type?: string }
 }
-
-const GA_ID = process.env.NEXT_PUBLIC_GA_ID
 
 function estimateMemory(cores: number, os: string): string {
   if (os === "iOS")     return "8GB (est.)"

@@ -86,7 +86,7 @@ export const portfolioConfig = {
       title: "AI Projects",
       summary: "Computer vision, marketplace intelligence, automation",
       detail:
-        "Building AI-driven tools, including a computer vision marketplace intelligence system that has generated measurable real-world financial returns, and a multi-agent AI sandbox inside a sandboxed VM for studying emergent agent behaviour.",
+        "Building AI-driven tools, including a computer vision marketplace intelligence system that has generated measurable real-world financial returns, and NZT-48 — a self-hosted personal AI system that runs background agents and monitors from a single Claude Code subscription.",
     },
     {
       id: "hardware",
@@ -115,7 +115,7 @@ export const portfolioConfig = {
       "EDMO operates under direct mandate from the European Commission as part of the European Democracy Action Plan. Bringing together fact-checkers, academics, and technology experts across all EU member states, it coordinates a network of independent researchers providing policy intelligence to the European Parliament and national governments on disinformation threats and information ecosystem integrity.",
     responsibilities: [
       "Conducted original counter-disinformation research: ran a controlled two-account social media experiment to empirically document algorithmic radicalisation, and interviewed EDMO Ireland's lead researcher on radical recruitment tactics, Digital Services Act enforcement gaps, and Big Tech's Dublin-based accountability failures. Presented findings to ~60 students.",
-      "Research project shared by EDMO Ireland with Dr Eileen Culloty and Dr Jane Suitor at DCU — being considered for adaptation into an MA journalism module in 2027, cited as an example of the practical research skills aspiring journalists and researchers should have.",
+      "Research project shared by EDMO Ireland with Dr Eileen Culloty and Dr Jane Suitor at DCU — being considered for adaptation into an MA journalism module in 2027, cited as an example of the practical research skills journalists and researchers should have.",
       "Built a weekly fact-check round-up pipeline as a freelance contributor: pulls TheJournal.ie fact-checks, formats them to EDMO's house style, and posts a draft to edmohub.ie via the WordPress REST API for an editor to review and publish.",
       "Selected as one of four people representing Ireland in the ChangingTIDE Changemakers programme — an EU-funded (CERV) counter-disinformation initiative run by the Trans European Policy Studies Association in Brussels, with DCU's FuJo Institute as the Irish partner and mentoring from Young European Leadership. The cohort co-creates campaigns and brings them into dialogue with policymakers at national and EU level, starting with a Brussels intensive in October 2026.",
     ],

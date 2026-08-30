@@ -17,11 +17,13 @@ export function About() {
           <div className="grid lg:grid-cols-[3fr_2fr] gap-12 lg:gap-16 items-start">
             <div className="border-l-2 border-cyan-400/40 pl-6">
               <p className="text-zinc-300 leading-relaxed text-base lg:text-lg">
-                {"I'm an aspiring "}
+                {"I'm a "}
                 <strong className="text-zinc-100">cybersecurity student</strong>
                 {" at Technological University Dublin with a background spanning "}
-                <strong className="text-zinc-100">AI automation, hardware systems, and digital forensics</strong>
-                {". I build things that work: automation tools that generate real returns, AI agents that explore emergent behaviour, and "}
+                <strong className="text-zinc-100">counter-disinformation research, AI automation, and hardware systems</strong>
+                {". I build things that work: a "}
+                <strong className="text-zinc-100">weekly fact-check pipeline for EDMO Ireland</strong>
+                {", automation tools that generate real returns, and "}
                 <strong className="text-zinc-100">home lab infrastructure</strong>
                 {" that mirrors production environments. I'm drawn to "}
                 <strong className="text-zinc-100">complex systems</strong>

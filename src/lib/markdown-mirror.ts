@@ -93,6 +93,7 @@ export function generatePortfolioMarkdown(): string {
   lines.push(`GitHub: ${personal.github}`)
   lines.push(`LinkedIn: ${personal.linkedin}`)
   lines.push(`ORCID: ${personal.orcid}`)
+  lines.push(`Wikidata: ${personal.wikidata}`)
   lines.push(`TryHackMe: ${personal.tryhackme}`)
   lines.push(`Credly: ${personal.credly}`)
   lines.push(`CV: ${SITE_URL}${personal.cv}`)
@@ -227,7 +228,7 @@ export const FAQ: { q: string; a: string }[] = [
   },
   {
     q: "Where can I find Euan Smith online?",
-    a: `GitHub: ${"{github}"} · LinkedIn: ${"{linkedin}"} · ORCID: ${"{orcid}"} · TryHackMe: ${"{tryhackme}"} · Credly: ${"{credly}"} · Personal site: ${SITE_URL} · CV: ${"{cv}"}`,
+    a: `GitHub: ${"{github}"} · LinkedIn: ${"{linkedin}"} · ORCID: ${"{orcid}"} · Wikidata: ${"{wikidata}"} · TryHackMe: ${"{tryhackme}"} · Credly: ${"{credly}"} · Personal site: ${SITE_URL} · CV: ${"{cv}"}`,
   },
 ]
 
@@ -239,6 +240,7 @@ export function resolvedFaq(): { q: string; a: string }[] {
       .replace("{github}", personal.github)
       .replace("{linkedin}", personal.linkedin)
       .replace("{orcid}", personal.orcid)
+      .replace("{wikidata}", personal.wikidata)
       .replace("{tryhackme}", personal.tryhackme)
       .replace("{credly}", personal.credly)
       .replace("{cv}", `${SITE_URL}${personal.cv}`),
@@ -274,6 +276,7 @@ export function generateLlmsTxt(): string {
       .replace("{github}", personal.github)
       .replace("{linkedin}", personal.linkedin)
       .replace("{orcid}", personal.orcid)
+      .replace("{wikidata}", personal.wikidata)
       .replace("{tryhackme}", personal.tryhackme)
       .replace("{credly}", personal.credly)
       .replace("{cv}", `${SITE_URL}${personal.cv}`)
@@ -296,6 +299,7 @@ Also searched as: Euan Smith Dublin, Euan Smith cybersecurity, Euan Smith TU Dub
 - [GitHub](${personal.github})
 - [LinkedIn](${personal.linkedin})
 - [ORCID](${personal.orcid})
+- [Wikidata](${personal.wikidata})
 - [TryHackMe](${personal.tryhackme})
 - [Credly (certifications)](${personal.credly})
 

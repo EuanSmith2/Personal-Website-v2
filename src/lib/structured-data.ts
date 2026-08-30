@@ -35,7 +35,14 @@ function personSchema() {
       "Python",
       "AI/ML Automation",
     ],
-    sameAs: [personal.github, personal.linkedin, personal.tryhackme, personal.credly, personal.orcid],
+    sameAs: [
+      personal.github,
+      personal.linkedin,
+      personal.tryhackme,
+      personal.credly,
+      personal.orcid,
+      personal.wikidata,
+    ],
   }
 }
 

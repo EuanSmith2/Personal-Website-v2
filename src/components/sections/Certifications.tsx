@@ -1,9 +1,10 @@
 import { SectionWrapper } from "@/components/ui/SectionWrapper"
-import { CertBadge } from "@/components/ui/CertBadge"
 import { portfolioConfig } from "@/data/portfolio.config"
 
 export function Certifications() {
-  const { certifications, learning, personal } = portfolioConfig
+  const { learning, personal } = portfolioConfig
+  const certs = learning.filter((l) => l.kind === "cert")
+  const practice = learning.filter((l) => l.kind === "practice")
 
   return (
     <section
@@ -14,53 +15,44 @@ export function Certifications() {
     >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionWrapper>
-          <p className="text-xs font-mono text-cyan-400 tracking-widest uppercase mb-3">{"// credentials"}</p>
-          <h2 className="text-3xl font-semibold text-zinc-100 mb-12">Certifications &amp; Learning</h2>
+          <p className="text-xs font-mono text-cyan-400 tracking-widest uppercase mb-3">{"// study"}</p>
+          <h2 className="text-3xl font-semibold text-zinc-100 mb-12">What I&rsquo;m working on</h2>
 
-          {/* Tier 1 — Earned credentials */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
-            {certifications.map((cert, i) => (
-              <CertBadge key={i} {...cert} />
-            ))}
-          </div>
+          <div className="grid gap-12 lg:grid-cols-[3fr_2fr]">
+            <div>
+              <p className="text-xs font-mono text-zinc-500 uppercase tracking-widest mb-5">Certifications in progress</p>
+              <ul className="divide-y divide-zinc-800/70 border-y border-zinc-800/70">
+                {certs.map((item, i) => (
+                  <li key={i} className="flex items-baseline gap-4 py-3">
+                    <span className="font-mono text-xs text-zinc-500 shrink-0 w-16">{item.tag}</span>
+                    <span className="text-sm text-zinc-300 leading-snug flex-1">{item.name}</span>
+                    <span className="font-mono text-[11px] text-zinc-600 shrink-0">{item.status}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
 
-          <a
-            href={personal.credly}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-block text-cyan-400 hover:text-cyan-300 font-mono text-sm transition-colors mb-16"
-          >
-            → View all verified credentials on Credly
-          </a>
-
-          {/* Tier 2 — Currently learning */}
-          <div className="border-t border-zinc-800 pt-12">
-            <p className="text-xs font-mono text-zinc-500 uppercase tracking-widest mb-6">{"// currently studying"}</p>
-            <div className="flex flex-wrap gap-3">
-              {learning.map((item, i) => (
-                <div
-                  key={i}
-                  className="flex items-start gap-3 rounded border border-[color:var(--border)] p-3 min-w-[200px] flex-1"
-                  style={{ background: "var(--bg-card)" }}
+            <div>
+              <p className="text-xs font-mono text-zinc-500 uppercase tracking-widest mb-5">Practising on</p>
+              <ul className="space-y-3">
+                {practice.map((item, i) => (
+                  <li key={i} className="flex items-baseline gap-4">
+                    <span className="font-mono text-xs text-zinc-500 shrink-0 w-16">{item.tag}</span>
+                    <span className="text-sm text-zinc-300">{item.platform}</span>
+                  </li>
+                ))}
+              </ul>
+              <p className="text-xs text-zinc-600 leading-relaxed mt-8">
+                Also verified on Credly: 3&times; SAP, ISC2 candidate membership, Microsoft AI Skills Fest.{" "}
+                <a
+                  href={personal.credly}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-cyan-400 hover:text-cyan-300 font-mono transition-colors"
                 >
-                  <div className="flex-1 min-w-0">
-                    <p className="text-xs font-mono text-zinc-400 mb-0.5">{item.platform}</p>
-                    <p className="text-sm text-zinc-300 leading-snug mb-1.5">{item.name}</p>
-                    <div className="flex items-center gap-1.5">
-                      <span
-                        className="w-1.5 h-1.5 rounded-full"
-                        style={{
-                          backgroundColor:
-                            item.status === "Active" || item.status === "In Progress"
-                              ? "var(--accent-cyan)"
-                              : "var(--text-muted)",
-                        }}
-                      />
-                      <span className="text-xs font-mono text-zinc-500">{item.status}</span>
-                    </div>
-                  </div>
-                </div>
-              ))}
+                  Credly &rarr;
+                </a>
+              </p>
             </div>
           </div>
         </SectionWrapper>

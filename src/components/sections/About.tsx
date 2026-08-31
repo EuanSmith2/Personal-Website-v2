@@ -17,7 +17,7 @@ export function About() {
           <div className="grid lg:grid-cols-[3fr_2fr] gap-12 lg:gap-16 items-start">
             <div className="border-l-2 border-cyan-400/40 pl-6 space-y-4">
               <p className="text-zinc-300 leading-relaxed text-base lg:text-lg">
-                {"I'm a cybersecurity student at Technological University Dublin. My work spans counter-disinformation research, AI automation, and hardware systems: a weekly fact-check pipeline for EDMO Ireland, automation tools that generate real returns, and home lab infrastructure that mirrors production environments."}
+                {"I'm a cybersecurity student at Technological University Dublin. My work spans counter-disinformation research, AI automation, and hardware systems: a weekly fact-check pipeline for EDMO Ireland, automation tools that turn a profit, and home lab infrastructure that mirrors production environments."}
               </p>
               <p className="text-zinc-300 leading-relaxed text-base lg:text-lg">
                 {"I'm drawn to complex systems, how they fail, how they can be exploited, and how to make them resilient. My thinking is neurodivergent by nature. I follow threads others overlook, sit with problems until patterns emerge, and rarely accept “that’s just how it works” as an answer."}

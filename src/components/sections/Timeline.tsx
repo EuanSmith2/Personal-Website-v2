@@ -92,7 +92,7 @@ export function Timeline() {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionWrapper>
           <p className="text-xs font-mono text-cyan-400 tracking-widest uppercase mb-3">{"// timeline"}</p>
-          <h2 className="text-3xl font-semibold text-zinc-100 mb-16">The journey so far</h2>
+          <h2 className="text-3xl font-semibold text-zinc-100 mb-16">Ten years, roughly</h2>
         </SectionWrapper>
 
         {/* Desktop S-curve — hidden on mobile */}

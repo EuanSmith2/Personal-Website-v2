@@ -63,17 +63,16 @@ export function generatePortfolioMarkdown(): string {
     lines.push("")
   }
 
-  lines.push("## Certifications")
+  lines.push("## Certifications & Study")
   lines.push("")
-  for (const c of certifications) {
-    lines.push(`- ${c.issuer} — ${c.name} (${c.status})`)
-  }
-  lines.push("")
-
-  lines.push("## Currently Learning")
-  lines.push("")
+  lines.push("In progress:")
   for (const l of learning) {
     lines.push(`- ${l.platform} — ${l.name} (${l.status})`)
+  }
+  lines.push("")
+  lines.push("Smaller verified credentials (Credly):")
+  for (const c of certifications) {
+    lines.push(`- ${c.issuer} — ${c.name} (${c.status})`)
   }
   lines.push("")
 
@@ -200,15 +199,15 @@ export const FAQ: { q: string; a: string }[] = [
   },
   {
     q: "What is Euan Smith's educational background?",
-    a: "He starts a BSc in Cybersecurity & Digital Forensics at Technological University Dublin (TU Dublin) in September 2026 — a programme covering network security, digital forensics, ethical hacking, cryptography, and security operations, subjects he has been self-studying for several years beforehand. He supplements formal study with independent certifications (SAP, ISC2, Microsoft, CompTIA, Google) and hands-on platforms like TryHackMe and Hack The Box.",
+    a: "He starts a BSc in Cybersecurity & Digital Forensics at Technological University Dublin (TU Dublin) in September 2026 — a programme covering network security, digital forensics, ethical hacking, cryptography, and security operations, subjects he has been self-studying for several years beforehand. Alongside it he is working through CompTIA Security+, A+ and Network+, ISC2's Certified in Cybersecurity, and Harvard's CS50x, and practises on TryHackMe and Hack The Box.",
   },
   {
     q: "What certifications does Euan Smith have?",
-    a: "Completed: three SAP certifications (Learning Journey in Security and Compliance, Business Integrity Screening Fundamentals, System Security Foundations), ISC2 Candidate Membership, and Microsoft's AI Skills Fest 2026. In progress: the Google Cybersecurity Certificate, Let's Defend's SOC Analyst path, a GRC Mastery programme, and CompTIA Security+, alongside active practice on Hack The Box. Full list on his Credly profile.",
+    a: "In progress: CompTIA Security+, A+ and Network+ (via Ireland's SOLAS/eCollege scheme), ISC2's Certified in Cybersecurity, and Harvard's CS50x, alongside regular practice on TryHackMe and Hack The Box. Smaller verified credentials on his Credly profile: three SAP certifications (Learning Journey in Security and Compliance, Business Integrity Screening Fundamentals, System Security Foundations), ISC2 candidate membership, and Microsoft's AI Skills Fest 2026.",
   },
   {
     q: "What projects has Euan Smith built?",
-    a: "NZT-48 — a self-hosted personal AI system built on Claude Code, with a Telegram interface, Obsidian-backed memory, and background agents; it is his most-starred repository. RadicalMap — an open-source OSINT tool that detects and visualises extremist content networks on short-form video platforms from public metadata, built under DSA Article 40 researcher-access and GDPR Article 89 research-exemption provisions. The Marketplace Intelligence System — an autonomous computer-vision and pricing-intelligence tool that finds resale opportunities across online marketplaces, with ROI scoring and human-in-the-loop checks; it has generated measurable financial returns, some donated to Merchants Quay Ireland. Reflex — an educational Python toolkit for learning common web vulnerability classes (XSS, open redirects, a mutation fuzzer).",
+    a: "NZT-48 — a self-hosted personal AI system built on Claude Code, with a Telegram interface, Obsidian-backed memory, and background agents; it is his most-starred repository. RadicalMap — an open-source OSINT tool that detects and visualises extremist content networks on short-form video platforms from public metadata, built under DSA Article 40 researcher-access and GDPR Article 89 research-exemption provisions. The Marketplace Intelligence System — an autonomous computer-vision and pricing-intelligence tool that finds resale opportunities across online marketplaces, with ROI scoring and human-in-the-loop checks; it has turned a profit, all of it donated to Merchants Quay Ireland. Reflex — an educational Python toolkit for learning common web vulnerability classes (XSS, open redirects, a mutation fuzzer).",
   },
   {
     q: "Does Euan Smith do web development?",

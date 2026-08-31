@@ -3,7 +3,7 @@ export const portfolioConfig = {
     name: "EUAN SMITH",
     displayName: "Euan Smith",
     title: "BSc Cybersecurity & Digital Forensics · Technological University Dublin",
-    tagline: "Building systems, analyzing complexity, securing infrastructure.",
+    tagline: "Cybersecurity student in Dublin. Right now that means disinformation research with EDMO Ireland, a home lab, and more GitHub repos than free evenings.",
     // Single source of truth for the role strings used across <title>, the
     // hero, the meta description, and the Person structured data.
     roles: {
@@ -31,7 +31,7 @@ export const portfolioConfig = {
     { text: "InfoSec Student",                  funny: false },
     { text: "Counter-Disinformation Researcher", funny: false },
     { text: "Wannabe Mr. Robot",                funny: true  },
-    { text: "Aspiring Digital Analyst",         funny: false },
+    { text: "Digital Forensics Student",        funny: false },
     { text: "EU Changemaker (Team Ireland)",    funny: false },
     { text: "D&D Nerd (Gimbo the Wizard)",      funny: true  },
     { text: "Uploading GitHub Repos",           funny: false },
@@ -43,7 +43,7 @@ export const portfolioConfig = {
 
   about: {
     narrative:
-      "I'm a cybersecurity student at Technological University Dublin with a background spanning counter-disinformation research, AI automation, and hardware systems. I build things that work: a weekly fact-check pipeline for EDMO Ireland, automation tools that generate real returns, and home lab infrastructure that mirrors production environments. I'm drawn to complex systems: understanding how they fail, how they can be exploited, and how to make them resilient. My thinking is neurodivergent by nature: I follow threads others overlook, sit with problems until patterns emerge, and rarely accept that's just how it works as an answer.",
+      "I'm a cybersecurity student at Technological University Dublin. My work spans counter-disinformation research, AI automation, and hardware systems: a weekly fact-check pipeline for EDMO Ireland, automation tools that turn a profit, and home lab infrastructure that mirrors production environments. I'm drawn to complex systems, how they fail, how they can be exploited, and how to make them resilient. My thinking is neurodivergent by nature. I follow threads others overlook, sit with problems until patterns emerge, and rarely accept \"that's just how it works\" as an answer.",
     tags: [
       "Cybersecurity", "Linux", "Python", "AI/ML", "Networking",
       "OSINT", "Hardware", "Virtualization", "Systems Admin", "Digital Forensics",
@@ -115,7 +115,7 @@ export const portfolioConfig = {
     affiliation: "Dublin City University · European Commission",
     role: "Researcher & Freelance Contributor · 2025–2026",
     mission:
-      "EDMO operates under direct mandate from the European Commission as part of the European Democracy Action Plan. Bringing together fact-checkers, academics, and technology experts across all EU member states, it coordinates a network of independent researchers providing policy intelligence to the European Parliament and national governments on disinformation threats and information ecosystem integrity.",
+      "EDMO is the EU's hub for countering disinformation: a network of fact-checkers, academics, and researchers across every member state, with the Irish team based at DCU's FuJo Institute. I work with the Irish team as a researcher and freelance contributor.",
     responsibilities: [
       "Conducted original counter-disinformation research: ran a controlled two-account social media experiment to empirically document algorithmic radicalisation, and interviewed EDMO Ireland's lead researcher on radical recruitment tactics, Digital Services Act enforcement gaps, and Big Tech's Dublin-based accountability failures. Presented findings to ~60 students.",
       "Research project shared by EDMO Ireland with Dr Eileen Culloty and Dr Jane Suitor at DCU — being considered for adaptation into an MA journalism module in 2027, cited as an example of the practical research skills journalists and researchers should have.",
@@ -167,7 +167,7 @@ export const portfolioConfig = {
       name: "Marketplace Intelligence System",
       tags: ["Computer Vision", "Python", "ROI Modeling", "Automation"],
       description:
-        "Autonomous system that identifies resale opportunities across online marketplaces using computer vision and pricing intelligence. Incorporates ROI calculation, risk scoring, and human-in-the-loop decision gates. Has generated measurable financial returns.",
+        "Autonomous system that identifies resale opportunities across online marketplaces using computer vision and pricing intelligence. Incorporates ROI calculation, risk scoring, and human-in-the-loop decision gates. It's turned a profit, all of it donated to Merchants Quay Ireland.",
       impact: "Donated to Merchants Quay Ireland",
       charityLogo: "/logos/mqi-logo.png",
       status: "Active",
@@ -177,7 +177,7 @@ export const portfolioConfig = {
         approach:
           "An autonomous pipeline: computer vision to read the item and its condition from listing photos, a pricing model for expected resale value, ROI and risk scoring, and a human-in-the-loop gate before any purchase is made.",
         outcome:
-          "Has generated measurable financial returns. Proceeds donated to Merchants Quay Ireland.",
+          "It's turned a profit, all of it donated to Merchants Quay Ireland.",
       },
     },
     {
@@ -209,11 +209,13 @@ export const portfolioConfig = {
   ],
 
   learning: [
-    { platform: "Google",        name: "Google Cybersecurity Certificate", status: "In Progress", icon: "google",    color: "#4285F4" },
-    { platform: "Let's Defend",  name: "SOC Analyst Path",                 status: "In Progress", icon: "shield",    color: "#00C2FF" },
-    { platform: "GRC Mastery",   name: "GRC Mastery Programme",            status: "In Progress", icon: "clipboard", color: "#a855f7" },
-    { platform: "CompTIA",       name: "CompTIA Security+",                status: "In Progress", icon: "award",     color: "#C8202F" },
-    { platform: "Hack The Box",  name: "Active HTB Player",                status: "Active",      icon: "terminal",  color: "#9FEF00" },
+    { tag: "CompTIA",    platform: "CompTIA",       name: "Security+ (SY0-701)",        status: "In progress", kind: "cert"     as const },
+    { tag: "CompTIA",    platform: "CompTIA",       name: "A+ (Core 1 & 2)",            status: "In progress", kind: "cert"     as const },
+    { tag: "CompTIA",    platform: "CompTIA",       name: "Network+ (N10-009)",         status: "In progress", kind: "cert"     as const },
+    { tag: "ISC²",       platform: "ISC2",          name: "Certified in Cybersecurity", status: "Candidate",   kind: "cert"     as const },
+    { tag: "CS50",       platform: "Harvard CS50",  name: "Introduction to Computer Science (CS50x)", status: "In progress", kind: "cert" as const },
+    { tag: "HTB",        platform: "Hack The Box",  name: "Active player",              status: "Active",      kind: "practice" as const },
+    { tag: "THM",        platform: "TryHackMe",     name: "Active player",              status: "Active",      kind: "practice" as const },
   ],
 
   lifestyle: {
@@ -241,9 +243,9 @@ export const portfolioConfig = {
   },
 
   contact: {
-    closing: "Let's build something worth building.",
+    closing: "Working on something in security, disinformation, or odd automation? I'd like to hear about it.",
     subtext:
-      "I'm interested in opportunities that sit at the intersection of security, automation, and complex systems, whether that's a technical internship, a collaborative project, or just a conversation worth having.",
+      "Mostly I'm after a technical internship, but I'm happy to talk about security work, disinformation research, or whatever you're building.",
     github: "https://github.com/EuanSmith2",
   },
 

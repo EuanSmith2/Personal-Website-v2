@@ -3,7 +3,7 @@ import { portfolioConfig } from "@/data/portfolio.config"
 import { SITE_URL } from "./site"
 
 export function generatePortfolioMarkdown(): string {
-  const { personal, about, currentActivity, timeline, edmo, projects, certifications, learning, lifestyle, contact } =
+  const { personal, about, timeline, edmo, projects, certifications, learning, lifestyle, contact } =
     portfolioConfig
 
   const lines: string[] = []
@@ -21,15 +21,6 @@ export function generatePortfolioMarkdown(): string {
   lines.push("")
   lines.push(`Focus areas: ${about.tags.join(", ")}`)
   lines.push("")
-
-  lines.push("## Current Activity")
-  lines.push("")
-  for (const item of currentActivity) {
-    lines.push(`### ${item.title}`)
-    lines.push("")
-    lines.push(item.detail)
-    lines.push("")
-  }
 
   lines.push("## Timeline")
   lines.push("")

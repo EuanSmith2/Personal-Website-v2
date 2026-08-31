@@ -46,10 +46,6 @@ export function Navbar() {
     >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          <a href="#hero" className="font-mono font-bold text-cyan-400 text-lg tracking-widest" title={personal.displayName}>
-            ES
-          </a>
-
           <nav className="hidden lg:flex items-center gap-6" aria-label="Main navigation">
             {NAV_LINKS.map(({ label, href }) => {
               const sectionId = href.replace("#", "")

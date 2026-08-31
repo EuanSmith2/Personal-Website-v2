@@ -4,7 +4,6 @@ import { Navbar } from "@/components/layout/Navbar"
 import { Footer } from "@/components/layout/Footer"
 import { Hero } from "@/components/sections/Hero"
 import { About } from "@/components/sections/About"
-import { CurrentActivity } from "@/components/sections/CurrentActivity"
 import { Timeline } from "@/components/sections/Timeline"
 import { EdmoExperience } from "@/components/sections/EdmoExperience"
 import { Projects } from "@/components/sections/Projects"
@@ -23,7 +22,6 @@ export default function Home() {
       <main>
         <Hero />
         <About />
-        <CurrentActivity />
         <Timeline />
         <EdmoExperience />
         <Projects />

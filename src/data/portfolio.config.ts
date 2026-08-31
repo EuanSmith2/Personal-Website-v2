@@ -50,57 +50,6 @@ export const portfolioConfig = {
     ],
   },
 
-  currentActivity: [
-    {
-      id: "freelance",
-      icon: "globe",
-      title: "Building & Networking",
-      summary: "Client web work, Dublin tech scene, heading to TUD in September",
-      detail:
-        "Doing client web work, attending Dublin tech meetups — AWS All Builders, Python Ireland, security events — and working on personal projects. Starting BSc Cybersecurity & Digital Forensics at TU Dublin in September.",
-    },
-    {
-      id: "sap",
-      icon: "award",
-      title: "SAP Certification",
-      summary: "Security and AI integration learning path",
-      detail:
-        "Completing three SAP certifications: Learning Journey in Security and Compliance, Business Integrity Screening Fundamentals, and System Security Foundations. These cover enterprise security architecture, compliance frameworks, and AI-integrated business intelligence.",
-    },
-    {
-      id: "tud",
-      icon: "graduation-cap",
-      title: "TUD Programme Prep",
-      summary: "Entering BSc Cybersecurity & Digital Forensics",
-      detail:
-        "Preparing to enter the BSc in Cybersecurity and Digital Forensics at Technological University Dublin. This programme covers network security, digital forensics, ethical hacking, cryptography, and security operations, areas I've been self-studying for several years.",
-    },
-    {
-      id: "homelab",
-      icon: "server",
-      title: "Home Lab",
-      summary: "Linux servers, virtualization, networking experiments",
-      detail:
-        "Running a home lab environment with Linux servers, VMs, and network simulation tools. Current projects include setting up a SIEM stack, practising network segmentation, and experimenting with honeypot infrastructure for intrusion detection research.",
-    },
-    {
-      id: "ai",
-      icon: "cpu",
-      title: "AI Projects",
-      summary: "Computer vision, marketplace intelligence, automation",
-      detail:
-        "Building AI-driven tools, including a computer vision marketplace intelligence system that has generated measurable real-world financial returns, and NZT-48 — a self-hosted personal AI system that runs background agents and monitors from a single Claude Code subscription.",
-    },
-    {
-      id: "hardware",
-      icon: "wrench",
-      title: "Hardware & Legacy Systems",
-      summary: "Repair, modification, retro infrastructure",
-      detail:
-        "Ongoing interest in hardware: building custom PCs, repairing and modifying consoles, working with legacy infrastructure, and understanding systems at the physical layer. This grounding in hardware informs how I think about software and security.",
-    },
-  ],
-
   timeline: [
     { year: "2016", label: "First Code",      description: "CoderDojo: Scratch game development, first exposure to programming logic",                                 era: "early"   as const },
     { year: "2018", label: "STEM Camp",        description: "Trinity College Dublin STEM camp: Python fundamentals, physics simulations, algorithmic thinking",         era: "early"   as const },

@@ -16,7 +16,7 @@ export function Certifications() {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionWrapper>
           <p className="text-xs font-mono text-cyan-400 tracking-widest uppercase mb-3">{"// study"}</p>
-          <h2 className="text-3xl font-semibold text-zinc-100 mb-12">What I&rsquo;m working on</h2>
+          <h2 className="text-3xl font-semibold text-zinc-100 mb-12">Certifications and practice</h2>
 
           <div className="grid gap-12 lg:grid-cols-[3fr_2fr]">
             <div>

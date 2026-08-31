@@ -33,7 +33,7 @@ export function FloatingAchievement() {
 
   return (
     <div
-      className={`fixed z-50 transition-all duration-200 sm:scale-100 scale-[0.8] origin-bottom ${
+      className={`fixed z-50 transition-[opacity,transform] duration-200 sm:scale-100 scale-[0.8] origin-bottom ${
         visible ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
       }`}
       style={{

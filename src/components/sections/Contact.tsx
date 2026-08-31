@@ -33,7 +33,7 @@ const LinkedinIcon = () => (
 
 const TryHackMeIcon = () => (
   // eslint-disable-next-line @next/next/no-img-element
-  <img src="/logos/tryhackme.png" alt="" width={16} height={16} aria-hidden="true" className="grayscale group-hover:grayscale-0 transition-all duration-200" style={{ objectFit: "contain" }} />
+  <img src="/logos/tryhackme.png" alt="" width={16} height={16} aria-hidden="true" className="grayscale group-hover:grayscale-0 transition-[filter] duration-200" style={{ objectFit: "contain" }} />
 )
 
 export function Contact() {

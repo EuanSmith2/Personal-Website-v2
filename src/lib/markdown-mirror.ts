@@ -17,7 +17,7 @@ export function generatePortfolioMarkdown(): string {
 
   lines.push("## About")
   lines.push("")
-  lines.push(about.narrative)
+  lines.push(about.narrative.join("\n\n"))
   lines.push("")
   lines.push(`Focus areas: ${about.tags.join(", ")}`)
   lines.push("")

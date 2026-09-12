@@ -42,8 +42,13 @@ export const portfolioConfig = {
   ],
 
   about: {
-    narrative:
-      "I'm a cybersecurity student at Technological University Dublin. My work spans counter-disinformation research, AI automation, and hardware systems: a weekly fact-check pipeline for EDMO Ireland, automation tools that turn a profit, and home lab infrastructure that mirrors production environments. I'm drawn to complex systems, how they fail, how they can be exploited, and how to make them resilient. My thinking is neurodivergent by nature. I follow threads others overlook, sit with problems until patterns emerge, and rarely accept \"that's just how it works\" as an answer.",
+    // Single source for the About copy. About.tsx renders these as paragraphs and
+    // markdown-mirror.ts joins them for the AI-facing mirror — keep it that way so
+    // the human page and the crawler page can never drift apart again.
+    narrative: [
+      "I'm a cybersecurity student at Technological University Dublin. My work spans counter-disinformation research, AI automation, and hardware systems: a large-scale attribution study and a weekly fact-check pipeline for EDMO Ireland, automation tools that turn a profit, and home lab infrastructure that mirrors production environments.",
+      "I'm drawn to complex systems, how they fail, how they can be exploited, and how to make them resilient. I follow threads others overlook, sit with problems until patterns emerge, and rarely accept \u201Cthat\u2019s just how it works\u201D as an answer.",
+    ],
     tags: [
       "Cybersecurity", "Linux", "Python", "AI/ML", "Networking",
       "OSINT", "Hardware", "Virtualization", "Systems Admin", "Digital Forensics",
@@ -56,20 +61,22 @@ export const portfolioConfig = {
     { year: "2020", label: "Hardware Era",     description: "Built custom PC during COVID, game modding, console repair, hardware modification",                         era: "mid"     as const },
     { year: "2021", label: "AI Experiments",   description: "First AI automation experiments, exploring generative tools and scripting",                                 era: "mid"     as const },
     { year: "2023", label: "Systems Depth",    description: "Linux home lab, virtualization, advanced AI projects, cybersecurity self-study",                            era: "mid"     as const },
-    { year: "2026", label: "EDMO & Research",   description: "Counter-disinformation research with EDMO Ireland; built fact-check automation pipeline; research project shared at DCU MA level", era: "present" as const },
+    { year: "2026", label: "EDMO & Research",   description: "Counter-disinformation research with EDMO Ireland; built fact-check automation pipeline; large-scale attribution study for a FIMI investigation; research project shared at DCU MA level", era: "present" as const },
+    { year: "2026", label: "TU Dublin",        description: "Began BSc (Hons) Digital Forensics & Cyber Security at TU Dublin, Blanchardstown", era: "present" as const },
   ],
 
   edmo: {
     organisation: "European Digital Media Observatory",
     affiliation: "Dublin City University · European Commission",
-    role: "Researcher & Freelance Contributor · 2025–2026",
+    role: "Researcher & Freelance Contributor · June 2026 – Present",
     mission:
       "EDMO is the EU's hub for countering disinformation: a network of fact-checkers, academics, and researchers across every member state, with the Irish team based at DCU's FuJo Institute. I work with the Irish team as a researcher and freelance contributor.",
     responsibilities: [
-      "Conducted original counter-disinformation research: ran a controlled two-account social media experiment to empirically document algorithmic radicalisation, and interviewed EDMO Ireland's lead researcher on radical recruitment tactics, Digital Services Act enforcement gaps, and Big Tech's Dublin-based accountability failures. Presented findings to ~60 students.",
-      "Research project shared by EDMO Ireland with Dr Eileen Culloty and Dr Jane Suitor at DCU — being considered for adaptation into an MA journalism module in 2027, cited as an example of the practical research skills journalists and researchers should have.",
-      "Built a weekly fact-check round-up pipeline as a freelance contributor: pulls TheJournal.ie fact-checks, formats them to EDMO's house style, and posts a draft to edmohub.ie via the WordPress REST API for an editor to review and publish.",
-      "Selected as one of four people representing Ireland in the ChangingTIDE Changemakers programme — an EU-funded (CERV) counter-disinformation initiative run by the Trans European Policy Studies Association in Brussels, with DCU's FuJo Institute as the Irish partner and mentoring from Young European Leadership. The cohort co-creates campaigns and brings them into dialogue with policymakers at national and EU level, starting with a Brussels intensive in October 2026.",
+      "Delivered the data analysis for a foreign information manipulation and interference (FIMI) investigation: built the collection pipeline, normalised 25,000+ articles into structured datasets, measured authorship and source attribution on a random sample with confidence intervals, and analysed domain registration and hosting infrastructure across the network. EDMO passed the findings on to academic and journalistic partners.",
+      "Built and shipped EDMO Ireland's weekly fact-check round-up pipeline: it pulls new fact-checks, formats them to EDMO's house style, and posts a draft to edmohub.ie via the WordPress REST API for an editor to review and publish. Runs unattended on GitHub Actions with scheduled canary checks and automated failure alerts, behind 59 tests.",
+      "Conducted original counter-disinformation research: a controlled two-account social media experiment documenting algorithmic radicalisation, plus an interview with EDMO Ireland's lead researcher on radical recruitment tactics, Digital Services Act enforcement gaps, and Big Tech's Dublin-based accountability failures. Presented to ~60 students, and shared by EDMO Ireland with Dr Eileen Culloty and Professor Jane Suiter at DCU, who are considering adapting it into an MA journalism module in 2027.",
+      "Selected as one of four people representing Ireland in the ChangingTIDE Changemakers programme, an EU-funded (CERV) counter-disinformation initiative run by the Trans European Policy Studies Association in Brussels, with DCU's FuJo Institute as the Irish partner and mentoring from Young European Leadership. The cohort co-creates campaigns and brings them into dialogue with policymakers at national and EU level, starting with a Brussels intensive in October 2026.",
+      "RadicalMap, the extremist-network mapping instrument now published on Zenodo with a DOI, came out of this work and was shown to EDMO Ireland's lead researcher during project kickoff.",
     ],
   },
 
@@ -99,6 +106,7 @@ export const portfolioConfig = {
       tags: ["OSINT", "Python", "Network Analysis", "Counter-Disinformation"],
       description:
         "A research instrument for detecting, classifying, and mapping extremist content networks on short-form video platforms using only publicly accessible metadata. Flags coded language, numerical dog whistles, and hidden capitalisation sequences that evade automated moderation, then visualises the results as an interactive network graph. Grounded in DSA Article 40 researcher-access provisions and the GDPR Article 89 research exemption.",
+      impact: "Published on Zenodo with a DOI: 10.5281/zenodo.22083807",
       status: "Active",
       githubUrl: "https://github.com/EuanSmith2/radicalmap",
       caseStudy: {
@@ -107,7 +115,7 @@ export const portfolioConfig = {
         approach:
           "Built a Python instrument that scrapes public TikTok metadata, classifies content across categories (antisemitic, white-nationalist, conspiracy, radicalisation pipeline), and renders the connections as an interactive network graph. Framed explicitly as academic research tooling under DSA Article 40, GDPR Article 89, and CDSM Directive Article 3 — not activism.",
         outcome:
-          "A working prototype (FastAPI + SQLite, dev dataset of one interconnected cluster). Shown to EDMO Ireland's lead researcher during a project kickoff — it was already a small-scale version of the network-mapping tool they were scoping.",
+          "A working prototype (FastAPI + SQLite, dev dataset of one interconnected cluster). Shown to EDMO Ireland's lead researcher during a project kickoff — it was already a small-scale version of the network-mapping tool they were scoping. Archived as a citable software record on Zenodo (CERN / OpenAIRE): https://doi.org/10.5281/zenodo.22083807",
       },
     },
     {
@@ -159,8 +167,8 @@ export const portfolioConfig = {
 
   learning: [
     { tag: "CompTIA",    platform: "CompTIA",       name: "Security+ (SY0-701)",        status: "In progress", kind: "cert"     as const },
-    { tag: "CompTIA",    platform: "CompTIA",       name: "A+ (Core 1 & 2)",            status: "In progress", kind: "cert"     as const },
-    { tag: "CompTIA",    platform: "CompTIA",       name: "Network+ (N10-009)",         status: "In progress", kind: "cert"     as const },
+    { tag: "CompTIA",    platform: "CompTIA",       name: "A+ (Core 1 & 2)",            status: "Paused",      kind: "cert"     as const },
+    { tag: "CompTIA",    platform: "CompTIA",       name: "Network+ (N10-009)",         status: "Paused",      kind: "cert"     as const },
     { tag: "ISC²",       platform: "ISC2",          name: "Certified in Cybersecurity", status: "Candidate",   kind: "cert"     as const },
     { tag: "CS50",       platform: "Harvard CS50",  name: "Introduction to Computer Science (CS50x)", status: "In progress", kind: "cert" as const },
     { tag: "HTB",        platform: "Hack The Box",  name: "Active player",              status: "Active",      kind: "practice" as const },

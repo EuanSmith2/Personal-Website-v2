@@ -16,12 +16,11 @@ export function About() {
           <p className="text-xs font-mono text-cyan-400 tracking-widest uppercase mb-8">{"// about"}</p>
           <div className="grid lg:grid-cols-[3fr_2fr] gap-12 lg:gap-16 items-start">
             <div className="border-l-2 border-cyan-400/40 pl-6 space-y-4">
-              <p className="text-zinc-300 leading-relaxed text-base lg:text-lg">
-                {"I'm a cybersecurity student at Technological University Dublin. My work spans counter-disinformation research, AI automation, and hardware systems: a weekly fact-check pipeline for EDMO Ireland, automation tools that turn a profit, and home lab infrastructure that mirrors production environments."}
-              </p>
-              <p className="text-zinc-300 leading-relaxed text-base lg:text-lg">
-                {"I'm drawn to complex systems, how they fail, how they can be exploited, and how to make them resilient. My thinking is neurodivergent by nature. I follow threads others overlook, sit with problems until patterns emerge, and rarely accept “that’s just how it works” as an answer."}
-              </p>
+              {about.narrative.map((para) => (
+                <p key={para.slice(0, 32)} className="text-zinc-300 leading-relaxed text-base lg:text-lg">
+                  {para}
+                </p>
+              ))}
             </div>
             <div className="flex flex-wrap gap-2">
               {about.tags.map((tag) => (

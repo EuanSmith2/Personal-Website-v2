@@ -1,0 +1,10 @@
+{
+  "schedule": "weekly",
+  "aggressiveCompression": "false",
+  "compressWiki": "false",
+  "minKBReduced": 10,
+  "ignoredFiles": [
+    "src/app/icon.png",
+    "src/app/apple-icon.png"
+  ]
+}

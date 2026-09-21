@@ -145,7 +145,7 @@ export function Timeline() {
 
             return (
               <motion.div
-                key={entry.year}
+                key={`${entry.year}-${entry.label}`}
                 className="absolute"
                 style={{
                   top: topPx - 56,
@@ -188,7 +188,7 @@ export function Timeline() {
           {timeline.map((entry, i) => {
             const color = ERA_COLOR[entry.era]
             return (
-              <SectionWrapper key={entry.year} delay={i * 0.05}>
+              <SectionWrapper key={`${entry.year}-${entry.label}`} delay={i * 0.05}>
                 <div className="relative">
                   <div
                     className="absolute -left-[30px] top-4 w-2 h-2 rounded-full"

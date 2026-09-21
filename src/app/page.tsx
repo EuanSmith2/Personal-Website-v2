@@ -6,6 +6,7 @@ import { Hero } from "@/components/sections/Hero"
 import { About } from "@/components/sections/About"
 import { Timeline } from "@/components/sections/Timeline"
 import { EdmoExperience } from "@/components/sections/EdmoExperience"
+import { Policy } from "@/components/sections/Policy"
 import { Projects } from "@/components/sections/Projects"
 import { Certifications } from "@/components/sections/Certifications"
 import { Personal } from "@/components/sections/Personal"
@@ -24,6 +25,7 @@ export default function Home() {
         <About />
         <Timeline />
         <EdmoExperience />
+        <Policy />
         <Projects />
         <Certifications />
         <Personal />

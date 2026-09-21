@@ -3,7 +3,7 @@ import { portfolioConfig } from "@/data/portfolio.config"
 import { SITE_URL } from "./site"
 
 export function generatePortfolioMarkdown(): string {
-  const { personal, about, timeline, edmo, projects, certifications, learning, lifestyle, contact } =
+  const { personal, about, timeline, edmo, policy, projects, certifications, learning, lifestyle, contact } =
     portfolioConfig
 
   const lines: string[] = []
@@ -39,6 +39,23 @@ export function generatePortfolioMarkdown(): string {
     lines.push(`- ${r}`)
   }
   lines.push("")
+
+  lines.push(`## ${policy.heading}`)
+  lines.push("")
+  lines.push(policy.intro)
+  lines.push("")
+  for (const e of policy.entries) {
+    lines.push(`### ${e.organisation} — ${e.programme}`)
+    lines.push("")
+    lines.push(e.role)
+    lines.push("")
+    lines.push(e.body)
+    lines.push("")
+    for (const pt of e.points) {
+      lines.push(`- ${pt}`)
+    }
+    lines.push("")
+  }
 
   lines.push("## Projects")
   lines.push("")
@@ -206,7 +223,7 @@ export const FAQ: { q: string; a: string }[] = [
   },
   {
     q: "What is Euan Smith's connection to EDMO (European Digital Media Observatory)?",
-    a: "Since 2025 he has worked as a researcher and freelance contributor for EDMO Ireland, which operates under a direct European Commission mandate as part of the European Democracy Action Plan. He ran a controlled two-account social-media experiment documenting algorithmic radicalisation and interviewed EDMO Ireland's lead researcher on recruitment tactics and Digital Services Act enforcement gaps, presenting findings to roughly 60 students; the work was shared by EDMO Ireland with Dublin City University academics and is being considered for a 2027 MA journalism module. He built a weekly fact-check round-up pipeline that formats TheJournal.ie fact-checks to EDMO's house style and posts a draft to edmohub.ie via the WordPress REST API. Through EDMO's network he was also selected as one of four people representing Ireland in the EU-funded ChangingTIDE Changemakers programme, run by the Trans European Policy Studies Association in Brussels.",
+    a: "Since June 2026 he has worked as a researcher and freelance contributor for EDMO Ireland, which operates under a direct European Commission mandate as part of the European Democracy Action Plan. He delivered the data analysis for a foreign information manipulation and interference (FIMI) investigation, normalising 25,300+ articles and measuring authorship and source attribution on a random sample with confidence intervals. He built a weekly fact-check round-up pipeline that formats TheJournal.ie fact-checks to EDMO's house style and posts a draft to edmohub.ie via the WordPress REST API, running unattended on GitHub Actions behind 59 tests. He also ran a controlled two-account social-media experiment documenting algorithmic radicalisation and interviewed EDMO Ireland's lead researcher on recruitment tactics and Digital Services Act enforcement gaps, presenting findings to roughly 60 students; that work was shared by EDMO Ireland with Dublin City University academics and is being considered for a 2027 MA journalism module. Separately he was selected for the Council of Europe initiative Youth Facing Disinformation: Why Journalists Matter in Strasbourg, November 2026, and is one of four people representing Ireland in the EU-funded (CERV) ChangingTIDE Changemakers programme run by TEPSA in Brussels.",
   },
   {
     q: "Where is Euan Smith based, and is he open to work?",

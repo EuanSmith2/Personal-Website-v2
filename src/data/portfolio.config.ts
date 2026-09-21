@@ -72,11 +72,48 @@ export const portfolioConfig = {
     mission:
       "EDMO is the EU's hub for countering disinformation: a network of fact-checkers, academics, and researchers across every member state, with the Irish team based at DCU's FuJo Institute. I work with the Irish team as a researcher and freelance contributor.",
     responsibilities: [
-      "Delivered the data analysis for a foreign information manipulation and interference (FIMI) investigation: built the collection pipeline, normalised 25,000+ articles into structured datasets, measured authorship and source attribution on a random sample with confidence intervals, and analysed domain registration and hosting infrastructure across the network. EDMO passed the findings on to academic and journalistic partners.",
-      "Built and shipped EDMO Ireland's weekly fact-check round-up pipeline: it pulls new fact-checks, formats them to EDMO's house style, and posts a draft to edmohub.ie via the WordPress REST API for an editor to review and publish. Runs unattended on GitHub Actions with scheduled canary checks and automated failure alerts, behind 59 tests.",
+      "Delivered the data analysis for a foreign information manipulation and interference (FIMI) investigation: built the collection pipeline, normalised 25,300+ articles into structured datasets, and measured authorship and source attribution on a random sample with confidence intervals, alongside domain registration and hosting analysis across the network. Shipped as a ten-sheet workbook in which every published rate recomputes from the raw CSVs. EDMO passed the findings to academic and journalistic partners.",
+      "Built and shipped EDMO Ireland's weekly fact-check round-up: it pulls new fact-checks, formats them to house style, and posts a draft to edmohub.ie through the WordPress REST API for an editor to review and publish. Runs unattended on GitHub Actions behind 59 tests, with scheduled canary checks that open an issue the moment the source site's markup changes.",
+      "Verified and rebuilt an Irish media opinion dataset for an EDMO research team: parsed 287 opinion pieces into clean author-by-outlet counts across seven national titles, enriched a 197-person contributor roster, and found and corrected 15 defective record matches out of 72 before the data reached analysis.",
+      "Wrote a Python client and CLI against Meta's official Ad Library API to measure advertising spend and volume across a set of news outlets, handling authentication, pagination, rate limits and schema normalisation. Documented the two fields the API genuinely cannot return rather than approximating them, and grounded the tool in the GDPR Article 89 research exemption and CDSM Article 3 rather than scraping around Meta's controls.",
       "Conducted original counter-disinformation research: a controlled two-account social media experiment documenting algorithmic radicalisation, plus an interview with EDMO Ireland's lead researcher on radical recruitment tactics, Digital Services Act enforcement gaps, and Big Tech's Dublin-based accountability failures. Presented to ~60 students, and shared by EDMO Ireland with Dr Eileen Culloty and Professor Jane Suiter at DCU, who are considering adapting it into an MA journalism module in 2027.",
-      "Selected as one of four people representing Ireland in the ChangingTIDE Changemakers programme, an EU-funded (CERV) counter-disinformation initiative run by the Trans European Policy Studies Association in Brussels, with DCU's FuJo Institute as the Irish partner and mentoring from Young European Leadership. The cohort co-creates campaigns and brings them into dialogue with policymakers at national and EU level, starting with a Brussels intensive in October 2026.",
       "RadicalMap, the extremist-network mapping instrument now published on Zenodo with a DOI, came out of this work and was shown to EDMO Ireland's lead researcher during project kickoff.",
+    ],
+  },
+
+  // Policy & international relations work. Deliberately separate from `edmo`:
+  // that section is the engineering and research contract, this one is the
+  // institutional side. Keep them apart — a recruiter reading one should not
+  // have to untangle it from the other.
+  policy: {
+    heading: "Policy & International Relations",
+    intro:
+      "Counter-disinformation is written into European law and funded through European programmes, so a lot of the work happens in rooms rather than repositories. These are the two I was selected into.",
+    entries: [
+      {
+        organisation: "Council of Europe",
+        programme: "Youth Facing Disinformation: Why Journalists Matter",
+        role: "Selected Participant · Strasbourg, November 2026",
+        body:
+          "Selected through an open Europe-wide call, under the Journalists Matter campaign and the Monaco Presidency, alongside the Youth Department's Youth Revitalising Democracy project. Participants are drawn from the 46 member States.",
+        points: [
+          "The secretariat described the selection as drawing \u201Ca very high number of applications from across Europe, making the selection process particularly competitive\u201D, assessed on the quality and relevance of the application, existing experience and expertise, and potential to act as a multiplier.",
+          "Day one is a high-level conference at the Palais de l'Europe with journalists, media professionals, researchers, policymakers and Council of Europe representatives.",
+          "Day two is participant-only workshops at the European Youth Centre Strasbourg on disinformation, media and information literacy, quality journalism and democratic resilience.",
+        ],
+      },
+      {
+        organisation: "Trans European Policy Studies Association (TEPSA)",
+        programme: "ChangingTIDE Changemakers",
+        role: "Changemaker, Ireland team · Brussels, October 2026",
+        body:
+          "One of four people representing Ireland, selected through a two-stage process from a multi-country field of applicants across EU member states. An EU-funded project under the European Commission's Citizens, Equality, Rights and Values (CERV) programme, coordinated by TEPSA in Brussels with DCU's FuJo Institute as Irish partner.",
+        points: [
+          "The Ireland team co-creates a national campaign countering disinformation, information manipulation and foreign interference (FIMI).",
+          "Mentoring from Young European Leadership (YEL), ChangeLab sessions in Brussels, and meetings with MEPs.",
+          "Campaigns are brought into dialogue with policymakers at national and EU level.",
+        ],
+      },
     ],
   },
 

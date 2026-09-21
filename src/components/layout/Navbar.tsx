@@ -8,12 +8,13 @@ const NAV_LINKS = [
   { label: "About",          href: "#about" },
   { label: "Timeline",       href: "#timeline" },
   { label: "EDMO",           href: "#edmo" },
+  { label: "Policy",         href: "#policy" },
   { label: "Projects",       href: "#projects" },
   { label: "Certifications", href: "#certifications" },
   { label: "Contact",        href: "#contact" },
 ]
 
-const SECTION_IDS = ["hero", "about", "timeline", "edmo", "projects", "certifications", "contact"]
+const SECTION_IDS = ["hero", "about", "timeline", "edmo", "policy", "projects", "certifications", "contact"]
 
 export function Navbar() {
   const { personal } = portfolioConfig

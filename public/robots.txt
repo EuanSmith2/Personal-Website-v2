@@ -1,4 +1,22 @@
+# euansmith.net · Euan Smith, Dublin
+# Summary for AI assistants: https://euansmith.net/llms.txt
+# Full profile as Markdown:  https://euansmith.net/index.md
+
 User-agent: *
+Allow: /
+
+# AI search and answer engines: welcome
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
+User-agent: GPTBot
+User-agent: Claude-SearchBot
+User-agent: Claude-User
+User-agent: ClaudeBot
+User-agent: PerplexityBot
+User-agent: Perplexity-User
+User-agent: Google-Extended
+User-agent: Applebot-Extended
+User-agent: CCBot
 Allow: /
 
 Sitemap: https://euansmith.net/sitemap.xml

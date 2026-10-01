@@ -16,7 +16,7 @@ function personSchema() {
     image: `${SITE_URL}/opengraph-image`,
     jobTitle: personal.roles.jobTitle,
     description:
-      "Cybersecurity and digital forensics student at TU Dublin. Counter-disinformation researcher with EDMO Ireland and one of four representing Ireland in the EU-funded ChangingTIDE Changemakers programme.",
+      "Cybersecurity and digital forensics student at TU Dublin. Counter-disinformation researcher with EDMO Ireland, selected for the Council of Europe's Youth Facing Disinformation initiative (Strasbourg, 2026), and one of four representing Ireland in the EU-funded ChangingTIDE Changemakers programme.",
     address: {
       "@type": "PostalAddress",
       addressLocality: "Dublin",
@@ -26,12 +26,30 @@ function personSchema() {
       "@type": "CollegeOrUniversity",
       name: "Technological University Dublin",
     },
+    affiliation: {
+      "@type": "ResearchOrganization",
+      name: "EDMO Ireland (European Digital Media Observatory)",
+      parentOrganization: { "@type": "CollegeOrUniversity", name: "Dublin City University" },
+    },
+    memberOf: {
+      "@type": "ProgramMembership",
+      programName: "ChangingTIDE Changemakers",
+      hostingOrganization: {
+        "@type": "Organization",
+        name: "Trans European Policy Studies Association",
+        alternateName: "TEPSA",
+      },
+    },
+    award:
+      "Selected participant, Council of Europe: Youth Facing Disinformation – Why Journalists Matter (Strasbourg, 2026)",
     knowsAbout: [
       "Cybersecurity",
       "Digital Forensics",
       "Ethical Hacking",
       "OSINT",
       "Counter-Disinformation Research",
+      "Foreign Information Manipulation and Interference (FIMI)",
+      "Digital Services Act",
       "Python",
       "AI/ML Automation",
     ],

@@ -46,7 +46,7 @@ export const portfolioConfig = {
     // markdown-mirror.ts joins them for the AI-facing mirror — keep it that way so
     // the human page and the crawler page can never drift apart again.
     narrative: [
-      "I'm a cybersecurity student at Technological University Dublin. My work spans counter-disinformation research, AI automation, and hardware systems: a large-scale attribution study and a weekly fact-check pipeline for EDMO Ireland, automation tools that turn a profit, and home lab infrastructure that mirrors production environments.",
+      "I'm a cybersecurity student at Technological University Dublin, and a lot of my work sits where security meets European politics. For EDMO Ireland I built the data analysis for a foreign interference investigation and a weekly fact-check pipeline. I'm on Ireland's team in the EU-funded ChangingTIDE programme in Brussels, and the Council of Europe selected me for its youth disinformation initiative in Strasbourg. Outside that, I build automation tools that turn a profit and run a home lab that mirrors production environments.",
       "I'm drawn to complex systems, how they fail, how they can be exploited, and how to make them resilient. I follow threads others overlook, sit with problems until patterns emerge, and rarely accept \u201Cthat\u2019s just how it works\u201D as an answer.",
     ],
     tags: [

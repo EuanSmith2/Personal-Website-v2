@@ -14,9 +14,9 @@ function personSchema() {
     alternateName: personal.name,
     url: SITE_URL,
     image: `${SITE_URL}/opengraph-image`,
-    jobTitle: personal.roles.jobTitle,
+    jobTitle: [personal.roles.jobTitle, "Counter-Disinformation Researcher"],
     description:
-      "Cybersecurity and digital forensics student at TU Dublin. Counter-disinformation researcher with EDMO Ireland, selected for the Council of Europe's Youth Facing Disinformation initiative (Strasbourg, 2026), and one of four representing Ireland in the EU-funded ChangingTIDE Changemakers programme.",
+      "Works where cybersecurity meets European politics. A TU Dublin cybersecurity and digital forensics student who builds the data tooling behind EDMO Ireland's counter-disinformation research, and who has been selected into Council of Europe and EU policy programmes on disinformation and foreign interference.",
     address: {
       "@type": "PostalAddress",
       addressLocality: "Dublin",
@@ -50,6 +50,9 @@ function personSchema() {
       "Counter-Disinformation Research",
       "Foreign Information Manipulation and Interference (FIMI)",
       "Digital Services Act",
+      "International Relations",
+      "European Union Digital Policy",
+      "Foreign Interference",
       "Python",
       "AI/ML Automation",
     ],

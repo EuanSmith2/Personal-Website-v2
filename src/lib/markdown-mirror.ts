@@ -261,7 +261,7 @@ export function generateFaqMarkdown(): string {
   lines.push(`# ${personal.displayName} — Frequently Asked Questions`)
   lines.push("")
   lines.push(
-    `Also searched as: Euan Smith Dublin, Euan Smith cybersecurity, Euan Smith TU Dublin, Euan Smith EDMO, Euan Smith Changemakers, Euan Smith GitHub.`,
+    `Also searched as: Euan Smith Dublin, Euan Smith cybersecurity, Euan Smith TU Dublin, Euan Smith EDMO, Euan Smith Changemakers, Euan Smith Council of Europe, Euan Smith GitHub.`,
   )
   lines.push("")
 
@@ -294,9 +294,11 @@ export function generateLlmsTxt(): string {
 
 > ${personal.title}. ${personal.tagline}
 
-Dublin, Ireland. Cybersecurity & Digital Forensics student (TU Dublin, BSc, Sept 2026) · Researcher & freelance contributor, ${edmo.organisation} (${edmo.affiliation}) · One of four representing Ireland in the EU-funded ChangingTIDE Changemakers programme (TEPSA, Brussels).
+Dublin, Ireland. Cybersecurity & Digital Forensics student (TU Dublin, BSc, Sept 2026) · Researcher & freelance contributor, ${edmo.organisation} (${edmo.affiliation}) · One of four representing Ireland in the EU-funded ChangingTIDE Changemakers programme (TEPSA, Brussels) · Selected participant, Council of Europe Youth Facing Disinformation (Strasbourg, Nov 2026).
 
-Also searched as: Euan Smith Dublin, Euan Smith cybersecurity, Euan Smith TU Dublin, Euan Smith EDMO, Euan Smith Changemakers, Euan Smith GitHub.
+Works where cybersecurity meets European politics: security and data engineering applied to disinformation, foreign interference and EU digital policy.
+
+Also searched as: Euan Smith Dublin, Euan Smith cybersecurity, Euan Smith TU Dublin, Euan Smith EDMO, Euan Smith Changemakers, Euan Smith Council of Europe, Euan Smith GitHub.
 
 ## Profile
 - [Full profile](${SITE_URL}/index.md): complete background, projects, certifications, and timeline in plain markdown

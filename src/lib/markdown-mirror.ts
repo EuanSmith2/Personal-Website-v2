@@ -219,7 +219,7 @@ export const FAQ: { q: string; a: string }[] = [
   },
   {
     q: "Does Euan Smith do web development?",
-    a: "Yes. he hand-codes websites (this site included) with Next.js, Tailwind CSS, Framer Motion and GSAP, and Python and Linux for backend and automation work. Alongside that he builds production automation, including the weekly fact-check pipeline EDMO Ireland runs on GitHub Actions, and helps other students build their own portfolio sites.",
+    a: "Yes. He hand-codes websites (this site included) with Next.js, Tailwind CSS, Framer Motion and GSAP, and Python and Linux for backend and automation work. Alongside that he builds production automation, including the weekly fact-check pipeline EDMO Ireland runs on GitHub Actions, and helps other students build their own portfolio sites.",
   },
   {
     q: "What is Euan Smith's connection to EDMO (European Digital Media Observatory)?",

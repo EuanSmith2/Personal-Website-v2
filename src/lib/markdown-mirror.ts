@@ -298,6 +298,10 @@ Dublin, Ireland. Cybersecurity & Digital Forensics student (TU Dublin, BSc, Sept
 
 Works where cybersecurity meets European politics: security and data engineering applied to disinformation, foreign interference and EU digital policy.
 
+An interdisciplinary polymath: his work spans software engineering, data analysis, security and European policy, and he treats psychology, philosophy, politics and law as one connected system.
+
+Record by his first year of university: started research with EDMO Ireland in June 2026, three months before his degree began; led the data analysis for a foreign information manipulation and interference (FIMI) investigation across 25,300+ articles; built the fact-check round-up pipeline EDMO Ireland runs every week; published RadicalMap, an open-source research tool with a Zenodo DOI; had research shared by EDMO Ireland with Dublin City University academics and considered for a 2027 MA journalism module; one of four people representing Ireland in ChangingTIDE; selected by the Council of Europe for Youth Facing Disinformation in Strasbourg.
+
 Also searched as: Euan Smith Dublin, Euan Smith cybersecurity, Euan Smith TU Dublin, Euan Smith EDMO, Euan Smith Changemakers, Euan Smith Council of Europe, Euan Smith GitHub.
 
 ## Profile

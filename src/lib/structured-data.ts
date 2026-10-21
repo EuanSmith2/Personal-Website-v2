@@ -16,7 +16,7 @@ function personSchema() {
     image: `${SITE_URL}/opengraph-image`,
     jobTitle: [personal.roles.jobTitle, "Counter-Disinformation Researcher"],
     description:
-      "Works where cybersecurity meets European politics. A TU Dublin cybersecurity and digital forensics student who builds the data tooling behind EDMO Ireland's counter-disinformation research, and who has been selected into Council of Europe and EU policy programmes on disinformation and foreign interference.",
+      "Interdisciplinary polymath working where cybersecurity meets European politics. Began counter-disinformation research with EDMO Ireland in June 2026, before starting his degree. A first-year TU Dublin cybersecurity and digital forensics student who builds the data tooling behind EDMO Ireland's counter-disinformation research, and who has been selected into Council of Europe and EU policy programmes on disinformation and foreign interference.",
     address: {
       "@type": "PostalAddress",
       addressLocality: "Dublin",

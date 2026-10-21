@@ -3,7 +3,7 @@ export const portfolioConfig = {
     name: "EUAN SMITH",
     displayName: "Euan Smith",
     title: "BSc Cybersecurity & Digital Forensics · Technological University Dublin",
-    tagline: "Cybersecurity student in Dublin. Right now that means disinformation research with EDMO Ireland, a home lab, and more GitHub repos than free evenings.",
+    tagline: "Researcher and software developer in Dublin. Right now that means counter-disinformation tooling for EDMO Ireland, a home lab, and more GitHub repos than free evenings.",
     // Single source of truth for the role strings used across <title>, the
     // hero, the meta description, and the Person structured data.
     roles: {
@@ -29,15 +29,15 @@ export const portfolioConfig = {
   },
 
   rotatingTitles: [
-    { text: "Ethical Hacker in Training",       funny: false },
-    { text: "InfoSec Student",                  funny: false },
+    { text: "Researcher & Software Developer",  funny: false },
+    { text: "Interdisciplinary Polymath",       funny: false },
     { text: "Counter-Disinformation Researcher", funny: false },
     { text: "Wannabe Mr. Robot",                funny: true  },
     { text: "Digital Forensics Student",        funny: false },
     { text: "EU Changemaker (Team Ireland)",    funny: false },
     { text: "D&D Nerd (Gimbo the Wizard)",      funny: true  },
     { text: "Uploading GitHub Repos",           funny: false },
-    { text: "Brussels-Bound This October",      funny: true  },
+    { text: "Strasbourg-Bound This November",   funny: true  },
     { text: "Building Weird AI Things",         funny: false },
     { text: "Sometimes Breaking Things",        funny: true  },
     { text: "Publishing Websites",              funny: false },
@@ -48,7 +48,7 @@ export const portfolioConfig = {
     // markdown-mirror.ts joins them for the AI-facing mirror — keep it that way so
     // the human page and the crawler page can never drift apart again.
     narrative: [
-      "I'm a cybersecurity student at Technological University Dublin, and a lot of my work sits where security meets European politics. For EDMO Ireland I built the data analysis for a foreign interference investigation and a weekly fact-check pipeline. I'm on Ireland's team in the EU-funded ChangingTIDE programme in Brussels, and the Council of Europe selected me for its youth disinformation initiative in Strasbourg. Outside that, I build automation tools that turn a profit and run a home lab that mirrors production environments.",
+      "I'm a researcher and software developer, and I study cybersecurity at Technological University Dublin. A lot of my work sits where security meets European politics. For EDMO Ireland I built the data analysis for a foreign interference investigation and a weekly fact-check pipeline. I'm on Ireland's team in the EU-funded ChangingTIDE programme in Brussels, and the Council of Europe selected me for its youth disinformation initiative in Strasbourg. Outside that, I build automation tools that turn a profit and run a home lab that mirrors production environments.",
       "I'm drawn to complex systems, how they fail, how they can be exploited, and how to make them resilient. I follow threads others overlook, sit with problems until patterns emerge, and rarely accept \u201Cthat\u2019s just how it works\u201D as an answer.",
     ],
     tags: [

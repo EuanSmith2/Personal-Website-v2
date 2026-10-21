@@ -195,7 +195,7 @@ export default function CVPage() {
           <h2 className="cv-section-title">Profile</h2>
           <p className="cv-para">
             Cybersecurity and Digital Forensics student at Technological University Dublin. I work as a researcher and
-            freelance contributor for the European Digital Media Observatory on counter-disinformation, and build
+            software developer for the European Digital Media Observatory on counter-disinformation, and build
             practical tools alongside it — a computer vision system that identifies marketplace resale opportunities and
             has generated real financial returns, and a home lab running SIEM stacks and honeypot setups. I&rsquo;m interested
             in how systems fail, how attackers think, and how to design things that stay secure. Background spans Python
@@ -230,7 +230,7 @@ export default function CVPage() {
 
           <div className="cv-entry">
             <div className="cv-entry-header">
-              <h3 className="cv-entry-title">Researcher &amp; Freelance Contributor — European Digital Media Observatory</h3>
+              <h3 className="cv-entry-title">Researcher &amp; Software Developer — European Digital Media Observatory</h3>
               <div className="cv-entry-sub">Dublin City University · 2025&ndash;2026</div>
             </div>
             <div className="cv-entry-note">EDMO operates under European Commission mandate as part of the European Democracy Action Plan, coordinating anti-disinformation research across all EU member states.</div>

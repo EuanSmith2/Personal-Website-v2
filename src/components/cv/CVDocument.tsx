@@ -197,7 +197,7 @@ export function CVDocument() {
         <View style={s.section}>
           <Text style={s.sectionTitle}>Profile</Text>
           <Text style={s.para}>
-            {"Cybersecurity and Digital Forensics student at Technological University Dublin, with practical experience building automation systems, security infrastructure, and web applications. I work as a researcher and freelance contributor for the European Digital Media Observatory — part of the EU anti-disinformation network — building a fact-check publishing pipeline and running original counter-disinformation research. Outside of that, I built a Python computer vision system that autonomously identifies resale opportunities across online marketplaces; it has generated real financial returns, with proceeds donated to Merchants Quay Ireland. I run a home lab with SIEM infrastructure, honeypots, and network segmentation — the kind of hands-on environment where you learn how systems actually break. I approach security from first principles: attacker mindset, failure modes, and building things that hold up under pressure."}
+            {"Cybersecurity and Digital Forensics student at Technological University Dublin, with practical experience building automation systems, security infrastructure, and web applications. I work as a researcher and software developer for the European Digital Media Observatory — part of the EU anti-disinformation network — building a fact-check publishing pipeline and running original counter-disinformation research. Outside of that, I built a Python computer vision system that autonomously identifies resale opportunities across online marketplaces; it has generated real financial returns, with proceeds donated to Merchants Quay Ireland. I run a home lab with SIEM infrastructure, honeypots, and network segmentation — the kind of hands-on environment where you learn how systems actually break. I approach security from first principles: attacker mindset, failure modes, and building things that hold up under pressure."}
           </Text>
         </View>
 
@@ -225,7 +225,7 @@ export function CVDocument() {
 
           <View style={s.entry}>
             <View style={s.entryRow}>
-              <Text style={s.entryTitleInRow}>Researcher & Freelance Contributor — European Digital Media Observatory</Text>
+              <Text style={s.entryTitleInRow}>Researcher & Software Developer — European Digital Media Observatory</Text>
               <Text style={s.entrySub}>Dublin City University · 2025–2026</Text>
             </View>
             <Text style={s.entryNote}>EDMO operates under European Commission mandate, coordinating anti-disinformation research across all EU member states.</Text>

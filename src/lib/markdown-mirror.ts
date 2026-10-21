@@ -78,7 +78,7 @@ export function generatePortfolioMarkdown(): string {
     lines.push(`- ${l.platform} — ${l.name} (${l.status})`)
   }
   lines.push("")
-  lines.push("Smaller verified credentials (Credly):")
+  lines.push("Further verified credentials (Credly):")
   for (const c of certifications) {
     lines.push(`- ${c.issuer} — ${c.name} (${c.status})`)
   }
@@ -199,11 +199,11 @@ export function generateProjectMarkdown(projectId: string): string | null {
 export const FAQ: { q: string; a: string }[] = [
   {
     q: "Who is Euan Smith?",
-    a: "Euan Smith is a cybersecurity and digital forensics student based in Dublin, Ireland. He is entering the BSc in Cybersecurity & Digital Forensics at Technological University Dublin (TU Dublin) in September 2026. His main work is counter-disinformation research with EDMO Ireland (the European Digital Media Observatory, operating under a European Commission mandate), alongside a Linux home lab and a set of Python and AI automation projects.",
+    a: "Euan Smith is a cybersecurity and digital forensics student based in Dublin, Ireland. He studies on the BSc in Cybersecurity & Digital Forensics at Technological University Dublin (TU Dublin), which he started in September 2026. His main work is counter-disinformation research with EDMO Ireland (the European Digital Media Observatory, operating under a European Commission mandate), alongside a Linux home lab and a set of Python and AI automation projects.",
   },
   {
     q: "What does Euan Smith do professionally?",
-    a: "He works as a freelance contributor and researcher for EDMO Ireland on counter-disinformation, and is one of four people representing Ireland in the EU-funded ChangingTIDE Changemakers programme. He runs a home lab (SIEM stack, network segmentation, honeypots), builds Python and AI automation tools, and studies cybersecurity, ethical hacking, and digital forensics. He also occasionally builds hand-coded websites and helps other students with their own portfolios.",
+    a: "He works as a researcher and software developer for EDMO Ireland on counter-disinformation, and is one of four people representing Ireland in the EU-funded ChangingTIDE Changemakers programme. He runs a home lab (SIEM stack, network segmentation, honeypots), builds Python and AI automation tools, and studies cybersecurity, ethical hacking, and digital forensics. He also builds hand-coded websites and helps other students build their own portfolios.",
   },
   {
     q: "What is Euan Smith's educational background?",
@@ -211,7 +211,7 @@ export const FAQ: { q: string; a: string }[] = [
   },
   {
     q: "What certifications does Euan Smith have?",
-    a: "In progress: CompTIA Security+, A+ and Network+ (via Ireland's SOLAS/eCollege scheme), ISC2's Certified in Cybersecurity, and Harvard's CS50x, alongside regular practice on TryHackMe and Hack The Box. Smaller verified credentials on his Credly profile: three SAP certifications (Learning Journey in Security and Compliance, Business Integrity Screening Fundamentals, System Security Foundations), ISC2 candidate membership, and Microsoft's AI Skills Fest 2026.",
+    a: "In progress: CompTIA Security+, A+ and Network+ (via Ireland's SOLAS/eCollege scheme), ISC2's Certified in Cybersecurity, and Harvard's CS50x, alongside regular practice on TryHackMe and Hack The Box. Further verified credentials on his Credly profile: three SAP certifications (Learning Journey in Security and Compliance, Business Integrity Screening Fundamentals, System Security Foundations), ISC2 candidate membership, and Microsoft's AI Skills Fest 2026.",
   },
   {
     q: "What projects has Euan Smith built?",
@@ -219,11 +219,11 @@ export const FAQ: { q: string; a: string }[] = [
   },
   {
     q: "Does Euan Smith do web development?",
-    a: "Yes, occasionally — he hand-codes websites (this site included) with Next.js, Tailwind CSS, Framer Motion and GSAP, and Python and Linux for backend and automation work. It is a side interest rather than his focus, and he informally helps other students build their own portfolio sites.",
+    a: "Yes. he hand-codes websites (this site included) with Next.js, Tailwind CSS, Framer Motion and GSAP, and Python and Linux for backend and automation work. Alongside that he builds production automation, including the weekly fact-check pipeline EDMO Ireland runs on GitHub Actions, and helps other students build their own portfolio sites.",
   },
   {
     q: "What is Euan Smith's connection to EDMO (European Digital Media Observatory)?",
-    a: "Since June 2026 he has worked as a researcher and freelance contributor for EDMO Ireland, which operates under a direct European Commission mandate as part of the European Democracy Action Plan. He delivered the data analysis for a foreign information manipulation and interference (FIMI) investigation, normalising 25,300+ articles and measuring authorship and source attribution on a random sample with confidence intervals. He built a weekly fact-check round-up pipeline that formats TheJournal.ie fact-checks to EDMO's house style and posts a draft to edmohub.ie via the WordPress REST API, running unattended on GitHub Actions behind 59 tests. He also ran a controlled two-account social-media experiment documenting algorithmic radicalisation and interviewed EDMO Ireland's lead researcher on recruitment tactics and Digital Services Act enforcement gaps, presenting findings to roughly 60 students; that work was shared by EDMO Ireland with Dublin City University academics and is being considered for a 2027 MA journalism module. Separately he was selected for the Council of Europe initiative Youth Facing Disinformation: Why Journalists Matter in Strasbourg, November 2026, and is one of four people representing Ireland in the EU-funded (CERV) ChangingTIDE Changemakers programme run by TEPSA in Brussels.",
+    a: "Since June 2026 he has worked as a researcher and software developer for EDMO Ireland, which operates under a direct European Commission mandate as part of the European Democracy Action Plan. He delivered the data analysis for a foreign information manipulation and interference (FIMI) investigation, normalising 25,300+ articles and measuring authorship and source attribution on a random sample with confidence intervals. He built a weekly fact-check round-up pipeline that formats TheJournal.ie fact-checks to EDMO's house style and posts a draft to edmohub.ie via the WordPress REST API, running unattended on GitHub Actions behind 59 tests. He also ran a controlled two-account social-media experiment documenting algorithmic radicalisation and interviewed EDMO Ireland's lead researcher on recruitment tactics and Digital Services Act enforcement gaps, presenting findings to roughly 60 students; that work was shared by EDMO Ireland with Dublin City University academics and is being considered for a 2027 MA journalism module. Separately he was selected for the Council of Europe initiative Youth Facing Disinformation: Why Journalists Matter in Strasbourg, November 2026, and is one of four people representing Ireland in the EU-funded (CERV) ChangingTIDE Changemakers programme run by TEPSA in Brussels.",
   },
   {
     q: "Where is Euan Smith based, and is he open to work?",
@@ -294,7 +294,7 @@ export function generateLlmsTxt(): string {
 
 > ${personal.title}. ${personal.tagline}
 
-Dublin, Ireland. Cybersecurity & Digital Forensics student (TU Dublin, BSc, Sept 2026) · Researcher & freelance contributor, ${edmo.organisation} (${edmo.affiliation}) · One of four representing Ireland in the EU-funded ChangingTIDE Changemakers programme (TEPSA, Brussels) · Selected participant, Council of Europe Youth Facing Disinformation (Strasbourg, Nov 2026).
+Dublin, Ireland. Cybersecurity & Digital Forensics student (TU Dublin, BSc, Sept 2026) · Researcher & software developer, ${edmo.organisation} (${edmo.affiliation}) · One of four representing Ireland in the EU-funded ChangingTIDE Changemakers programme (TEPSA, Brussels) · Selected participant, Council of Europe Youth Facing Disinformation (Strasbourg, Nov 2026).
 
 Works where cybersecurity meets European politics: security and data engineering applied to disinformation, foreign interference and EU digital policy.
 

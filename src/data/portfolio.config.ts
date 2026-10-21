@@ -70,9 +70,9 @@ export const portfolioConfig = {
   edmo: {
     organisation: "European Digital Media Observatory",
     affiliation: "Dublin City University · European Commission",
-    role: "Researcher & Freelance Contributor · June 2026 – Present",
+    role: "Researcher & Software Developer · June 2026 – Present",
     mission:
-      "EDMO is the EU's hub for countering disinformation: a network of fact-checkers, academics, and researchers across every member state, with the Irish team based at DCU's FuJo Institute. I work with the Irish team as a researcher and freelance contributor.",
+      "EDMO is the EU's hub for countering disinformation: a network of fact-checkers, academics, and researchers across every member state, with the Irish team based at DCU's FuJo Institute. I work with the Irish team as a researcher and software developer.",
     responsibilities: [
       "Delivered the data analysis for a foreign information manipulation and interference (FIMI) investigation: built the collection pipeline, normalised 25,300+ articles into structured datasets, and measured authorship and source attribution on a random sample with confidence intervals, alongside domain registration and hosting analysis across the network. Shipped as a ten-sheet workbook in which every published rate recomputes from the raw CSVs. EDMO passed the findings to academic and journalistic partners.",
       "Built and shipped EDMO Ireland's weekly fact-check round-up: it pulls new fact-checks, formats them to house style, and posts a draft to edmohub.ie through the WordPress REST API for an editor to review and publish. Runs unattended on GitHub Actions behind 59 tests, with scheduled canary checks that open an issue the moment the source site's markup changes.",

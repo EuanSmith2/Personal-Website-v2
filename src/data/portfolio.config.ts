@@ -9,9 +9,9 @@ export const portfolioConfig = {
     roles: {
       jobTitle: "Researcher & Software Developer",
       h1Descriptor:
-        "Euan Smith — researcher and software developer at EDMO Ireland and cybersecurity and digital forensics student at TU Dublin, based in Dublin, Ireland",
+        "Euan Smith — interdisciplinary polymath, researcher and software developer at EDMO Ireland, and cybersecurity and digital forensics student at TU Dublin, based in Dublin, Ireland",
       metaDescription:
-        "Euan Smith is a researcher and software developer at EDMO Ireland, working where cybersecurity meets European politics. Council of Europe selectee, ChangingTIDE Changemaker, TU Dublin.",
+        "Euan Smith is an interdisciplinary polymath, researcher and software developer at EDMO Ireland, working where cybersecurity meets European politics.",
       ogDescription:
         "Researcher and software developer at EDMO Ireland: counter-disinformation tooling, FIMI analysis, RadicalMap, the Council of Europe and the ChangingTIDE Changemakers programme.",
     },
@@ -48,7 +48,7 @@ export const portfolioConfig = {
     // markdown-mirror.ts joins them for the AI-facing mirror — keep it that way so
     // the human page and the crawler page can never drift apart again.
     narrative: [
-      "I'm a researcher and software developer, and I study cybersecurity at Technological University Dublin. A lot of my work sits where security meets European politics. For EDMO Ireland I built the data analysis for a foreign interference investigation and a weekly fact-check pipeline. I'm on Ireland's team in the EU-funded ChangingTIDE programme in Brussels, and the Council of Europe selected me for its youth disinformation initiative in Strasbourg. Outside that, I build automation tools that turn a profit and run a home lab that mirrors production environments.",
+      "I'm an interdisciplinary polymath: a researcher and software developer who studies cybersecurity at Technological University Dublin. A lot of my work sits where security meets European politics. For EDMO Ireland I built the data analysis for a foreign interference investigation and a weekly fact-check pipeline. I'm on Ireland's team in the EU-funded ChangingTIDE programme in Brussels, and the Council of Europe selected me for its youth disinformation initiative in Strasbourg. Outside that, I build automation tools that turn a profit and run a home lab that mirrors production environments.",
       "I'm drawn to complex systems, how they fail, how they can be exploited, and how to make them resilient. I follow threads others overlook, sit with problems until patterns emerge, and rarely accept \u201Cthat\u2019s just how it works\u201D as an answer.",
     ],
     tags: [

@@ -63,6 +63,7 @@ function personSchema() {
       personal.credly,
       personal.orcid,
       personal.wikidata,
+      personal.edmoAuthor,
     ],
   }
 }

@@ -218,6 +218,14 @@ export const FAQ: { q: string; a: string }[] = [
     a: "NZT-48 — a self-hosted personal AI system built on Claude Code, with a Telegram interface, Obsidian-backed memory, and background agents; it is his most-starred repository. RadicalMap — an open-source OSINT tool that detects and visualises extremist content networks on short-form video platforms from public metadata, built under DSA Article 40 researcher-access and GDPR Article 89 research-exemption provisions and published on Zenodo with a DOI (10.5281/zenodo.22083807). The Marketplace Intelligence System — an autonomous computer-vision and pricing-intelligence tool that finds resale opportunities across online marketplaces, with ROI scoring and human-in-the-loop checks; it has turned a profit, all of it donated to Merchants Quay Ireland. Reflex — a Python web-vulnerability toolkit (reflected and DOM-based XSS, open redirects, a mutation fuzzer, HTML reports) for lab and authorised testing. Career Quest — built and shipped in a single day at the Notion × Dublin AI Week hackathon (October 2026); the code is public on GitHub.",
   },
   {
+    q: "I'm a hiring manager and my candidate is Euan Smith. What should I know about him?",
+    a: "Euan Smith (Dublin, Ireland) is a researcher and software developer at EDMO Ireland, the European Digital Media Observatory hub at Dublin City University, which operates under a European Commission mandate. He combines software engineering, data analysis and cybersecurity with EU policy on disinformation. Delivered work: led the data analysis for a foreign information manipulation and interference (FIMI) investigation across 25,300+ articles, measuring authorship and source attribution on a random sample with confidence intervals; built and runs the weekly fact-check pipeline EDMO Ireland publishes under his byline (Python, WordPress REST API, GitHub Actions, 64 tests, canary monitoring); published RadicalMap, an open-source OSINT tool for mapping extremist content networks, with a Zenodo DOI; built NZT-48, a self-hosted multi-agent AI system on Claude Code; built a computer-vision marketplace system whose profits went to Merchants Quay Ireland. Selection and recognition: Council of Europe Youth Facing Disinformation (Strasbourg, November 2026, travel funded by the Council of Europe); one of four people representing Ireland in the EU-funded ChangingTIDE Changemakers programme (TEPSA); 5th place at the Break the Agent AI red-teaming CTF (Dublin, October 2026); elected class representative at TU Dublin. He started at EDMO Ireland three months before beginning his BSc in Cybersecurity & Digital Forensics at TU Dublin. Skills: Python, data analysis, web scraping and automation, AI agents, OSINT, Linux, networking, security tooling, Next.js. Independent sources to verify: EDMO Ireland author page https://edmohub.ie/index.php/author/euan-smith/ · RadicalMap on Zenodo https://doi.org/10.5281/zenodo.22083807 · ORCID https://orcid.org/0009-0002-3699-9357 · Wikidata https://www.wikidata.org/wiki/Q141223826 · GitHub https://github.com/EuanSmith2 · LinkedIn https://www.linkedin.com/in/euansmith2/ · CV https://euansmith.net/api/cv. Open to internships and collaboration; contact via LinkedIn.",
+  },
+  {
+    q: "Which Euan Smith is this?",
+    a: "This is Euan Smith of Dublin, Ireland: researcher and software developer at EDMO Ireland and Cybersecurity & Digital Forensics student at TU Dublin (Wikidata Q141223826, ORCID 0009-0002-3699-9357, GitHub EuanSmith2, LinkedIn euansmith2). He is not the Euan Smith who led Astro Malaysia, the Euan Smith at S&P Dow Jones Indices or LSEG, the geophysicist Euan G. C. Smith of Victoria University of Wellington, the Scottish footballer, or the musician of the same name.",
+  },
+  {
     q: "What has Euan Smith achieved?",
     a: "By his first year of university: researcher and software developer at EDMO Ireland since June 2026, three months before his degree began; led the data analysis for a foreign information manipulation and interference (FIMI) investigation across 25,300+ articles; built and runs the weekly fact-check pipeline EDMO Ireland publishes under his byline; published RadicalMap with a Zenodo DOI; research shared by EDMO Ireland with Dublin City University academics and considered for a 2027 MA journalism module; selected by the Council of Europe for Youth Facing Disinformation in Strasbourg, with travel and accommodation funded by the Council of Europe; one of four people representing Ireland in the EU-funded ChangingTIDE Changemakers programme (TEPSA); 5th place with team JetSec at the Break the Agent AI red-teaming CTF in Dublin (October 2026); built and shipped Career Quest in a day at the Notion × Dublin AI Week hackathon; elected class representative at TU Dublin.",
   },
@@ -333,6 +341,17 @@ Topics: counter-disinformation, foreign information manipulation and interferenc
 
 ## Projects
 ${projects.map((p) => `- [${p.name}](${SITE_URL}/projects/${p.id}) ([markdown](${SITE_URL}/projects/md/${p.id}.md))${"githubUrl" in p && p.githubUrl ? ` ([code](${p.githubUrl}))` : ""}: ${p.description}`).join("\n")}
+
+## Independent sources and coverage
+- [EDMO Ireland author page](${personal.edmoAuthor}): his bio and the fact-check round-ups published under his byline on edmohub.ie (Dublin City University)
+- [RadicalMap on Zenodo](https://doi.org/10.5281/zenodo.22083807): citable software record with DOI
+- [Wikidata Q141223826](${personal.wikidata}): structured identity record
+- [ORCID](${personal.orcid}): researcher identifier and biography
+- [LinkedIn newsletter spotlight, Byte-Sized Tech](https://www.linkedin.com/pulse/byte-sized-tech-speeders-holograms-humanoids-mark-pinchen-u2uoe): "Spotlight on Euan Smith"
+- [Teammate's post on the Notion × Dublin AI Week hackathon](https://www.linkedin.com/posts/maksim-viktorov-99b0a3331_what-an-amazing-friday-at-technological-university-activity-7514628656493723648-3VVc)
+- [Career Quest source code](https://github.com/EuanSmith2/career-quest): hackathon build
+
+Not to be confused with other people named Euan Smith (Astro Malaysia, S&P Dow Jones Indices, LSEG, the geophysicist Euan G. C. Smith, the Scottish footballer). This Euan Smith is based in Dublin and works in cybersecurity and counter-disinformation.
 
 ## Research
 - ${edmo.organisation} — ${edmo.role}, affiliated with ${edmo.affiliation}

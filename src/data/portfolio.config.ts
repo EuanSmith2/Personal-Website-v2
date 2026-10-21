@@ -16,7 +16,7 @@ export const portfolioConfig = {
         "Student portfolio: counter-disinformation work with EDMO Ireland, a Linux home lab, Python security tooling, and the ChangingTIDE Changemakers programme.",
     },
     avatar: "/profile.jpg",
-    linkedin: "https://www.linkedin.com/in/euan-smith-4295123a6/details/courses/",
+    linkedin: "https://www.linkedin.com/in/euansmith2/",
     tryhackme: "https://tryhackme.com/p/EuanSmith",
     credly: "https://www.credly.com/users/euan-smith.c95be961",
     github: "https://github.com/EuanSmith2",
@@ -248,7 +248,7 @@ export const portfolioConfig = {
   floatingBadge: {
     title: "Open to internships",
     subtitle: "and collaboration",
-    link: "https://www.linkedin.com/in/euan-smith-4295123a6/details/courses/",
+    link: "https://www.linkedin.com/in/euansmith2/",
     tooltip: "Click to connect on LinkedIn",
   },
 };

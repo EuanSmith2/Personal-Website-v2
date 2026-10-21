@@ -186,7 +186,7 @@ export default function CVPage() {
             <span>Dublin, Ireland</span>
             <a href="mailto:business.euan@hotmail.com">business.euan@hotmail.com</a>
             <a href="https://github.com/EuanSmith2" target="_blank" rel="noopener noreferrer">github.com/EuanSmith2</a>
-            <a href="https://www.linkedin.com/in/euan-smith-4295123a6/" target="_blank" rel="noopener noreferrer">linkedin.com/in/euan-smith</a>
+            <a href="https://www.linkedin.com/in/euansmith2/" target="_blank" rel="noopener noreferrer">linkedin.com/in/euansmith2</a>
           </div>
         </div>
 

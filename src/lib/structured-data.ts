@@ -5,6 +5,7 @@ const { personal } = portfolioConfig
 
 const PERSON_ID = `${SITE_URL}/#person`
 const WEBSITE_ID = `${SITE_URL}/#website`
+const PROFILE_PAGE_ID = `${SITE_URL}/#profilepage`
 
 function personSchema() {
   return {
@@ -13,6 +14,7 @@ function personSchema() {
     name: personal.displayName,
     alternateName: personal.name,
     url: SITE_URL,
+    mainEntityOfPage: { "@id": PROFILE_PAGE_ID },
     image: `${SITE_URL}/opengraph-image`,
     jobTitle: [personal.roles.jobTitle, "Counter-Disinformation Researcher"],
     description:
@@ -80,10 +82,21 @@ function websiteSchema() {
   }
 }
 
+function profilePageSchema() {
+  return {
+    "@type": "ProfilePage",
+    "@id": PROFILE_PAGE_ID,
+    url: SITE_URL,
+    name: `${personal.displayName} — ${personal.roles.jobTitle}`,
+    isPartOf: { "@id": WEBSITE_ID },
+    mainEntity: { "@id": PERSON_ID },
+  }
+}
+
 export function structuredDataGraph() {
   return {
     "@context": "https://schema.org",
-    "@graph": [personSchema(), websiteSchema()],
+    "@graph": [personSchema(), websiteSchema(), profilePageSchema()],
   }
 }
 

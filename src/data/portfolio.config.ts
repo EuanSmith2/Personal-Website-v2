@@ -7,13 +7,13 @@ export const portfolioConfig = {
     // Single source of truth for the role strings used across <title>, the
     // hero, the meta description, and the Person structured data.
     roles: {
-      jobTitle: "Cybersecurity & Digital Forensics Student",
+      jobTitle: "Researcher & Software Developer",
       h1Descriptor:
-        "Euan Smith — cybersecurity and digital forensics student based in Dublin, Ireland",
+        "Euan Smith — researcher and software developer at EDMO Ireland and cybersecurity and digital forensics student at TU Dublin, based in Dublin, Ireland",
       metaDescription:
-        "Euan Smith — cybersecurity and digital forensics student at TU Dublin. Counter-disinformation research with EDMO Ireland, a Linux home lab, and Python security tooling.",
+        "Euan Smith is a researcher and software developer at EDMO Ireland, working where cybersecurity meets European politics. Council of Europe selectee, ChangingTIDE Changemaker, TU Dublin.",
       ogDescription:
-        "Student portfolio: counter-disinformation work with EDMO Ireland, a Linux home lab, Python security tooling, and the ChangingTIDE Changemakers programme.",
+        "Researcher and software developer at EDMO Ireland: counter-disinformation tooling, FIMI analysis, RadicalMap, the Council of Europe and the ChangingTIDE Changemakers programme.",
     },
     avatar: "/profile.jpg",
     linkedin: "https://www.linkedin.com/in/euansmith2/",
@@ -75,7 +75,7 @@ export const portfolioConfig = {
       "EDMO is the EU's hub for countering disinformation: a network of fact-checkers, academics, and researchers across every member state, with the Irish team based at DCU's FuJo Institute. I work with the Irish team as a researcher and software developer.",
     responsibilities: [
       "Delivered the data analysis for a foreign information manipulation and interference (FIMI) investigation: built the collection pipeline, normalised 25,300+ articles into structured datasets, and measured authorship and source attribution on a random sample with confidence intervals, alongside domain registration and hosting analysis across the network. Shipped as a ten-sheet workbook in which every published rate recomputes from the raw CSVs. EDMO passed the findings to academic and journalistic partners.",
-      "Built and shipped EDMO Ireland's weekly fact-check round-up: it pulls new fact-checks, formats them to house style, and posts a draft to edmohub.ie through the WordPress REST API for an editor to review and publish. Runs unattended on GitHub Actions behind 59 tests, with scheduled canary checks that open an issue the moment the source site's markup changes.",
+      "Built and shipped EDMO Ireland's weekly fact-check round-up: it pulls new fact-checks, formats them to house style, and posts a draft to edmohub.ie through the WordPress REST API for an editor to review and publish. Runs unattended on GitHub Actions behind 64 tests, with scheduled canary checks that open an issue the moment the source site's markup changes.",
       "Verified and rebuilt an Irish media opinion dataset for an EDMO research team: parsed 287 opinion pieces into clean author-by-outlet counts across seven national titles, enriched a 197-person contributor roster, and found and corrected 15 defective record matches out of 72 before the data reached analysis.",
       "Wrote a Python client and CLI against Meta's official Ad Library API to measure advertising spend and volume across a set of news outlets, handling authentication, pagination, rate limits and schema normalisation. Documented the two fields the API genuinely cannot return rather than approximating them, and grounded the tool in the GDPR Article 89 research exemption and CDSM Article 3 rather than scraping around Meta's controls.",
       "Conducted original counter-disinformation research: a controlled two-account social media experiment documenting algorithmic radicalisation, plus an interview with EDMO Ireland's lead researcher on radical recruitment tactics, Digital Services Act enforcement gaps, and Big Tech's Dublin-based accountability failures. Presented to ~60 students, and shared by EDMO Ireland with Dr Eileen Culloty and Professor Jane Suiter at DCU, who are considering adapting it into an MA journalism module in 2027.",
@@ -182,7 +182,7 @@ export const portfolioConfig = {
       name: "Reflex",
       tags: ["Python", "Web Security", "XSS", "Security Tooling"],
       description:
-        "An educational Python toolkit for learning common web vulnerability classes: reflected and DOM-based XSS, open redirects, and a mutation fuzzer, with coloured output and HTML reports. Built to understand how these attacks actually work, not to run against live targets.",
+        "A Python web-vulnerability toolkit for lab and authorised testing: reflected and DOM-based XSS detection, open-redirect checks and a mutation fuzzer, with coloured output and HTML reports.",
       status: "Complete",
       githubUrl: "https://github.com/EuanSmith2/reflex",
       caseStudy: {

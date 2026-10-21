@@ -300,8 +300,6 @@ export default function CVPage() {
             <div className="cv-cert-item">SAP: Security and Compliance Learning Journey <span className="cert-status">Earned</span></div>
             <div className="cv-cert-item">SAP: Business Integrity Screening Fundamentals <span className="cert-status">Earned</span></div>
             <div className="cv-cert-item">SAP: System Security Foundations <span className="cert-status">Earned</span></div>
-            <div className="cv-cert-item">ISC2 Candidate Member <span className="cert-status">Active</span></div>
-            <div className="cv-cert-item">Microsoft AI Skills Fest 2026 <span className="cert-status">Earned</span></div>
           </div>
         </div>
 

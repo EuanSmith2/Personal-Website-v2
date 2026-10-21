@@ -43,7 +43,7 @@ export function Certifications() {
                 ))}
               </ul>
               <p className="text-xs text-zinc-600 leading-relaxed mt-8">
-                Also verified on Credly: 3&times; SAP, ISC2 candidate membership, Microsoft AI Skills Fest.{" "}
+                Also verified on Credly: 3&times; SAP.{" "}
                 <a
                   href={personal.credly}
                   target="_blank"

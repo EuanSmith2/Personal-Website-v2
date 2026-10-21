@@ -64,6 +64,7 @@ function personSchema() {
       personal.orcid,
       personal.wikidata,
       personal.edmoAuthor,
+      personal.gravatar,
     ],
   }
 }

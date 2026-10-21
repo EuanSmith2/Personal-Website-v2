@@ -310,6 +310,7 @@ Also searched as: Euan Smith Dublin, Euan Smith cybersecurity, Euan Smith TU Dub
 - [ORCID](${personal.orcid})
 - [Wikidata](${personal.wikidata})
 - [EDMO Ireland author page](${personal.edmoAuthor})
+- [Gravatar](${personal.gravatar})
 - [TryHackMe](${personal.tryhackme})
 - [Credly (certifications)](${personal.credly})
 

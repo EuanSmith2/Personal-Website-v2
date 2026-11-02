@@ -90,16 +90,18 @@ export function Hero() {
                   className="font-bold tracking-tight leading-none"
                   style={{ fontSize: "clamp(2.8rem, 8vw, 6rem)" }}
                 >
-                  <span aria-hidden="true">
-                    <TextScramble
-                      ref={scrambleRef}
-                      text={personal.name}
-                      autoStart={false}
-                      scrambleOnHover
-                      speed={80}
-                    />
+                  <TextScramble
+                    ref={scrambleRef}
+                    text={personal.name}
+                    autoStart={false}
+                    scrambleOnHover
+                    speed={80}
+                  />
+                  {/* The visible name above already starts the heading, so the
+                      sr-only part carries only the rest of the descriptor. */}
+                  <span className="sr-only">
+                    {personal.roles.h1Descriptor.replace(personal.displayName, "")}
                   </span>
-                  <span className="sr-only">{personal.roles.h1Descriptor}</span>
                 </h1>
               </div>
             </motion.div>

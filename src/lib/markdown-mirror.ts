@@ -331,6 +331,7 @@ Topics: counter-disinformation, foreign information manipulation and interferenc
 - [Full profile](${SITE_URL}/index.md): complete background, projects, certifications, and timeline in plain markdown
 - [FAQ](${SITE_URL}/faq.md): detailed answers to common questions about Euan Smith
 - [EDMO research](${SITE_URL}/edmo.md): counter-disinformation research work
+- [Everything in one file](${SITE_URL}/llms-full.txt): profile, EDMO work, every project and the FAQ concatenated
 - [CV](${SITE_URL}${personal.cv}): downloadable CV/resume
 - [GitHub](${personal.github})
 - [LinkedIn](${personal.linkedin})
@@ -362,4 +363,19 @@ Not to be confused with other people named Euan Smith (Astro Malaysia, S&P Dow J
 
 ${faqBlock}
 `
+}
+
+// llms-full.txt: every Markdown mirror in one file, for agents that want the
+// whole site in a single fetch. Built from the same generators as the
+// per-page mirrors, so it can never drift from them.
+export function generateLlmsFullTxt(): string {
+  const sections = [
+    generatePortfolioMarkdown(),
+    generateEdmoMarkdown(),
+    ...portfolioConfig.projects
+      .map((p) => generateProjectMarkdown(p.id))
+      .filter((md): md is string => md !== null),
+    generateFaqMarkdown(),
+  ]
+  return sections.map((s) => s.trim()).join("\n\n---\n\n") + "\n"
 }

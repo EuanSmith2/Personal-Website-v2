@@ -151,11 +151,15 @@ const TextScramble = forwardRef<TextScrambleHandle, TextScrambleProps>(
 
     return (
       <>
-        <span className="sr-only">{text}</span>
+        {/* While scrambling, the visible glyphs are noise: hide them from
+            assistive tech and expose the real text instead. Once settled the
+            visible text is the real text, so render it once, unhidden. A
+            second sr-only copy made parsers read the name twice. */}
+        {!settled && <span className="sr-only">{text}</span>}
         <span
           ref={containerRef}
           className={cn("inline-block whitespace-pre-wrap", className)}
-          aria-hidden="true"
+          aria-hidden={settled ? undefined : true}
           onMouseEnter={scrambleOnHover ? handleMouseEnter : undefined}
         >
           {settled ? (

@@ -9,7 +9,7 @@ const { personal } = portfolioConfig
 export const metadata: Metadata = {
   title: "FAQ — Euan Smith",
   description: `Answers to common questions about ${personal.displayName} — background, work with EDMO Ireland, projects, certifications, and how to get in touch.`,
-  alternates: { canonical: "/faq" },
+  alternates: { canonical: "/faq", types: { "text/markdown": "/faq.md" } },
   openGraph: {
     title: "FAQ — Euan Smith",
     description: `Answers to common questions about ${personal.displayName}.`,

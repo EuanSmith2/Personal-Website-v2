@@ -48,6 +48,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE_URL}/faq`, lastModified: contentMod, changeFrequency: "monthly", priority: 0.6 },
     { url: `${SITE_URL}/privacy`, lastModified: lastMod("src/app/privacy/page.tsx"), changeFrequency: "yearly", priority: 0.2 },
     { url: `${SITE_URL}/llms.txt`, lastModified: lastMod(MIRROR), changeFrequency: "monthly" },
+    { url: `${SITE_URL}/llms-full.txt`, lastModified: lastMod(MIRROR), changeFrequency: "monthly" },
     { url: `${SITE_URL}/index.md`, lastModified: contentMod, changeFrequency: "monthly" },
     { url: `${SITE_URL}/faq.md`, lastModified: contentMod, changeFrequency: "monthly" },
     { url: `${SITE_URL}/edmo.md`, lastModified: contentMod, changeFrequency: "monthly" },

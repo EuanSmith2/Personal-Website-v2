@@ -13,7 +13,7 @@ import { Personal } from "@/components/sections/Personal"
 import { Contact } from "@/components/sections/Contact"
 
 export const metadata: Metadata = {
-  alternates: { canonical: "/" },
+  alternates: { canonical: "/", types: { "text/markdown": "/index.md" } },
 }
 
 export default function Home() {

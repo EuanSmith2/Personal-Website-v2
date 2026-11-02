@@ -34,7 +34,24 @@ const GOOD_BOT_UA = /Googlebot|Google-Extended|Bingbot|DuckDuckBot|Applebot|Yand
 
 // Paths that are meant to be fetched freely by crawlers and agents — never
 // rate-limited regardless of UA.
-const DISCOVERY_PATH = /^\/(llms\.txt|robots\.txt|sitemap\.xml)$/
+const DISCOVERY_PATH = /^\/(llms\.txt|llms-full\.txt|robots\.txt|sitemap\.xml)$/
+
+// HTML pages that have a content-equivalent Markdown mirror. A request that
+// prefers text/markdown (RFC 9110 content negotiation) is served the mirror
+// at the same URL; every response on these paths says Vary: Accept so caches
+// keep the two representations apart.
+function markdownMirror(pathname: string): string | null {
+  if (pathname === "/") return "/index.md"
+  if (pathname === "/faq") return "/faq.md"
+  const project = pathname.match(/^\/projects\/([a-z0-9-]+)$/)
+  if (project) return `/projects/md/${project[1]}.md`
+  return null
+}
+
+function prefersMarkdown(request: NextRequest): boolean {
+  const accept = request.headers.get("accept") ?? ""
+  return /(^|,)\s*text\/markdown/i.test(accept) && !/(^|,)\s*text\/html\s*(,|$)/i.test(accept)
+}
 
 interface Entry { count: number; resetAt: number }
 
@@ -89,6 +106,15 @@ export function middleware(request: NextRequest) {
     return NextResponse.next()
   }
 
+  const mirror = markdownMirror(pathname)
+  if (mirror && prefersMarkdown(request)) {
+    const url = request.nextUrl.clone()
+    url.pathname = mirror
+    const rewritten = NextResponse.rewrite(url)
+    rewritten.headers.set("Vary", "Accept")
+    return rewritten
+  }
+
   const ip =
     request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ??
     request.headers.get("x-real-ip") ??
@@ -128,6 +154,7 @@ export function middleware(request: NextRequest) {
   }
 
   const response = NextResponse.next()
+  if (mirror) response.headers.set("Vary", "Accept")
   response.headers.set("X-RateLimit-Limit",     String(limit))
   response.headers.set("X-RateLimit-Remaining", String(remaining))
   response.headers.set("X-RateLimit-Reset",     String(resetEpoch))

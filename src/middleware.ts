@@ -1,4 +1,9 @@
 import { NextResponse, type NextRequest } from "next/server"
+import {
+  generateFaqMarkdown,
+  generatePortfolioMarkdown,
+  generateProjectMarkdown,
+} from "@/lib/markdown-mirror"
 
 // ---------------------------------------------------------------------------
 // Rate limiting
@@ -38,13 +43,14 @@ const DISCOVERY_PATH = /^\/(llms\.txt|llms-full\.txt|robots\.txt|sitemap\.xml)$/
 
 // HTML pages that have a content-equivalent Markdown mirror. A request that
 // prefers text/markdown (RFC 9110 content negotiation) is served the mirror
-// at the same URL; every response on these paths says Vary: Accept so caches
-// keep the two representations apart.
-function markdownMirror(pathname: string): string | null {
-  if (pathname === "/") return "/index.md"
-  if (pathname === "/faq") return "/faq.md"
+// at the same URL. The body is built here rather than via a rewrite because
+// Next replaces a rewritten response's Vary header with its own, and caches
+// need Vary: Accept to keep the two representations apart.
+function markdownMirror(pathname: string): (() => string | null) | null {
+  if (pathname === "/") return generatePortfolioMarkdown
+  if (pathname === "/faq") return generateFaqMarkdown
   const project = pathname.match(/^\/projects\/([a-z0-9-]+)$/)
-  if (project) return `/projects/md/${project[1]}.md`
+  if (project) return () => generateProjectMarkdown(project[1])
   return null
 }
 
@@ -108,11 +114,16 @@ export function middleware(request: NextRequest) {
 
   const mirror = markdownMirror(pathname)
   if (mirror && prefersMarkdown(request)) {
-    const url = request.nextUrl.clone()
-    url.pathname = mirror
-    const rewritten = NextResponse.rewrite(url)
-    rewritten.headers.set("Vary", "Accept")
-    return rewritten
+    const markdown = mirror()
+    if (markdown) {
+      return new NextResponse(markdown, {
+        headers: {
+          "Content-Type": "text/markdown; charset=utf-8",
+          "Vary": "Accept",
+          "Cache-Control": "public, max-age=0, must-revalidate",
+        },
+      })
+    }
   }
 
   const ip =
@@ -154,7 +165,6 @@ export function middleware(request: NextRequest) {
   }
 
   const response = NextResponse.next()
-  if (mirror) response.headers.set("Vary", "Accept")
   response.headers.set("X-RateLimit-Limit",     String(limit))
   response.headers.set("X-RateLimit-Remaining", String(remaining))
   response.headers.set("X-RateLimit-Reset",     String(resetEpoch))
